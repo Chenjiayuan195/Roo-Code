@@ -14,7 +14,7 @@ const PROCESS_HOT_TIMEOUT_COMPILING = 15_000
 
 // These markers indicate the command is some kind of local dev server
 // recompiling the app, which we want to wait for output of before sending
-// request to Roo.
+// request to Magic.
 const COMPILE_MARKERS = ["compiling", "building", "bundling", "transpiling", "generating", "starting"]
 
 const COMPILE_MARKER_NULLIFIERS = [
