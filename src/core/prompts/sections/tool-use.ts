@@ -15,7 +15,7 @@ export function getSharedToolUseSection(): string {
 ...
 </tool_name>
 
-For example:
+例如：
 
 <read_file>
 <path>src/main.js</path>
