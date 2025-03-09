@@ -99,8 +99,8 @@ describe("OpenAiHandler", () => {
 				baseURL: expect.any(String),
 				apiKey: expect.any(String),
 				defaultHeaders: {
-					"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
-					"X-Title": "Roo Code",
+					"HTTP-Referer": "https://github.com/RooVetGit/Magic-Cline",
+					"X-Title": "Magic Code",
 				},
 			})
 		})

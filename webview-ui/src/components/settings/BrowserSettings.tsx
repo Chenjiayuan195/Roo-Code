@@ -27,7 +27,7 @@ export const BrowserSettings = ({
 			<SectionHeader>
 				<div className="flex items-center gap-2">
 					<SquareMousePointer className="w-4" />
-					<div>Browser / Computer Use</div>
+					<div>浏览器 / 计算机使用</div>
 				</div>
 			</SectionHeader>
 
@@ -36,11 +36,10 @@ export const BrowserSettings = ({
 					<VSCodeCheckbox
 						checked={browserToolEnabled}
 						onChange={(e: any) => setCachedStateField("browserToolEnabled", e.target.checked)}>
-						<span className="font-medium">Enable browser tool</span>
+						<span className="font-medium">启用浏览器工具</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						When enabled, Roo can use a browser to interact with websites when using models that support
-						computer use.
+						启用后，Magic可以在使用支持计算机使用的模型时通过浏览器与网站交互。
 					</p>
 					{browserToolEnabled && (
 						<div
@@ -51,7 +50,7 @@ export const BrowserSettings = ({
 							}}>
 							<div>
 								<label style={{ fontWeight: "500", display: "block", marginBottom: 5 }}>
-									Viewport size
+									视口大小
 								</label>
 								<div className="dropdown-container">
 									<Dropdown
@@ -61,21 +60,20 @@ export const BrowserSettings = ({
 										}}
 										style={{ width: "100%" }}
 										options={[
-											{ value: "1280x800", label: "Large Desktop (1280x800)" },
-											{ value: "900x600", label: "Small Desktop (900x600)" },
-											{ value: "768x1024", label: "Tablet (768x1024)" },
-											{ value: "360x640", label: "Mobile (360x640)" },
+											{ value: "1280x800", label: "大型桌面 (1280x800)" },
+											{ value: "900x600", label: "小型桌面 (900x600)" },
+											{ value: "768x1024", label: "平板 (768x1024)" },
+											{ value: "360x640", label: "移动设备 (360x640)" },
 										]}
 									/>
 								</div>
 								<p className="text-vscode-descriptionForeground text-sm mt-0">
-									Select the viewport size for browser interactions. This affects how websites are
-									displayed and interacted with.
+									选择浏览器交互的视口大小。这会影响网站的显示和交互方式。
 								</p>
 							</div>
 							<div>
 								<div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-									<span className="font-medium">Screenshot quality</span>
+									<span className="font-medium">截图质量</span>
 									<div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
 										<input
 											type="range"
@@ -92,8 +90,7 @@ export const BrowserSettings = ({
 									</div>
 								</div>
 								<p className="text-vscode-descriptionForeground text-sm mt-0">
-									Adjust the WebP quality of browser screenshots. Higher values provide clearer
-									screenshots but increase token usage.
+									调整浏览器截图的WebP质量。较高的值提供更清晰的截图但会增加令牌使用量。
 								</p>
 							</div>
 						</div>

@@ -26,54 +26,54 @@ export const ModelInfoView = ({
 	const infoItems = [
 		<ModelInfoSupportsItem
 			isSupported={modelInfo.supportsImages ?? false}
-			supportsLabel="Supports images"
-			doesNotSupportLabel="Does not support images"
+			supportsLabel="支持图像"
+			doesNotSupportLabel="不支持图像"
 		/>,
 		<ModelInfoSupportsItem
 			isSupported={modelInfo.supportsComputerUse ?? false}
-			supportsLabel="Supports computer use"
-			doesNotSupportLabel="Does not support computer use"
+			supportsLabel="支持计算机使用"
+			doesNotSupportLabel="不支持计算机使用"
 		/>,
 		!isGemini && (
 			<ModelInfoSupportsItem
 				isSupported={modelInfo.supportsPromptCache}
-				supportsLabel="Supports prompt caching"
-				doesNotSupportLabel="Does not support prompt caching"
+				supportsLabel="支持提示词缓存"
+				doesNotSupportLabel="不支持提示词缓存"
 			/>
 		),
 		modelInfo.maxTokens !== undefined && modelInfo.maxTokens > 0 && (
 			<>
-				<span className="font-medium">Max output:</span> {modelInfo.maxTokens?.toLocaleString()} tokens
+				<span className="font-medium">最大输出：</span> {modelInfo.maxTokens?.toLocaleString()} 令牌
 			</>
 		),
 		modelInfo.inputPrice !== undefined && modelInfo.inputPrice > 0 && (
 			<>
-				<span className="font-medium">Input price:</span> {formatPrice(modelInfo.inputPrice)} / 1M tokens
+				<span className="font-medium">输入价格：</span> {formatPrice(modelInfo.inputPrice)} / 百万令牌
 			</>
 		),
 		modelInfo.outputPrice !== undefined && modelInfo.outputPrice > 0 && (
 			<>
-				<span className="font-medium">Output price:</span> {formatPrice(modelInfo.outputPrice)} / 1M tokens
+				<span className="font-medium">输出价格：</span> {formatPrice(modelInfo.outputPrice)} / 百万令牌
 			</>
 		),
 		modelInfo.supportsPromptCache && modelInfo.cacheReadsPrice && (
 			<>
-				<span className="font-medium">Cache reads price:</span> {formatPrice(modelInfo.cacheReadsPrice || 0)} /
-				1M tokens
+				<span className="font-medium">缓存读取价格：</span> {formatPrice(modelInfo.cacheReadsPrice || 0)} /
+				百万令牌
 			</>
 		),
 		modelInfo.supportsPromptCache && modelInfo.cacheWritesPrice && (
 			<>
-				<span className="font-medium">Cache writes price:</span> {formatPrice(modelInfo.cacheWritesPrice || 0)}{" "}
-				/ 1M tokens
+				<span className="font-medium">缓存写入价格：</span> {formatPrice(modelInfo.cacheWritesPrice || 0)}{" "}
+				/ 百万令牌
 			</>
 		),
 		isGemini && (
 			<span className="italic">
-				* Free up to {selectedModelId && selectedModelId.includes("flash") ? "15" : "2"} requests per minute.
-				After that, billing depends on prompt size.{" "}
+				* 每分钟免费使用 {selectedModelId && selectedModelId.includes("flash") ? "15" : "2"} 次请求。
+				超过后，费用取决于提示词大小。{" "}
 				<VSCodeLink href="https://ai.google.dev/pricing" className="text-sm">
-					For more info, see pricing details.
+					更多信息，请查看价格详情。
 				</VSCodeLink>
 			</span>
 		),

@@ -1,5 +1,6 @@
 import { useMemo, useState, useCallback, useEffect, useRef } from "react"
 import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
+import { cn } from "@/lib/utils"
 
 import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem } from "@/components/ui/combobox"
 
@@ -27,6 +28,7 @@ interface ModelPickerProps {
 	serviceUrl: string
 	apiConfiguration: ApiConfiguration
 	setApiConfigurationField: <K extends keyof ApiConfiguration>(field: K, value: ApiConfiguration[K]) => void
+	showOpenRouterInfo: boolean
 }
 
 export const ModelPicker = ({
@@ -39,6 +41,7 @@ export const ModelPicker = ({
 	apiConfiguration,
 	setApiConfigurationField,
 	defaultModelInfo,
+	showOpenRouterInfo,
 }: ModelPickerProps) => {
 	const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false)
 	const isInitialized = useRef(false)
@@ -99,17 +102,23 @@ export const ModelPicker = ({
 				setApiConfigurationField={setApiConfigurationField}
 				modelInfo={selectedModelInfo}
 			/>
-			<div className="text-sm text-vscode-descriptionForeground">
-				The extension automatically fetches the latest list of models available on{" "}
-				<VSCodeLink href={serviceUrl} className="text-sm">
-					{serviceName}
-				</VSCodeLink>
-				. If you're unsure which model to choose, Roo Code works best with{" "}
-				<VSCodeLink onClick={() => onSelect(defaultModelId)} className="text-sm">
-					{defaultModelId}.
-				</VSCodeLink>
-				You can also try searching "free" for no-cost options currently available.
-			</div>
+			{/* Info message about the model used */}
+			{showOpenRouterInfo && (
+				<p
+					id="model-auto-fetch-info"
+					className={cn(
+						"text-xs text-vscode-descriptionForeground mt-2",
+						models && Object.keys(models).length === 0 ? "opacity-100" : "",
+					)}>
+					此扩展会自动获取最新的可用模型列表，来自{" "}
+					<VSCodeLink href="https://openrouter.ai">OpenRouter</VSCodeLink>
+					。如果您不确定选择哪个模型，Magic Code最适合与
+					<VSCodeLink href="https://anthropic.com/claude">
+						<strong>anthropic/claude-3.7-sonnet</strong>
+					</VSCodeLink>
+					配合使用。您也可以尝试搜索"free"来查找当前可用的免费选项。
+				</p>
+			)}
 		</>
 	)
 }

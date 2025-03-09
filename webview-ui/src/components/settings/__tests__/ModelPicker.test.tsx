@@ -46,6 +46,7 @@ describe("ModelPicker", () => {
 		recommendedModel: "recommended-model",
 		models: mockModels,
 		setApiConfigurationField: mockSetApiConfigurationField,
+		showOpenRouterInfo: false,
 	}
 
 	beforeEach(() => {

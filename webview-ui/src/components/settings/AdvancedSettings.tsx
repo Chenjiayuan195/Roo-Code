@@ -48,14 +48,14 @@ export const AdvancedSettings = ({
 			<SectionHeader>
 				<div className="flex items-center gap-2">
 					<Cog className="w-4" />
-					<div>Advanced</div>
+					<div>高级设置</div>
 				</div>
 			</SectionHeader>
 
 			<Section>
 				<div>
 					<div className="flex flex-col gap-2">
-						<span className="font-medium">Rate limit</span>
+						<span className="font-medium">速率限制</span>
 						<div className="flex items-center gap-2">
 							<input
 								type="range"
@@ -66,15 +66,15 @@ export const AdvancedSettings = ({
 								onChange={(e) => setCachedStateField("rateLimitSeconds", parseInt(e.target.value))}
 								className="h-2 focus:outline-0 w-4/5 accent-vscode-button-background"
 							/>
-							<span style={{ ...sliderLabelStyle }}>{rateLimitSeconds}s</span>
+							<span style={{ ...sliderLabelStyle }}>{rateLimitSeconds}秒</span>
 						</div>
 					</div>
-					<p className="text-vscode-descriptionForeground text-sm mt-0">Minimum time between API requests.</p>
+					<p className="text-vscode-descriptionForeground text-sm mt-0">API请求之间的最小时间间隔。</p>
 				</div>
 
 				<div>
 					<div className="flex flex-col gap-2">
-						<span className="font-medium">Terminal output limit</span>
+						<span className="font-medium">终端输出限制</span>
 						<div className="flex items-center gap-2">
 							<input
 								type="range"
@@ -89,15 +89,13 @@ export const AdvancedSettings = ({
 						</div>
 					</div>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Maximum amount of terminal output (in kilobytes) to send to the LLM when executing commands. If
-						the output exceeds this limit, it will be removed from the middle so that the start and end of
-						the output are preserved.
+						执行命令时发送给LLM的最大终端输出量（以KB为单位）。如果输出超过此限制，将删除中间部分，以保留输出的开头和结尾。
 					</p>
 				</div>
 
 				<div>
 					<div className="flex flex-col gap-2">
-						<span className="font-medium">Open tabs context limit</span>
+						<span className="font-medium">打开标签页上下文限制</span>
 						<div className="flex items-center gap-2">
 							<input
 								type="range"
@@ -112,8 +110,7 @@ export const AdvancedSettings = ({
 						</div>
 					</div>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Maximum number of VSCode open tabs to include in context. Higher values provide more context but
-						increase token usage.
+						在上下文中包含的VSCode打开标签页的最大数量。较高的值提供更多上下文，但会增加令牌使用量。
 					</p>
 				</div>
 
@@ -123,21 +120,20 @@ export const AdvancedSettings = ({
 						onChange={(e: any) => {
 							setCachedStateField("diffEnabled", e.target.checked)
 							if (!e.target.checked) {
-								// Reset both experimental strategies when diffs are disabled.
+								// 禁用差异时重置两种实验性策略。
 								setExperimentEnabled(EXPERIMENT_IDS.DIFF_STRATEGY, false)
 								setExperimentEnabled(EXPERIMENT_IDS.MULTI_SEARCH_AND_REPLACE, false)
 							}
 						}}>
-						<span className="font-medium">Enable editing through diffs</span>
+						<span className="font-medium">启用通过差异编辑</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						When enabled, Roo will be able to edit files more quickly and will automatically reject
-						truncated full-file writes. Works best with the latest Claude 3.7 Sonnet model.
+						启用后，Magic将能够更快地编辑文件，并自动拒绝截断的全文件写入。最适合与最新的Claude 3.7 Sonnet模型配合使用。
 					</p>
 					{diffEnabled && (
 						<div className="flex flex-col gap-2 mt-3 mb-2 pl-3 border-l-2 border-vscode-button-background">
 							<div className="flex flex-col gap-2">
-								<span className="font-medium">Diff strategy</span>
+								<span className="font-medium">差异策略</span>
 								<select
 									value={
 										experiments[EXPERIMENT_IDS.DIFF_STRATEGY]
@@ -160,25 +156,25 @@ export const AdvancedSettings = ({
 										}
 									}}
 									className="p-2 rounded w-full bg-vscode-input-background text-vscode-input-foreground border border-vscode-input-border outline-none focus:border-vscode-focusBorder">
-									<option value="standard">Standard (Single block)</option>
-									<option value="multiBlock">Experimental: Multi-block diff</option>
-									<option value="unified">Experimental: Unified diff</option>
+									<option value="standard">标准（单块）</option>
+									<option value="multiBlock">实验性：多块差异</option>
+									<option value="unified">实验性：统一差异</option>
 								</select>
 							</div>
 
-							{/* Description for selected strategy */}
+							{/* 所选策略的描述 */}
 							<p className="text-vscode-descriptionForeground text-sm mt-1">
 								{!experiments[EXPERIMENT_IDS.DIFF_STRATEGY] &&
 									!experiments[EXPERIMENT_IDS.MULTI_SEARCH_AND_REPLACE] &&
-									"Standard diff strategy applies changes to a single code block at a time."}
+									"标准差异策略一次只应用对单个代码块的更改。"}
 								{experiments[EXPERIMENT_IDS.DIFF_STRATEGY] &&
-									"Unified diff strategy takes multiple approaches to applying diffs and chooses the best approach."}
+									"统一差异策略采用多种方法应用差异，并选择最佳方法。"}
 								{experiments[EXPERIMENT_IDS.MULTI_SEARCH_AND_REPLACE] &&
-									"Multi-block diff strategy allows updating multiple code blocks in a file in one request."}
+									"多块差异策略允许在一个请求中更新文件中的多个代码块。"}
 							</p>
 
-							{/* Match precision slider */}
-							<span className="font-medium mt-3">Match precision</span>
+							{/* 匹配精度滑块 */}
+							<span className="font-medium mt-3">匹配精度</span>
 							<div className="flex items-center gap-2">
 								<input
 									type="range"
@@ -196,9 +192,7 @@ export const AdvancedSettings = ({
 								</span>
 							</div>
 							<p className="text-vscode-descriptionForeground text-sm mt-0">
-								This slider controls how precisely code sections must match when applying diffs. Lower
-								values allow more flexible matching but increase the risk of incorrect replacements. Use
-								values below 100% with extreme caution.
+								此滑块控制应用差异时代码段必须匹配的精确度。较低的值允许更灵活的匹配，但会增加错误替换的风险。极其谨慎地使用低于100%的值。
 							</p>
 						</div>
 					)}
@@ -210,11 +204,10 @@ export const AdvancedSettings = ({
 						onChange={(e: any) => {
 							setCachedStateField("showRooIgnoredFiles", e.target.checked)
 						}}>
-						<span className="font-medium">Show .rooignore'd files in lists and searches</span>
+						<span className="font-medium">在列表和搜索中显示.rooignore文件</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						When enabled, files matching patterns in .rooignore will be shown in lists with a lock symbol.
-						When disabled, these files will be completely hidden from file lists and searches.
+						启用后，匹配.rooignore中模式的文件将在列表中显示锁定符号。禁用时，这些文件将完全从文件列表和搜索中隐藏。
 					</p>
 				</div>
 			</Section>

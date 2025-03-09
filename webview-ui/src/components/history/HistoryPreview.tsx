@@ -19,10 +19,10 @@ const HistoryPreview = ({ showHistoryView }: HistoryPreviewProps) => {
 			<div className="flex items-center justify-between text-vscode-descriptionForeground">
 				<div className="flex items-center gap-1">
 					<span className="codicon codicon-comment-discussion scale-90 mr-1" />
-					<span className="font-medium text-xs uppercase">Recent Tasks</span>
+					<span className="font-medium text-xs uppercase">最近的任务</span>
 				</div>
 				<Button variant="ghost" size="sm" onClick={() => showHistoryView()} className="uppercase">
-					View All
+				查看全部
 				</Button>
 			</div>
 			{taskHistory.slice(0, 3).map((item) => (

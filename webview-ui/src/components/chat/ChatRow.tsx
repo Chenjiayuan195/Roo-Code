@@ -124,7 +124,7 @@ export const ChatRowContent = ({
 					<span
 						className="codicon codicon-error"
 						style={{ color: errorColor, marginBottom: "-1.5px" }}></span>,
-					<span style={{ color: errorColor, fontWeight: "bold" }}>Roo is having trouble...</span>,
+					<span style={{ color: errorColor, fontWeight: "bold" }}>Magic is having trouble...</span>,
 				]
 			case "command":
 				return [
@@ -135,7 +135,7 @@ export const ChatRowContent = ({
 							className="codicon codicon-terminal"
 							style={{ color: normalColor, marginBottom: "-1.5px" }}></span>
 					),
-					<span style={{ color: normalColor, fontWeight: "bold" }}>Roo wants to execute this command:</span>,
+					<span style={{ color: normalColor, fontWeight: "bold" }}>Magic wants to execute this command:</span>,
 				]
 			case "use_mcp_server":
 				const mcpServerUse = JSON.parse(message.text || "{}") as ClineAskUseMcpServer
@@ -148,7 +148,7 @@ export const ChatRowContent = ({
 							style={{ color: normalColor, marginBottom: "-1.5px" }}></span>
 					),
 					<span style={{ color: normalColor, fontWeight: "bold" }}>
-						Roo wants to {mcpServerUse.type === "use_mcp_tool" ? "use a tool" : "access a resource"} on the{" "}
+						Magic wants to {mcpServerUse.type === "use_mcp_tool" ? "use a tool" : "access a resource"} on the{" "}
 						<code>{mcpServerUse.serverName}</code> MCP server:
 					</span>,
 				]
@@ -213,7 +213,7 @@ export const ChatRowContent = ({
 					<span
 						className="codicon codicon-question"
 						style={{ color: normalColor, marginBottom: "-1.5px" }}></span>,
-					<span style={{ color: normalColor, fontWeight: "bold" }}>Roo has a question:</span>,
+					<span style={{ color: normalColor, fontWeight: "bold" }}>Magic has a question:</span>,
 				]
 			default:
 				return [null, null]
@@ -255,7 +255,7 @@ export const ChatRowContent = ({
 					<>
 						<div style={headerStyle}>
 							{toolIcon(tool.tool === "appliedDiff" ? "diff" : "edit")}
-							<span style={{ fontWeight: "bold" }}>Roo wants to edit this file:</span>
+							<span style={{ fontWeight: "bold" }}>Magic wants to edit this file:</span>
 						</div>
 						<CodeAccordian
 							progressStatus={message.progressStatus}
@@ -272,7 +272,7 @@ export const ChatRowContent = ({
 					<>
 						<div style={headerStyle}>
 							{toolIcon("new-file")}
-							<span style={{ fontWeight: "bold" }}>Roo wants to create a new file:</span>
+							<span style={{ fontWeight: "bold" }}>Magic wants to create a new file:</span>
 						</div>
 						<CodeAccordian
 							isLoading={message.partial}
@@ -289,7 +289,7 @@ export const ChatRowContent = ({
 						<div style={headerStyle}>
 							{toolIcon("file-code")}
 							<span style={{ fontWeight: "bold" }}>
-								{message.type === "ask" ? "Roo wants to read this file:" : "Roo read this file:"}
+								{message.type === "ask" ? "Magic wants to read this file:" : "Magic read this file:"}
 							</span>
 						</div>
 						{/* <CodeAccordian
@@ -347,8 +347,8 @@ export const ChatRowContent = ({
 							{toolIcon("folder-opened")}
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask"
-									? "Roo wants to view the top level files in this directory:"
-									: "Roo viewed the top level files in this directory:"}
+									? "Magic wants to view the top level files in this directory:"
+									: "Magic viewed the top level files in this directory:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -367,8 +367,8 @@ export const ChatRowContent = ({
 							{toolIcon("folder-opened")}
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask"
-									? "Roo wants to recursively view all files in this directory:"
-									: "Roo recursively viewed all files in this directory:"}
+									? "Magic wants to recursively view all files in this directory:"
+									: "Magic recursively viewed all files in this directory:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -387,8 +387,8 @@ export const ChatRowContent = ({
 							{toolIcon("file-code")}
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask"
-									? "Roo wants to view source code definition names used in this directory:"
-									: "Roo viewed source code definition names used in this directory:"}
+									? "Magic wants to view source code definition names used in this directory:"
+									: "Magic viewed source code definition names used in this directory:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -407,11 +407,11 @@ export const ChatRowContent = ({
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask" ? (
 									<>
-										Roo wants to search this directory for <code>{tool.regex}</code>:
+										Magic wants to search this directory for <code>{tool.regex}</code>:
 									</>
 								) : (
 									<>
-										Roo searched this directory for <code>{tool.regex}</code>:
+										Magic searched this directory for <code>{tool.regex}</code>:
 									</>
 								)}
 							</span>
@@ -433,12 +433,12 @@ export const ChatRowContent = ({
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask" ? (
 									<>
-										Roo wants to switch to <code>{tool.mode}</code> mode
+										Magic wants to switch to <code>{tool.mode}</code> mode
 										{tool.reason ? ` because: ${tool.reason}` : ""}
 									</>
 								) : (
 									<>
-										Roo switched to <code>{tool.mode}</code> mode
+										Magic switched to <code>{tool.mode}</code> mode
 										{tool.reason ? ` because: ${tool.reason}` : ""}
 									</>
 								)}
@@ -452,7 +452,7 @@ export const ChatRowContent = ({
 						<div style={headerStyle}>
 							{toolIcon("new-file")}
 							<span style={{ fontWeight: "bold" }}>
-								Roo wants to create a new task in <code>{tool.mode}</code> mode:
+								Magic wants to create a new task in <code>{tool.mode}</code> mode:
 							</span>
 						</div>
 						<div style={{ paddingLeft: "26px", marginTop: "4px" }}>
@@ -465,7 +465,7 @@ export const ChatRowContent = ({
 					<>
 						<div style={headerStyle}>
 							{toolIcon("new-file")}
-							<span style={{ fontWeight: "bold" }}>Roo wants to finish this task</span>
+							<span style={{ fontWeight: "bold" }}>Magic wants to finish this task</span>
 						</div>
 						<div style={{ paddingLeft: "26px", marginTop: "4px" }}>
 							<code>{tool.content}</code>
@@ -707,7 +707,7 @@ export const ChatRowContent = ({
 									</span>
 								</div>
 								<div>
-									Roo won't be able to view the command's output. Please update VSCode (
+									Magic won't be able to view the command's output. Please update VSCode (
 									<code>CMD/CTRL + Shift + P</code> → "Update") and make sure you're using a supported
 									shell: zsh, bash, fish, or PowerShell (<code>CMD/CTRL + Shift + P</code> →
 									"Terminal: Select Default Profile").{" "}

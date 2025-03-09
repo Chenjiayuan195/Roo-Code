@@ -31,8 +31,8 @@ const McpView = ({ onDone }: McpViewProps) => {
 	return (
 		<div className="fixed inset-0 flex flex-col">
 			<div className="flex justify-between items-center px-5 py-2.5 border-b border-vscode-panel-border">
-				<h3 className="text-vscode-foreground m-0">MCP Servers</h3>
-				<VSCodeButton onClick={onDone}>Done</VSCodeButton>
+				<h3 className="text-vscode-foreground m-0">MCP 服务器</h3>
+				<VSCodeButton onClick={onDone}>完成</VSCodeButton>
 			</div>
 			<div className="flex-1 overflow-auto p-5">
 				<div
@@ -42,17 +42,15 @@ const McpView = ({ onDone }: McpViewProps) => {
 						marginBottom: "10px",
 						marginTop: "5px",
 					}}>
-					The{" "}
+					模型上下文协议（{" "}
 					<VSCodeLink href="https://github.com/modelcontextprotocol" style={{ display: "inline" }}>
 						Model Context Protocol
 					</VSCodeLink>{" "}
-					enables communication with locally running MCP servers that provide additional tools and resources
-					to extend Roo's capabilities. You can use{" "}
+					）可以使Magic与本地运行的MCP服务器通信，从而提供额外的工具和资源来扩展Magic的功能。您可以使用{" "}
 					<VSCodeLink href="https://github.com/modelcontextprotocol/servers" style={{ display: "inline" }}>
 						community-made servers
 					</VSCodeLink>{" "}
-					or ask Roo to create new tools specific to your workflow (e.g., "add a tool that gets the latest npm
-					docs").
+					或者要求Magic创建针对您工作流程的新工具（例如，"添加一个获取最新npm文档的工具"）。
 				</div>
 
 				<McpEnabledToggle />
@@ -66,7 +64,7 @@ const McpView = ({ onDone }: McpViewProps) => {
 									setEnableMcpServerCreation(e.target.checked)
 									vscode.postMessage({ type: "enableMcpServerCreation", bool: e.target.checked })
 								}}>
-								<span style={{ fontWeight: "500" }}>Enable MCP Server Creation</span>
+								<span style={{ fontWeight: "500" }}>启用MCP服务器创建</span>
 							</VSCodeCheckbox>
 							<p
 								style={{
@@ -74,9 +72,7 @@ const McpView = ({ onDone }: McpViewProps) => {
 									marginTop: "5px",
 									color: "var(--vscode-descriptionForeground)",
 								}}>
-								When enabled, Roo can help you create new MCP servers via commands like "add a new tool
-								to...". If you don't need to create MCP servers you can disable this to reduce Roo's
-								token usage.
+								启用后，Magic可以通过"添加新工具到..."等命令帮助您创建新的MCP服务器。如果您不需要创建MCP服务器，可以禁用此功能以减少Magic的令牌使用量。
 							</p>
 						</div>
 
@@ -118,14 +114,14 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 	})
 
 	const timeoutOptions = [
-		{ value: 15, label: "15 seconds" },
-		{ value: 30, label: "30 seconds" },
-		{ value: 60, label: "1 minute" },
-		{ value: 300, label: "5 minutes" },
-		{ value: 600, label: "10 minutes" },
-		{ value: 900, label: "15 minutes" },
-		{ value: 1800, label: "30 minutes" },
-		{ value: 3600, label: "60 minutes" },
+		{ value: 15, label: "15秒" },
+		{ value: 30, label: "30秒" },
+		{ value: 60, label: "1分钟" },
+		{ value: 300, label: "5分钟" },
+		{ value: 600, label: "10分钟" },
+		{ value: 900, label: "15分钟" },
+		{ value: 1800, label: "30分钟" },
+		{ value: 3600, label: "60分钟" },
 	]
 
 	const getStatusColor = () => {
@@ -395,18 +391,17 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 			<Dialog open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm}>
 				<DialogContent>
 					<DialogHeader>
-						<DialogTitle>Delete MCP Server</DialogTitle>
+						<DialogTitle>删除MCP服务器</DialogTitle>
 						<DialogDescription>
-							Are you sure you want to delete the MCP server "{server.name}"? This action cannot be
-							undone.
+							您确定要删除MCP服务器"{server.name}"吗？此操作无法撤销。
 						</DialogDescription>
 					</DialogHeader>
 					<DialogFooter>
 						<VSCodeButton appearance="secondary" onClick={() => setShowDeleteConfirm(false)}>
-							Cancel
+							取消
 						</VSCodeButton>
 						<VSCodeButton appearance="primary" onClick={handleDelete}>
-							Delete
+							删除
 						</VSCodeButton>
 					</DialogFooter>
 				</DialogContent>

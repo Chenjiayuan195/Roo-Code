@@ -33,18 +33,18 @@ const ApiConfigManager = ({
 
 	const validateName = (name: string, isNewProfile: boolean): string | null => {
 		const trimmed = name.trim()
-		if (!trimmed) return "Name cannot be empty"
+		if (!trimmed) return "名称不能为空"
 
 		const nameExists = listApiConfigMeta?.some((config) => config.name.toLowerCase() === trimmed.toLowerCase())
 
 		// For new profiles, any existing name is invalid
 		if (isNewProfile && nameExists) {
-			return "A profile with this name already exists"
+			return "配置文件名称已存在"
 		}
 
 		// For rename, only block if trying to rename to a different existing profile
 		if (!isNewProfile && nameExists && trimmed.toLowerCase() !== currentApiConfigName?.toLowerCase()) {
-			return "A profile with this name already exists"
+			return "配置文件名称已存在"
 		}
 
 		return null
@@ -144,7 +144,7 @@ const ApiConfigManager = ({
 	return (
 		<div className="flex flex-col gap-1">
 			<label htmlFor="config-profile">
-				<span className="font-medium">Configuration Profile</span>
+				<span className="font-medium">配置文件</span>
 			</label>
 
 			{isRenaming ? (
@@ -160,7 +160,7 @@ const ApiConfigManager = ({
 								setInputValue(target.target.value)
 								setError(null)
 							}}
-							placeholder="Enter new name"
+							placeholder="输入新名称"
 							style={{ flexGrow: 1 }}
 							onKeyDown={(e: unknown) => {
 								const event = e as { key: string }
@@ -224,7 +224,7 @@ const ApiConfigManager = ({
 						<VSCodeButton
 							appearance="icon"
 							onClick={handleAdd}
-							title="Add profile"
+							title="添加配置文件"
 							style={{
 								padding: 0,
 								margin: 0,
@@ -239,7 +239,7 @@ const ApiConfigManager = ({
 								<VSCodeButton
 									appearance="icon"
 									onClick={handleStartRename}
-									title="Rename profile"
+									title="重命名配置文件"
 									style={{
 										padding: 0,
 										margin: 0,
@@ -252,7 +252,7 @@ const ApiConfigManager = ({
 								<VSCodeButton
 									appearance="icon"
 									onClick={handleDelete}
-									title={isOnlyProfile ? "Cannot delete the only profile" : "Delete profile"}
+									title={isOnlyProfile ? "无法删除唯一的配置文件" : "删除配置文件"}
 									disabled={isOnlyProfile}
 									style={{
 										padding: 0,
@@ -272,7 +272,7 @@ const ApiConfigManager = ({
 							margin: "5px 0 12px",
 							color: "var(--vscode-descriptionForeground)",
 						}}>
-						Save different API configurations to quickly switch between providers and settings.
+						保存不同的API配置，以便在提供程序和设置之间快速切换。
 					</p>
 				</>
 			)}
@@ -290,7 +290,7 @@ const ApiConfigManager = ({
 				}}
 				aria-labelledby="new-profile-title">
 				<DialogContent className="p-4 max-w-sm">
-					<DialogTitle>New Configuration Profile</DialogTitle>
+					<DialogTitle>新建配置文件</DialogTitle>
 					<Input
 						ref={newProfileInputRef}
 						value={newProfileName}
@@ -299,7 +299,7 @@ const ApiConfigManager = ({
 							setNewProfileName(target.target.value)
 							setError(null)
 						}}
-						placeholder="Enter profile name"
+						placeholder="输入配置文件名称"
 						style={{ width: "100%" }}
 						onKeyDown={(e: unknown) => {
 							const event = e as { key: string }
@@ -317,10 +317,10 @@ const ApiConfigManager = ({
 					)}
 					<div className="flex justify-end gap-2 mt-4">
 						<Button variant="secondary" onClick={resetCreateState}>
-							Cancel
+							取消
 						</Button>
 						<Button variant="default" disabled={!newProfileName.trim()} onClick={handleNewProfileSave}>
-							Create Profile
+							创建配置文件
 						</Button>
 					</div>
 				</DialogContent>

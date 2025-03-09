@@ -23,7 +23,7 @@ export const NotificationSettings = ({
 			<SectionHeader>
 				<div className="flex items-center gap-2">
 					<Bell className="w-4" />
-					<div>Notifications</div>
+					<div>通知</div>
 				</div>
 			</SectionHeader>
 
@@ -32,10 +32,10 @@ export const NotificationSettings = ({
 					<VSCodeCheckbox
 						checked={soundEnabled}
 						onChange={(e: any) => setCachedStateField("soundEnabled", e.target.checked)}>
-						<span className="font-medium">Enable sound effects</span>
+						<span className="font-medium">启用音效</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						When enabled, Roo will play sound effects for notifications and events.
+						启用后，Magic将为通知和事件播放音效。
 					</p>
 					{soundEnabled && (
 						<div
@@ -53,13 +53,13 @@ export const NotificationSettings = ({
 									value={soundVolume ?? 0.5}
 									onChange={(e) => setCachedStateField("soundVolume", parseFloat(e.target.value))}
 									className="h-2 focus:outline-0 w-4/5 accent-vscode-button-background"
-									aria-label="Volume"
+									aria-label="音量"
 								/>
 								<span style={{ minWidth: "35px", textAlign: "left" }}>
 									{((soundVolume ?? 0.5) * 100).toFixed(0)}%
 								</span>
 							</div>
-							<p className="text-vscode-descriptionForeground text-sm mt-1">Volume</p>
+							<p className="text-vscode-descriptionForeground text-sm mt-1">音量</p>
 						</div>
 					)}
 				</div>

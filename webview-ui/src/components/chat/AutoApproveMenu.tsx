@@ -41,61 +41,61 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 	const actions: AutoApproveAction[] = [
 		{
 			id: "readFiles",
-			label: "Read files and directories",
-			shortName: "Read",
+			label: "读取文件和目录",
+			shortName: "读取",
 			enabled: alwaysAllowReadOnly ?? false,
-			description: "Allows access to read any file on your computer.",
+			description: "允许访问并读取您计算机上的任何文件。",
 		},
 		{
 			id: "editFiles",
-			label: "Edit files",
-			shortName: "Edit",
+			label: "编辑文件",
+			shortName: "编辑",
 			enabled: alwaysAllowWrite ?? false,
-			description: "Allows modification of any files on your computer.",
+			description: "允许修改您计算机上的任何文件。",
 		},
 		{
 			id: "executeCommands",
-			label: "Execute approved commands",
-			shortName: "Commands",
+			label: "执行批准的命令",
+			shortName: "命令",
 			enabled: alwaysAllowExecute ?? false,
 			description:
-				"Allows execution of approved terminal commands. You can configure this in the settings panel.",
+				"允许执行已批准的终端命令。您可以在设置面板中配置这些命令。",
 		},
 		{
 			id: "useBrowser",
-			label: "Use the browser",
-			shortName: "Browser",
+			label: "使用浏览器",
+			shortName: "浏览器",
 			enabled: alwaysAllowBrowser ?? false,
-			description: "Allows ability to launch and interact with any website in a headless browser.",
+			description: "允许在无头浏览器中启动和与任何网站交互。",
 		},
 		{
 			id: "useMcp",
-			label: "Use MCP servers",
+			label: "使用MCP服务器",
 			shortName: "MCP",
 			enabled: alwaysAllowMcp ?? false,
-			description: "Allows use of configured MCP servers which may modify filesystem or interact with APIs.",
+			description: "允许使用配置的MCP服务器，这些服务器可能会修改文件系统或与API交互。",
 		},
 		{
 			id: "switchModes",
-			label: "Switch modes & create tasks",
-			shortName: "Modes",
+			label: "切换模式和创建任务",
+			shortName: "模式",
 			enabled: alwaysAllowModeSwitch ?? false,
 			description:
-				"Allows automatic switching between different AI modes and creating new tasks without requiring approval.",
+				"允许自动在不同的AI模式之间切换，并无需批准即可创建新任务。",
 		},
 		{
 			id: "finishTask",
-			label: "Continue to next task",
-			shortName: "Continue",
+			label: "继续下一个任务",
+			shortName: "继续",
 			enabled: alwaysAllowFinishTask ?? false,
-			description: "Allow tasks to end execution and continue to the next task, without user review or approval.",
+			description: "允许任务结束执行并继续下一个任务，无需用户审核或批准。",
 		},
 		{
 			id: "retryRequests",
-			label: "Retry failed requests",
-			shortName: "Retries",
+			label: "重试失败的请求",
+			shortName: "重试",
 			enabled: alwaysApproveResubmit ?? false,
-			description: "Automatically retry failed API requests when the provider returns an error response.",
+			description: "当提供商返回错误响应时自动重试失败的API请求。",
 		},
 	]
 
@@ -212,7 +212,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							color: "var(--vscode-foreground)",
 							flexShrink: 0,
 						}}>
-						Auto-approve:
+						自动批准:
 					</span>
 					<span
 						style={{
@@ -223,7 +223,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							flex: 1,
 							minWidth: 0,
 						}}>
-						{enabledActionsList || "None"}
+						{enabledActionsList || "无"}
 					</span>
 					<span
 						className={`codicon codicon-chevron-${isExpanded ? "down" : "right"}`}
@@ -242,8 +242,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							color: "var(--vscode-descriptionForeground)",
 							fontSize: "12px",
 						}}>
-						Auto-approve allows Roo Code to perform actions without asking for permission. Only enable for
-						actions you fully trust.
+						自动批准允许 Magic Code 在不询问许可的情况下执行操作。仅对您完全信任的操作启用此功能。
 					</div>
 					{actions.map((action) => (
 						<div key={action.id} style={{ margin: "6px 0" }}>

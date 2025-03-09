@@ -57,7 +57,7 @@ export interface ApiHandlerOptions {
 	geminiApiKey?: string
 	openAiNativeApiKey?: string
 	mistralApiKey?: string
-	mistralCodestralUrl?: string // New option for Codestral URL
+	mistralCodestralUrl?: string // Codestral URL的新选项
 	azureApiVersion?: string
 	openRouterUseMiddleOutTransform?: boolean
 	openAiStreamingEnabled?: boolean
@@ -77,13 +77,13 @@ export interface ApiHandlerOptions {
 
 export type ApiConfiguration = ApiHandlerOptions & {
 	apiProvider?: ApiProvider
-	id?: string // stable unique identifier
+	id?: string // 稳定的唯一标识符
 }
 
-// Import GlobalStateKey type from globalState.ts
+// 从globalState.ts导入GlobalStateKey类型
 import { GlobalStateKey } from "./globalState"
 
-// Define API configuration keys for dynamic object building
+// 定义用于动态对象构建的API配置键
 export const API_CONFIG_KEYS: GlobalStateKey[] = [
 	"apiModelId",
 	"anthropicBaseUrl",
@@ -95,8 +95,8 @@ export const API_CONFIG_KEYS: GlobalStateKey[] = [
 	"openRouterBaseUrl",
 	"awsRegion",
 	"awsUseCrossRegionInference",
-	// "awsUsePromptCache", // NOT exist on GlobalStateKey
-	// "awspromptCacheId", // NOT exist on GlobalStateKey
+	// "awsUsePromptCache", // GlobalStateKey上不存在
+	// "awspromptCacheId", // GlobalStateKey上不存在
 	"awsProfile",
 	"awsUseProfile",
 	"vertexKeyFile",
@@ -117,8 +117,8 @@ export const API_CONFIG_KEYS: GlobalStateKey[] = [
 	"azureApiVersion",
 	"openRouterUseMiddleOutTransform",
 	"openAiStreamingEnabled",
-	// "deepSeekBaseUrl", //  not exist on GlobalStateKey
-	// "includeMaxTokens", // not exist on GlobalStateKey
+	// "deepSeekBaseUrl", // GlobalStateKey上不存在
+	// "includeMaxTokens", // GlobalStateKey上不存在
 	"unboundModelId",
 	"unboundModelInfo",
 	"requestyModelId",
@@ -135,13 +135,13 @@ export interface ModelInfo {
 	contextWindow: number
 	supportsImages?: boolean
 	supportsComputerUse?: boolean
-	supportsPromptCache: boolean // this value is hardcoded for now
+	supportsPromptCache: boolean // 这个值目前是硬编码的
 	inputPrice?: number
 	outputPrice?: number
 	cacheWritesPrice?: number
 	cacheReadsPrice?: number
 	description?: string
-	reasoningEffort?: "low" | "medium" | "high"
+	reasoningEffort?: "low" | "medium" | "high" // 低 | 中 | 高
 	thinking?: boolean
 }
 
@@ -156,10 +156,10 @@ export const anthropicModels = {
 		supportsImages: true,
 		supportsComputerUse: true,
 		supportsPromptCache: true,
-		inputPrice: 3.0, // $3 per million input tokens
-		outputPrice: 15.0, // $15 per million output tokens
-		cacheWritesPrice: 3.75, // $3.75 per million tokens
-		cacheReadsPrice: 0.3, // $0.30 per million tokens
+		inputPrice: 3.0, // 每百万输入令牌$3
+		outputPrice: 15.0, // 每百万输出令牌$15
+		cacheWritesPrice: 3.75, // 每百万令牌$3.75
+		cacheReadsPrice: 0.3, // 每百万令牌$0.30
 		thinking: true,
 	},
 	"claude-3-7-sonnet-20250219": {
@@ -168,10 +168,10 @@ export const anthropicModels = {
 		supportsImages: true,
 		supportsComputerUse: true,
 		supportsPromptCache: true,
-		inputPrice: 3.0, // $3 per million input tokens
-		outputPrice: 15.0, // $15 per million output tokens
-		cacheWritesPrice: 3.75, // $3.75 per million tokens
-		cacheReadsPrice: 0.3, // $0.30 per million tokens
+		inputPrice: 3.0, // 每百万输入令牌$3
+		outputPrice: 15.0, // 每百万输出令牌$15
+		cacheWritesPrice: 3.75, // 每百万令牌$3.75
+		cacheReadsPrice: 0.3, // 每百万令牌$0.30
 		thinking: false,
 	},
 	"claude-3-5-sonnet-20241022": {
@@ -180,10 +180,10 @@ export const anthropicModels = {
 		supportsImages: true,
 		supportsComputerUse: true,
 		supportsPromptCache: true,
-		inputPrice: 3.0, // $3 per million input tokens
-		outputPrice: 15.0, // $15 per million output tokens
-		cacheWritesPrice: 3.75, // $3.75 per million tokens
-		cacheReadsPrice: 0.3, // $0.30 per million tokens
+		inputPrice: 3.0, // 每百万输入令牌$3
+		outputPrice: 15.0, // 每百万输出令牌$15
+		cacheWritesPrice: 3.75, // 每百万令牌$3.75
+		cacheReadsPrice: 0.3, // 每百万令牌$0.30
 	},
 	"claude-3-5-haiku-20241022": {
 		maxTokens: 8192,
@@ -215,7 +215,7 @@ export const anthropicModels = {
 		cacheWritesPrice: 0.3,
 		cacheReadsPrice: 0.03,
 	},
-} as const satisfies Record<string, ModelInfo> // as const assertion makes the object deeply readonly
+} as const satisfies Record<string, ModelInfo> // as const断言使对象完全只读
 
 // AWS Bedrock
 // https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html
@@ -224,20 +224,20 @@ export interface MessageContent {
 	text?: string
 	source?: {
 		type: "base64"
-		data: string | Uint8Array // string for Anthropic, Uint8Array for Bedrock
+		data: string | Uint8Array // Anthropic使用字符串，Bedrock使用Uint8Array
 		media_type: "image/jpeg" | "image/png" | "image/gif" | "image/webp"
 	}
-	// Video specific fields
+	// 视频特有字段
 	format?: string
 	s3Location?: {
 		uri: string
 		bucketOwner?: string
 	}
-	// Tool use and result fields
+	// 工具使用和结果字段
 	toolUseId?: string
 	name?: string
 	input?: any
-	output?: any // Used for tool_result type
+	output?: any // 用于tool_result类型
 }
 
 export type BedrockModelId = keyof typeof bedrockModels
@@ -251,8 +251,8 @@ export const bedrockModels = {
 		supportsPromptCache: false,
 		inputPrice: 0.8,
 		outputPrice: 3.2,
-		cacheWritesPrice: 0.8, // per million tokens
-		cacheReadsPrice: 0.2, // per million tokens
+		cacheWritesPrice: 0.8, // 每百万令牌
+		cacheReadsPrice: 0.2, // 每百万令牌
 	},
 	"amazon.nova-lite-v1:0": {
 		maxTokens: 5000,
@@ -262,8 +262,8 @@ export const bedrockModels = {
 		supportsPromptCache: false,
 		inputPrice: 0.06,
 		outputPrice: 0.024,
-		cacheWritesPrice: 0.06, // per million tokens
-		cacheReadsPrice: 0.015, // per million tokens
+		cacheWritesPrice: 0.06, // 每百万令牌
+		cacheReadsPrice: 0.015, // 每百万令牌
 	},
 	"amazon.nova-micro-v1:0": {
 		maxTokens: 5000,
@@ -273,8 +273,8 @@ export const bedrockModels = {
 		supportsPromptCache: false,
 		inputPrice: 0.035,
 		outputPrice: 0.14,
-		cacheWritesPrice: 0.035, // per million tokens
-		cacheReadsPrice: 0.00875, // per million tokens
+		cacheWritesPrice: 0.035, // 每百万令牌
+		cacheReadsPrice: 0.00875, // 每百万令牌
 	},
 	"anthropic.claude-3-7-sonnet-20250219-v1:0": {
 		maxTokens: 8192,
@@ -446,7 +446,7 @@ export const glamaDefaultModelInfo: ModelInfo = {
 	cacheWritesPrice: 3.75,
 	cacheReadsPrice: 0.3,
 	description:
-		"Claude 3.7 Sonnet is an advanced large language model with improved reasoning, coding, and problem-solving capabilities. It introduces a hybrid reasoning approach, allowing users to choose between rapid responses and extended, step-by-step processing for complex tasks. The model demonstrates notable improvements in coding, particularly in front-end development and full-stack updates, and excels in agentic workflows, where it can autonomously navigate multi-step processes. Claude 3.7 Sonnet maintains performance parity with its predecessor in standard mode while offering an extended reasoning mode for enhanced accuracy in math, coding, and instruction-following tasks. Read more at the [blog post here](https://www.anthropic.com/news/claude-3-7-sonnet)",
+		"Claude 3.7 Sonnet是一款先进的大型语言模型，具有改进的推理、编码和问题解决能力。它引入了混合推理方法，允许用户在快速响应和复杂任务的扩展、逐步处理之间进行选择。该模型在编码方面表现出显著改进，特别是在前端开发和全栈更新方面，并在智能工作流程中表现出色，可以自主导航多步骤流程。Claude 3.7 Sonnet在标准模式下保持与其前身相当的性能，同时提供扩展推理模式，以提高数学、编码和指令遵循任务的准确性。点击[这篇博客文章](https://www.anthropic.com/news/claude-3-7-sonnet)了解更多",
 }
 
 // Requesty
@@ -463,7 +463,7 @@ export const requestyDefaultModelInfo: ModelInfo = {
 	cacheWritesPrice: 3.75,
 	cacheReadsPrice: 0.3,
 	description:
-		"Claude 3.7 Sonnet is an advanced large language model with improved reasoning, coding, and problem-solving capabilities. It introduces a hybrid reasoning approach, allowing users to choose between rapid responses and extended, step-by-step processing for complex tasks. The model demonstrates notable improvements in coding, particularly in front-end development and full-stack updates, and excels in agentic workflows, where it can autonomously navigate multi-step processes. Claude 3.7 Sonnet maintains performance parity with its predecessor in standard mode while offering an extended reasoning mode for enhanced accuracy in math, coding, and instruction-following tasks. Read more at the [blog post here](https://www.anthropic.com/news/claude-3-7-sonnet)",
+		"Claude 3.7 Sonnet是一款先进的大型语言模型，具有改进的推理、编码和问题解决能力。它引入了混合推理方法，允许用户在快速响应和复杂任务的扩展、逐步处理之间进行选择。该模型在编码方面表现出显著改进，特别是在前端开发和全栈更新方面，并在智能工作流程中表现出色，可以自主导航多步骤流程。Claude 3.7 Sonnet在标准模式下保持与其前身相当的性能，同时提供扩展推理模式，以提高数学、编码和指令遵循任务的准确性。点击[这篇博客文章](https://www.anthropic.com/news/claude-3-7-sonnet)了解更多",
 }
 
 // OpenRouter
@@ -480,7 +480,7 @@ export const openRouterDefaultModelInfo: ModelInfo = {
 	cacheWritesPrice: 3.75,
 	cacheReadsPrice: 0.3,
 	description:
-		"Claude 3.7 Sonnet is an advanced large language model with improved reasoning, coding, and problem-solving capabilities. It introduces a hybrid reasoning approach, allowing users to choose between rapid responses and extended, step-by-step processing for complex tasks. The model demonstrates notable improvements in coding, particularly in front-end development and full-stack updates, and excels in agentic workflows, where it can autonomously navigate multi-step processes. Claude 3.7 Sonnet maintains performance parity with its predecessor in standard mode while offering an extended reasoning mode for enhanced accuracy in math, coding, and instruction-following tasks. Read more at the [blog post here](https://www.anthropic.com/news/claude-3-7-sonnet)",
+		"Claude 3.7 Sonnet是一款先进的大型语言模型，具有改进的推理、编码和问题解决能力。它引入了混合推理方法，允许用户在快速响应和复杂任务的扩展、逐步处理之间进行选择。该模型在编码方面表现出显著改进，特别是在前端开发和全栈更新方面，并在智能工作流程中表现出色，可以自主导航多步骤流程。Claude 3.7 Sonnet在标准模式下保持与其前身相当的性能，同时提供扩展推理模式，以提高数学、编码和指令遵循任务的准确性。点击[这篇博客文章](https://www.anthropic.com/news/claude-3-7-sonnet)了解更多",
 }
 
 // Vertex AI
@@ -731,7 +731,7 @@ export const geminiModels = {
 export type OpenAiNativeModelId = keyof typeof openAiNativeModels
 export const openAiNativeDefaultModelId: OpenAiNativeModelId = "gpt-4o"
 export const openAiNativeModels = {
-	// don't support tool use yet
+	// 尚不支持工具使用
 	"o3-mini": {
 		maxTokens: 100_000,
 		contextWindow: 200_000,
@@ -819,22 +819,22 @@ export const deepSeekModels = {
 		contextWindow: 64_000,
 		supportsImages: false,
 		supportsPromptCache: true,
-		inputPrice: 0.27, // $0.27 per million tokens (cache miss)
-		outputPrice: 1.1, // $1.10 per million tokens
-		cacheWritesPrice: 0.27, // $0.27 per million tokens (cache miss)
-		cacheReadsPrice: 0.07, // $0.07 per million tokens (cache hit).
-		description: `DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models. It tops the leaderboard among open-source models and rivals the most advanced closed-source models globally.`,
+		inputPrice: 0.27, // 每百万令牌$0.27（缓存未命中）
+		outputPrice: 1.1, // 每百万令牌$1.10
+		cacheWritesPrice: 0.27, // 每百万令牌$0.27（缓存未命中）
+		cacheReadsPrice: 0.07, // 每百万令牌$0.07（缓存命中）
+		description: `DeepSeek-V3在推理速度上相比之前的模型取得了重大突破。它在开源模型中位居榜首，并与全球最先进的闭源模型相媲美。`,
 	},
 	"deepseek-reasoner": {
 		maxTokens: 8192,
 		contextWindow: 64_000,
 		supportsImages: false,
 		supportsPromptCache: true,
-		inputPrice: 0.55, // $0.55 per million tokens (cache miss)
-		outputPrice: 2.19, // $2.19 per million tokens
-		cacheWritesPrice: 0.55, // $0.55 per million tokens (cache miss)
-		cacheReadsPrice: 0.14, // $0.14 per million tokens (cache hit)
-		description: `DeepSeek-R1 achieves performance comparable to OpenAI-o1 across math, code, and reasoning tasks. Supports Chain of Thought reasoning with up to 32K tokens.`,
+		inputPrice: 0.55, // 每百万令牌$0.55（缓存未命中）
+		outputPrice: 2.19, // 每百万令牌$2.19
+		cacheWritesPrice: 0.55, // 每百万令牌$0.55（缓存未命中）
+		cacheReadsPrice: 0.14, // 每百万令牌$0.14（缓存命中）
+		description: `DeepSeek-R1在数学、代码和推理任务上达到了与OpenAI-o1相当的性能。支持最多32K令牌的思维链推理。`,
 	},
 } as const satisfies Record<string, ModelInfo>
 

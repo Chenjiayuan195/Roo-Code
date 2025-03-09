@@ -54,10 +54,10 @@ export const AutoApproveSettings = ({
 
 	return (
 		<div {...props}>
-			<SectionHeader description="Allow Roo to automatically perform operations without requiring approval. Enable these settings only if you fully trust the AI and understand the associated security risks.">
+			<SectionHeader description="允许 Magic 自动执行操作而无需批准。仅在您完全信任 AI 并了解相关安全风险的情况下启用这些设置。">
 				<div className="flex items-center gap-2">
 					<CheckCheck className="w-4" />
-					<div>Auto-Approve</div>
+					<div>自动批准</div>
 				</div>
 			</SectionHeader>
 
@@ -66,11 +66,10 @@ export const AutoApproveSettings = ({
 					<VSCodeCheckbox
 						checked={alwaysAllowReadOnly}
 						onChange={(e: any) => setCachedStateField("alwaysAllowReadOnly", e.target.checked)}>
-						<span className="font-medium">Always approve read-only operations</span>
+						<span className="font-medium">始终批准只读操作</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						When enabled, Roo will automatically view directory contents and read files without requiring
-						you to click the Approve button.
+						启用后，Magic 将自动查看目录内容和读取文件，无需您点击批准按钮。
 					</p>
 				</div>
 
@@ -78,10 +77,10 @@ export const AutoApproveSettings = ({
 					<VSCodeCheckbox
 						checked={alwaysAllowWrite}
 						onChange={(e: any) => setCachedStateField("alwaysAllowWrite", e.target.checked)}>
-						<span className="font-medium">Always approve write operations</span>
+						<span className="font-medium">始终批准写入操作</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Automatically create and edit files without requiring approval
+						自动创建和编辑文件，无需批准
 					</p>
 					{alwaysAllowWrite && (
 						<div
@@ -103,7 +102,7 @@ export const AutoApproveSettings = ({
 								<span style={{ minWidth: "45px", textAlign: "left" }}>{writeDelayMs}ms</span>
 							</div>
 							<p className="text-vscode-descriptionForeground text-sm mt-1">
-								Delay after writes to allow diagnostics to detect potential problems
+								写入前延迟时间，以便您有时间查看更改
 							</p>
 						</div>
 					)}
@@ -113,72 +112,30 @@ export const AutoApproveSettings = ({
 					<VSCodeCheckbox
 						checked={alwaysAllowBrowser}
 						onChange={(e: any) => setCachedStateField("alwaysAllowBrowser", e.target.checked)}>
-						<span className="font-medium">Always approve browser actions</span>
+						<span className="font-medium">始终批准浏览器访问</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Automatically perform browser actions without requiring approval
-						<br />
-						Note: Only applies when the model supports computer use
+						自动批准使用浏览器工具访问网站
 					</p>
-				</div>
-
-				<div>
-					<VSCodeCheckbox
-						checked={alwaysApproveResubmit}
-						onChange={(e: any) => setCachedStateField("alwaysApproveResubmit", e.target.checked)}>
-						<span className="font-medium">Always retry failed API requests</span>
-					</VSCodeCheckbox>
-					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Automatically retry failed API requests when server returns an error response
-					</p>
-					{alwaysApproveResubmit && (
-						<div
-							style={{
-								marginTop: 10,
-								paddingLeft: 10,
-								borderLeft: "2px solid var(--vscode-button-background)",
-							}}>
-							<div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-								<input
-									type="range"
-									min="5"
-									max="100"
-									step="1"
-									value={requestDelaySeconds}
-									onChange={(e) =>
-										setCachedStateField("requestDelaySeconds", parseInt(e.target.value))
-									}
-									className="h-2 focus:outline-0 w-4/5 accent-vscode-button-background"
-								/>
-								<span style={{ minWidth: "45px", textAlign: "left" }}>{requestDelaySeconds}s</span>
-							</div>
-							<p className="text-vscode-descriptionForeground text-sm mt-0">
-								Delay before retrying the request
-							</p>
-						</div>
-					)}
 				</div>
 
 				<div>
 					<VSCodeCheckbox
 						checked={alwaysAllowMcp}
 						onChange={(e: any) => setCachedStateField("alwaysAllowMcp", e.target.checked)}>
-						<span className="font-medium">Always approve MCP tools</span>
+						<span className="font-medium">始终批准 MCP 访问</span>
 					</VSCodeCheckbox>
-					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Enable auto-approval of individual MCP tools in the MCP Servers view (requires both this setting
-						and the tool's individual "Always allow" checkbox)
-					</p>
+					<p className="text-vscode-descriptionForeground text-sm mt-0">自动批准使用 MCP 服务器</p>
 				</div>
 
 				<div>
 					<VSCodeCheckbox
 						checked={alwaysAllowModeSwitch}
 						onChange={(e: any) => setCachedStateField("alwaysAllowModeSwitch", e.target.checked)}>
-						<span className="font-medium">Always approve mode switching & task creation</span>
+						<span className="font-medium">始终批准模式切换</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Automatically switch between different AI modes and create new tasks without requiring approval
+						自动批准 Magic 切换模式（如从 Helpful Mode 切换到 Expert Mode）
 					</p>
 				</div>
 
@@ -186,11 +143,21 @@ export const AutoApproveSettings = ({
 					<VSCodeCheckbox
 						checked={alwaysAllowFinishTask}
 						onChange={(e: any) => setCachedStateField("alwaysAllowFinishTask", e.target.checked)}>
-						<span className="font-medium">Always approve finish & continue to next task</span>
+						<span className="font-medium">始终批准完成任务</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Automatically approve tasks to finish execution and continue to the next task, without user
-						review or approval
+						自动批准 Magic 结束当前任务并开始新任务
+					</p>
+				</div>
+
+				<div>
+					<VSCodeCheckbox
+						checked={alwaysApproveResubmit}
+						onChange={(e: any) => setCachedStateField("alwaysApproveResubmit", e.target.checked)}>
+						<span className="font-medium">始终批准重新提交</span>
+					</VSCodeCheckbox>
+					<p className="text-vscode-descriptionForeground text-sm mt-0">
+						自动重试失败的请求（不建议在连接不稳定的情况下使用）
 					</p>
 				</div>
 
@@ -198,65 +165,46 @@ export const AutoApproveSettings = ({
 					<VSCodeCheckbox
 						checked={alwaysAllowExecute}
 						onChange={(e: any) => setCachedStateField("alwaysAllowExecute", e.target.checked)}>
-						<span className="font-medium">Always approve allowed execute operations</span>
+						<span className="font-medium">始终批准执行操作</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						Automatically execute allowed terminal commands without requiring approval
+						自动批准执行终端命令（仅限下面列表中的命令）
 					</p>
+					
 					{alwaysAllowExecute && (
-						<div
-							style={{
-								marginTop: 10,
-								paddingLeft: 10,
-								borderLeft: "2px solid var(--vscode-button-background)",
-							}}>
-							<span className="font-medium">Allowed Auto-Execute Commands</span>
-							<p className="text-vscode-descriptionForeground text-sm mt-0">
-								Command prefixes that can be auto-executed when "Always approve execute operations" is
-								enabled. Add * to allow all commands (use with caution).
-							</p>
-							<div style={{ display: "flex", gap: "5px", marginTop: "10px" }}>
-								<VSCodeTextField
-									value={commandInput}
-									onInput={(e: any) => setCommandInput(e.target.value)}
-									onKeyDown={(e: any) => {
-										if (e.key === "Enter") {
-											e.preventDefault()
-											handleAddCommand()
-										}
-									}}
-									placeholder="Enter command prefix (e.g., 'git ')"
-									style={{ flexGrow: 1 }}
-								/>
-								<VSCodeButton onClick={handleAddCommand}>Add</VSCodeButton>
-							</div>
-							<div
-								style={{
-									marginTop: "10px",
-									display: "flex",
-									flexWrap: "wrap",
-									gap: "5px",
-								}}>
-								{(allowedCommands ?? []).map((cmd, index) => (
-									<div
-										key={index}
-										className="border border-vscode-input-border bg-primary text-primary-foreground flex items-center gap-1 rounded-xs px-1.5 p-0.5">
-										<span>{cmd}</span>
-										<VSCodeButton
-											appearance="icon"
-											className="text-primary-foreground"
+						<div className="mt-4">
+							<h5 className="m-0 mb-2">允许的命令列表</h5>
+							<div className="flex gap-2 flex-wrap">
+								{(allowedCommands || []).map((command, index) => (
+									<div key={index} className="bg-vscode-badge-background py-1 px-2 rounded flex items-center gap-1">
+										<span>{command}</span>
+										<button
+											className="ml-1 text-vscode-descriptionForeground hover:text-vscode-foreground"
 											onClick={() => {
-												const newCommands = (allowedCommands ?? []).filter(
-													(_, i) => i !== index,
-												)
+												const newCommands = (allowedCommands || []).filter((_, i) => i !== index)
 												setCachedStateField("allowedCommands", newCommands)
 												vscode.postMessage({ type: "allowedCommands", commands: newCommands })
 											}}>
-											<span className="codicon codicon-close" />
-										</VSCodeButton>
+											×
+										</button>
 									</div>
 								))}
 							</div>
+							
+							<div className="flex mt-2 gap-2">
+								<VSCodeTextField
+									value={commandInput}
+									onChange={(e: any) => setCommandInput(e.target.value)}
+									placeholder="输入命令（例如：git status）"
+								/>
+								<VSCodeButton onClick={handleAddCommand} disabled={!commandInput.trim()}>
+									添加
+								</VSCodeButton>
+							</div>
+							
+							<p className="text-vscode-descriptionForeground text-sm mt-2">
+								注意：仅添加您信任的命令，因为它们将在无需批准的情况下执行
+							</p>
 						</div>
 					)}
 				</div>

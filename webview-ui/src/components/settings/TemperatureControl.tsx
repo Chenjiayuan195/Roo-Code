@@ -33,10 +33,10 @@ export const TemperatureControl = ({ value, onChange, maxValue = 1 }: Temperatur
 							setInputValue(value ?? 0) // Use the value from apiConfiguration, if set
 						}
 					}}>
-					<span className="font-medium">Use custom temperature</span>
+					<span className="font-medium">使用自定义温度</span>
 				</VSCodeCheckbox>
 				<div className="text-sm text-vscode-descriptionForeground">
-					Controls randomness in the model's responses.
+					控制模型响应的随机性。
 				</div>
 			</div>
 
@@ -60,7 +60,7 @@ export const TemperatureControl = ({ value, onChange, maxValue = 1 }: Temperatur
 						<span>{inputValue}</span>
 					</div>
 					<p className="text-vscode-descriptionForeground text-sm mt-1">
-						Higher values make output more random, lower values make it more deterministic.
+						较高的值使输出更随机，较低的值使其更确定性。
 					</p>
 				</div>
 			)}

@@ -1,9 +1,9 @@
 {
-	"name": "roo-cline",
-	"displayName": "Roo Code (prev. Roo Cline)",
-	"description": "A whole dev team of AI agents in your editor.",
-	"publisher": "RooVeterinaryInc",
-	"version": "3.8.1",
+	"name": "Magic-Code",
+	"displayName": "Magic Code",
+	"description": "一个协助Web开发人员编写代码的智能体",
+	"publisher": "Web Group",
+	"version": "1.0.0",
 	"icon": "assets/icons/rocket.png",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -13,7 +13,7 @@
 		"vscode": "^1.84.0"
 	},
 	"author": {
-		"name": "Roo Vet"
+		"name": "33288"
 	},
 	"repository": {
 		"type": "git",
@@ -54,7 +54,7 @@
 			"activitybar": [
 				{
 					"id": "roo-cline-ActivityBar",
-					"title": "Roo Code",
+					"title": "Magic Code",
 					"icon": "$(rocket)"
 				}
 			]
@@ -71,63 +71,63 @@
 		"commands": [
 			{
 				"command": "roo-cline.plusButtonClicked",
-				"title": "New Task",
+				"title": "新任务",
 				"icon": "$(add)"
 			},
 			{
 				"command": "roo-cline.mcpButtonClicked",
-				"title": "MCP Servers",
+				"title": "MCP 服务器",
 				"icon": "$(server)"
 			},
 			{
 				"command": "roo-cline.promptsButtonClicked",
-				"title": "Prompts",
+				"title": "提示词",
 				"icon": "$(notebook)"
 			},
 			{
 				"command": "roo-cline.historyButtonClicked",
-				"title": "History",
+				"title": "历史记录",
 				"icon": "$(history)"
 			},
 			{
 				"command": "roo-cline.popoutButtonClicked",
-				"title": "Open in Editor",
+				"title": "在编辑器中打开",
 				"icon": "$(link-external)"
 			},
 			{
 				"command": "roo-cline.settingsButtonClicked",
-				"title": "Settings",
+				"title": "设置",
 				"icon": "$(settings-gear)"
 			},
 			{
 				"command": "roo-cline.helpButtonClicked",
-				"title": "Documentation",
+				"title": "文档",
 				"icon": "$(question)"
 			},
 			{
 				"command": "roo-cline.openInNewTab",
-				"title": "Open In New Tab",
-				"category": "Roo Code"
+				"title": "在新标签页中打开",
+				"category": "Magic Code"
 			},
 			{
 				"command": "roo-cline.explainCode",
-				"title": "Roo Code: Explain Code",
-				"category": "Roo Code"
+				"title": "Magic Code: 解释代码",
+				"category": "Magic Code"
 			},
 			{
 				"command": "roo-cline.fixCode",
-				"title": "Roo Code: Fix Code",
-				"category": "Roo Code"
+				"title": "Magic Code: 修复代码",
+				"category": "Magic Code"
 			},
 			{
 				"command": "roo-cline.improveCode",
-				"title": "Roo Code: Improve Code",
-				"category": "Roo Code"
+				"title": "Magic Code: 改进代码",
+				"category": "Magic Code"
 			},
 			{
 				"command": "roo-cline.addToContext",
-				"title": "Roo Code: Add To Context",
-				"category": "Roo Code"
+				"title": "Magic Code: 添加到上下文",
+				"category": "Magic Code"
 			}
 		],
 		"menus": {
@@ -135,22 +135,22 @@
 				{
 					"command": "roo-cline.explainCode",
 					"when": "editorHasSelection",
-					"group": "Roo Code@1"
+					"group": "Magic Code@1"
 				},
 				{
 					"command": "roo-cline.fixCode",
 					"when": "editorHasSelection",
-					"group": "Roo Code@2"
+					"group": "Magic Code@2"
 				},
 				{
 					"command": "roo-cline.improveCode",
 					"when": "editorHasSelection",
-					"group": "Roo Code@3"
+					"group": "Magic Code@3"
 				},
 				{
 					"command": "roo-cline.addToContext",
 					"when": "editorHasSelection",
-					"group": "Roo Code@4"
+					"group": "Magic Code@4"
 				}
 			],
 			"view/title": [
@@ -192,7 +192,7 @@
 			]
 		},
 		"configuration": {
-			"title": "Roo Code",
+			"title": "Magic Code",
 			"properties": {
 				"roo-cline.allowedCommands": {
 					"type": "array",
@@ -207,21 +207,21 @@
 						"git diff",
 						"git show"
 					],
-					"description": "Commands that can be auto-executed when 'Always approve execute operations' is enabled"
+					"description": "启用总是批准执行操作时可以自动执行的命令"
 				},
 				"roo-cline.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {
 							"type": "string",
-							"description": "The vendor of the language model (e.g. copilot)"
+							"description": "语言模型的供应商（例如 copilot）"
 						},
 						"family": {
 							"type": "string",
-							"description": "The family of the language model (e.g. gpt-4)"
+							"description": "语言模型的系列（例如 gpt-4）"
 						}
 					},
-					"description": "Settings for VSCode Language Model API"
+					"description": "VSCode 语言模型 API 的设置"
 				}
 			}
 		}

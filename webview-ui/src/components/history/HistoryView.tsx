@@ -2,7 +2,7 @@ import React, { memo, useState } from "react"
 import { DeleteTaskDialog } from "./DeleteTaskDialog"
 import prettyBytes from "pretty-bytes"
 import { Virtuoso } from "react-virtuoso"
-import { VSCodeButton, VSCodeTextField, VSCodeRadioGroup, VSCodeRadio } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeButton, VSCodeTextField, VSCodeRadioGroup, VSCodeRadio, VSCodeDropdown, VSCodeOption } from "@vscode/webview-ui-toolkit/react"
 
 import { vscode } from "@/utils/vscode"
 import { formatLargeNumber, formatDate } from "@/utils/format"
@@ -24,26 +24,35 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 
 	const [deleteTaskId, setDeleteTaskId] = useState<string | null>(null)
 
+	const sortOptions = [
+		{ value: "newest", label: "最新" },
+		{ value: "oldest", label: "最旧" },
+		{ value: "mostRelevant", label: "最相关" },
+		{ value: "mostExpensive", label: "最昂贵" },
+		{ value: "mostTokens", label: "最多令牌" },
+	]
+
 	return (
 		<div className="fixed inset-0 flex flex-col">
 			<div className="flex flex-col gap-2 px-5 py-2.5 border-b border-vscode-panel-border">
 				<div className="flex justify-between items-center">
-					<h3 className="text-vscode-foreground m-0">History</h3>
-					<VSCodeButton onClick={onDone}>Done</VSCodeButton>
+					<h3 className="text-vscode-foreground m-0">历史记录</h3>
+					<VSCodeButton onClick={onDone}>完成</VSCodeButton>
 				</div>
 				<div className="flex flex-col gap-2">
 					<VSCodeTextField
 						style={{ width: "100%" }}
-						placeholder="Fuzzy search history..."
+						placeholder="搜索历史..."
 						value={searchQuery}
 						onInput={(e) => {
-							const newValue = (e.target as HTMLInputElement)?.value
-							setSearchQuery(newValue)
-							if (newValue && !searchQuery && sortOption !== "mostRelevant") {
+							const target = (e as any).target as HTMLInputElement
+							setSearchQuery(target.value)
+							if (target.value && !searchQuery && sortOption !== "mostRelevant") {
 								setLastNonRelevantSort(sortOption)
 								setSortOption("mostRelevant")
 							}
-						}}>
+						}}
+					>
 						<div
 							slot="start"
 							className="codicon codicon-search"
@@ -53,7 +62,10 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 							<div
 								className="input-icon-button codicon codicon-close"
 								aria-label="Clear search"
-								onClick={() => setSearchQuery("")}
+								onClick={(e) => {
+									e.stopPropagation()
+									setSearchQuery("")
+								}}
 								slot="end"
 								style={{
 									display: "flex",
@@ -64,22 +76,18 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 							/>
 						)}
 					</VSCodeTextField>
-					<VSCodeRadioGroup
-						style={{ display: "flex", flexWrap: "wrap" }}
-						value={sortOption}
-						role="radiogroup"
-						onChange={(e) => setSortOption((e.target as HTMLInputElement).value as SortOption)}>
-						<VSCodeRadio value="newest">Newest</VSCodeRadio>
-						<VSCodeRadio value="oldest">Oldest</VSCodeRadio>
-						<VSCodeRadio value="mostExpensive">Most Expensive</VSCodeRadio>
-						<VSCodeRadio value="mostTokens">Most Tokens</VSCodeRadio>
-						<VSCodeRadio
-							value="mostRelevant"
-							disabled={!searchQuery}
-							style={{ opacity: searchQuery ? 1 : 0.5 }}>
-							Most Relevant
-						</VSCodeRadio>
-					</VSCodeRadioGroup>
+					<div>
+						<VSCodeDropdown
+							value={sortOption}
+							onChange={(e: any) => setSortOption(e.target.value)}
+							style={{ minWidth: "150px" }}>
+							{sortOptions.map((option) => (
+								<VSCodeOption key={option.value} value={option.value}>
+									{option.label}
+								</VSCodeOption>
+							))}
+						</VSCodeDropdown>
+					</div>
 				</div>
 			</div>
 			<div style={{ flexGrow: 1, overflowY: "auto", margin: 0 }}>
@@ -130,7 +138,7 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 										<Button
 											variant="ghost"
 											size="sm"
-											title="Delete Task (Shift + Click to skip confirmation)"
+											title="删除任务（按住Shift并点击可跳过确认）"
 											onClick={(e) => {
 												e.stopPropagation()
 

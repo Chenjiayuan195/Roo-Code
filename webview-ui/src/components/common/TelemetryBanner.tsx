@@ -43,25 +43,21 @@ const TelemetryBanner = () => {
 	return (
 		<BannerContainer>
 			<div>
-				<strong>Help Improve Roo Code</strong>
+				<strong>Magic Code</strong>
 				<div className="mt-1">
-					Send anonymous error and usage data to help us fix bugs and improve the extension. No code, prompts,
-					or personal information is ever sent.
+					本插件由产品工程院Web前端开发部开发，旨在帮助Web开发人员编写代码。
 					<div className="mt-1">
-						You can always change this at the bottom of the{" "}
+						您可以随时在扩展底部更改此设置。
 						<VSCodeLink href="#" onClick={handleOpenSettings}>
-							settings
+							设置
 						</VSCodeLink>
 						.
 					</div>
 				</div>
 			</div>
 			<ButtonContainer>
-				<VSCodeButton appearance="primary" onClick={handleAllow} disabled={hasChosen}>
-					Allow
-				</VSCodeButton>
 				<VSCodeButton appearance="secondary" onClick={handleDeny} disabled={hasChosen}>
-					Deny
+					关闭
 				</VSCodeButton>
 			</ButtonContainer>
 		</BannerContainer>

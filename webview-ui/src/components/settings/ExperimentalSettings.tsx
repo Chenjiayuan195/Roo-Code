@@ -30,7 +30,7 @@ export const ExperimentalSettings = ({
 			<SectionHeader>
 				<div className="flex items-center gap-2">
 					<FlaskConical className="w-4" />
-					<div>Experimental Features</div>
+					<div>实验性功能</div>
 				</div>
 			</SectionHeader>
 

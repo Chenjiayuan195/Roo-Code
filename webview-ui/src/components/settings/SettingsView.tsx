@@ -268,7 +268,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone },
 				<div className="flex flex-col">
 					<div className="flex justify-between items-center">
 						<div className="flex items-center gap-2">
-							<h3 className="text-vscode-foreground m-0">Settings</h3>
+							<h3 className="text-vscode-foreground m-0">设置</h3>
 							<div className="hidden [@media(min-width:400px)]:flex items-center">
 								{sections.map(({ id, icon: Icon, ref }) => (
 									<Button
@@ -289,18 +289,18 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone },
 									!isSettingValid
 										? errorMessage
 										: isChangeDetected
-											? "Save changes"
-											: "Nothing changed"
+											? "保存更改"
+											: "无更改"
 								}
 								onClick={handleSubmit}
 								disabled={!isChangeDetected || !isSettingValid}>
-								Save
+								保存
 							</VSCodeButton>
 							<VSCodeButton
 								appearance="secondary"
-								title="Discard unsaved changes and close settings panel"
+								title="放弃未保存的更改并关闭设置面板"
 								onClick={() => checkUnsaveChanges(onDone)}>
-								Done
+								完成
 							</VSCodeButton>
 						</div>
 					</div>
@@ -314,7 +314,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone },
 					<SectionHeader>
 						<div className="flex items-center gap-2">
 							<Webhook className="w-4" />
-							<div>Providers</div>
+							<div>提供商</div>
 						</div>
 					</SectionHeader>
 
@@ -430,15 +430,15 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone },
 			<AlertDialog open={isDiscardDialogShow} onOpenChange={setDiscardDialogShow}>
 				<AlertDialogContent>
 					<AlertDialogHeader>
-						<AlertDialogTitle>Unsaved changes</AlertDialogTitle>
+						<AlertDialogTitle>未保存的更改</AlertDialogTitle>
 						<AlertDialogDescription>
 							<span className={`codicon codicon-warning align-middle mr-1`} />
-							Do you want to discard changes and continue?
+							您想要放弃更改并继续吗？
 						</AlertDialogDescription>
 					</AlertDialogHeader>
 					<AlertDialogFooter>
-						<AlertDialogAction onClick={() => onConfirmDialogResult(true)}>Yes</AlertDialogAction>
-						<AlertDialogCancel onClick={() => onConfirmDialogResult(false)}>No</AlertDialogCancel>
+						<AlertDialogAction onClick={() => onConfirmDialogResult(true)}>是</AlertDialogAction>
+						<AlertDialogCancel onClick={() => onConfirmDialogResult(false)}>否</AlertDialogCancel>
 					</AlertDialogFooter>
 				</AlertDialogContent>
 			</AlertDialog>

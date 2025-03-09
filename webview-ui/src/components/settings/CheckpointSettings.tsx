@@ -25,7 +25,7 @@ export const CheckpointSettings = ({
 			<SectionHeader>
 				<div className="flex items-center gap-2">
 					<GitBranch className="w-4" />
-					<div>Checkpoints</div>
+					<div>检查点</div>
 				</div>
 			</SectionHeader>
 
@@ -36,11 +36,10 @@ export const CheckpointSettings = ({
 						onChange={(e: any) => {
 							setCachedStateField("enableCheckpoints", e.target.checked)
 						}}>
-						<span className="font-medium">Enable automatic checkpoints</span>
+						<span className="font-medium">启用自动检查点</span>
 					</VSCodeCheckbox>
 					<p className="text-vscode-descriptionForeground text-sm mt-0">
-						When enabled, Roo will automatically create checkpoints during task execution, making it easy to
-						review changes or revert to earlier states.
+						启用后，Magic将在任务执行期间自动创建检查点，使审查更改或恢复到早期状态变得容易。
 					</p>
 				</div>
 			</Section>

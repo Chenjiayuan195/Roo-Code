@@ -66,9 +66,9 @@ export const HumanRelayDialog: React.FC<HumanRelayDialogProps> = ({
 		<Dialog open={isOpen} onOpenChange={(open) => !open && handleCancel()}>
 			<DialogContent className="sm:max-w-[600px]">
 				<DialogHeader>
-					<DialogTitle>Human Relay - Please Help Copy and Paste Information</DialogTitle>
+					<DialogTitle>人工中继 - 请帮助复制和粘贴信息</DialogTitle>
 					<DialogDescription>
-						Please copy the text below to the web AI, then paste the AI's response into the input box below.
+						请将以下文字复制到网页AI，然后将AI的回复粘贴到下方的输入框中。
 					</DialogDescription>
 				</DialogHeader>
 
@@ -84,12 +84,12 @@ export const HumanRelayDialog: React.FC<HumanRelayDialogProps> = ({
 						</Button>
 					</div>
 
-					{isCopyClicked && <div className="text-sm text-emerald-500 font-medium">Copied to clipboard</div>}
+					{isCopyClicked && <div className="text-sm text-emerald-500 font-medium">已复制到剪贴板</div>}
 
 					<div>
-						<div className="mb-2 font-medium">Please enter the AI's response:</div>
+						<div className="mb-2 font-medium">请输入AI的回复：</div>
 						<Textarea
-							placeholder="Paste the AI's response here..."
+							placeholder="在此粘贴AI的回复..."
 							value={response}
 							onChange={(e) => setResponse(e.target.value)}
 							className="min-h-[150px]"
@@ -100,11 +100,11 @@ export const HumanRelayDialog: React.FC<HumanRelayDialogProps> = ({
 				<DialogFooter>
 					<Button variant="outline" onClick={handleCancel} className="gap-1">
 						<X className="h-4 w-4" />
-						Cancel
+						取消
 					</Button>
 					<Button onClick={handleSubmit} disabled={!response.trim()} className="gap-1">
 						<Check className="h-4 w-4" />
-						Submit
+						提交
 					</Button>
 				</DialogFooter>
 			</DialogContent>

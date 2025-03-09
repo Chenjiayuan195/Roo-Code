@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useDebounce, useEvent } from "react-use"
 import { Checkbox, Dropdown, type DropdownOption } from "vscrui"
-import { VSCodeLink, VSCodeRadio, VSCodeRadioGroup, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeLink, VSCodeRadio, VSCodeRadioGroup, VSCodeTextField, VSCodeCheckbox } from "@vscode/webview-ui-toolkit/react"
 import * as vscodemodels from "vscode"
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue, Button } from "@/components/ui"
@@ -262,7 +262,7 @@ const ApiOptions = ({
 					value={selectedProvider}
 					onValueChange={handleInputChange("apiProvider", dropdownEventTransform)}>
 					<SelectTrigger className="w-full">
-						<SelectValue placeholder="Select" />
+						<SelectValue placeholder="选择" />
 					</SelectTrigger>
 					<SelectContent>
 						<SelectGroup>
@@ -284,12 +284,12 @@ const ApiOptions = ({
 						value={apiConfiguration?.openRouterApiKey || ""}
 						type="password"
 						onInput={handleInputChange("openRouterApiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
 						<span className="font-medium">OpenRouter API Key</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.openRouterApiKey && (
 						<VSCodeButtonLink href={getOpenRouterAuthUrl(uriScheme)} appearance="secondary">
@@ -298,34 +298,39 @@ const ApiOptions = ({
 					)}
 					{!fromWelcomeView && (
 						<>
-							<div>
-								<Checkbox
-									checked={openRouterBaseUrlSelected}
-									onChange={(checked: boolean) => {
-										setOpenRouterBaseUrlSelected(checked)
-
-										if (!checked) {
+							<div className="mt-2">
+								<VSCodeCheckbox
+									checked={!!apiConfiguration.openRouterBaseUrl}
+									onChange={(e: any) => {
+										if (e.target.checked && !apiConfiguration.openRouterBaseUrl) {
 											setApiConfigurationField("openRouterBaseUrl", "")
+										} else if (!e.target.checked) {
+											setApiConfigurationField("openRouterBaseUrl", undefined)
 										}
 									}}>
-									Use custom base URL
-								</Checkbox>
-								{openRouterBaseUrlSelected && (
-									<VSCodeTextField
-										value={apiConfiguration?.openRouterBaseUrl || ""}
-										type="url"
-										onInput={handleInputChange("openRouterBaseUrl")}
-										placeholder="Default: https://openrouter.ai/api/v1"
-										className="w-full mt-1"
-									/>
-								)}
+									<span>使用自定义URL</span>
+								</VSCodeCheckbox>
 							</div>
-							<Checkbox
-								checked={apiConfiguration?.openRouterUseMiddleOutTransform ?? true}
-								onChange={handleInputChange("openRouterUseMiddleOutTransform", noTransform)}>
-								Compress prompts and message chains to the context size (
-								<a href="https://openrouter.ai/docs/transforms">OpenRouter Transforms</a>)
-							</Checkbox>
+
+							{apiConfiguration.openRouterBaseUrl !== undefined && (
+								<div className="mt-2">
+									<VSCodeTextField
+										value={apiConfiguration.openRouterBaseUrl}
+										onChange={(e: any) => setApiConfigurationField("openRouterBaseUrl", e.target.value)}>
+										<span className="font-medium">自定义URL</span>
+									</VSCodeTextField>
+								</div>
+							)}
+
+							<div className="mt-2">
+								<VSCodeCheckbox
+									checked={apiConfiguration.openRouterUseMiddleOutTransform}
+									onChange={(e: any) => {
+										setApiConfigurationField("openRouterUseMiddleOutTransform", e.target.checked)
+									}}>
+									<span>压缩提示和消息链到更小尺寸（OpenRouter Transforms）</span>
+								</VSCodeCheckbox>
+							</div>
 						</>
 					)}
 				</>
@@ -337,16 +342,16 @@ const ApiOptions = ({
 						value={apiConfiguration?.apiKey || ""}
 						type="password"
 						onInput={handleInputChange("apiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
-						<div className="font-medium">Anthropic API Key</div>
+						<div className="font-medium">Anthropic API 密钥</div>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.apiKey && (
 						<VSCodeButtonLink href="https://console.anthropic.com/settings/keys" appearance="secondary">
-							Get Anthropic API Key
+							获取 Anthropic API 密钥
 						</VSCodeButtonLink>
 					)}
 					<div>
@@ -356,19 +361,19 @@ const ApiOptions = ({
 								setAnthropicBaseUrlSelected(checked)
 
 								if (!checked) {
-									setApiConfigurationField("anthropicBaseUrl", "")
+									setApiConfigurationField("anthropicBaseUrl", undefined)
 								}
 							}}>
-							Use custom base URL
+							<span>使用自定义基础URL</span>
 						</Checkbox>
 						{anthropicBaseUrlSelected && (
 							<VSCodeTextField
 								value={apiConfiguration?.anthropicBaseUrl || ""}
-								type="url"
 								onInput={handleInputChange("anthropicBaseUrl")}
-								placeholder="https://api.anthropic.com"
-								className="w-full mt-1"
-							/>
+								placeholder="默认: https://api.anthropic.com"
+								className="w-full mt-1">
+								<span className="font-medium">基础URL</span>
+							</VSCodeTextField>
 						)}
 					</div>
 				</>
@@ -380,12 +385,12 @@ const ApiOptions = ({
 						value={apiConfiguration?.glamaApiKey || ""}
 						type="password"
 						onInput={handleInputChange("glamaApiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
 						<span className="font-medium">Glama API Key</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.glamaApiKey && (
 						<VSCodeButtonLink href={getGlamaAuthUrl(uriScheme)} appearance="secondary">
@@ -401,12 +406,12 @@ const ApiOptions = ({
 						value={apiConfiguration?.requestyApiKey || ""}
 						type="password"
 						onInput={handleInputChange("requestyApiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
 						<span className="font-medium">Requesty API Key</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 				</>
 			)}
@@ -417,12 +422,12 @@ const ApiOptions = ({
 						value={apiConfiguration?.openAiNativeApiKey || ""}
 						type="password"
 						onInput={handleInputChange("openAiNativeApiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
 						<span className="font-medium">OpenAI API Key</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.openAiNativeApiKey && (
 						<VSCodeButtonLink href="https://platform.openai.com/api-keys" appearance="secondary">
@@ -438,16 +443,16 @@ const ApiOptions = ({
 						value={apiConfiguration?.mistralApiKey || ""}
 						type="password"
 						onInput={handleInputChange("mistralApiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
 						<span className="font-medium">Mistral API Key</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.mistralApiKey && (
 						<VSCodeButtonLink href="https://console.mistral.ai/" appearance="secondary">
-							Get Mistral / Codestral API Key
+							获取Mistral / Codestral API密钥
 						</VSCodeButtonLink>
 					)}
 					{(apiConfiguration?.apiModelId?.startsWith("codestral-") ||
@@ -455,14 +460,13 @@ const ApiOptions = ({
 						<>
 							<VSCodeTextField
 								value={apiConfiguration?.mistralCodestralUrl || ""}
-								type="url"
 								onInput={handleInputChange("mistralCodestralUrl")}
-								placeholder="https://codestral.mistral.ai"
+								placeholder="https://api.codestral.ai/"
 								className="w-full">
-								<span className="font-medium">Codestral Base URL (Optional)</span>
+								<span className="font-medium">Codestral 基础URL（可选）</span>
 							</VSCodeTextField>
-							<div className="text-sm text-vscode-descriptionForeground -mt-2">
-								Set an alternative URL for the Codestral model.
+							<div className="mt-1 text-xs opacity-70">
+								设置Codestral模型的替代URL。
 							</div>
 						</>
 					)}
@@ -480,10 +484,9 @@ const ApiOptions = ({
 						<VSCodeRadio value="credentials">AWS Credentials</VSCodeRadio>
 						<VSCodeRadio value="profile">AWS Profile</VSCodeRadio>
 					</VSCodeRadioGroup>
-					<div className="text-sm text-vscode-descriptionForeground -mt-3">
-						Authenticate by providing an access key and secret or use the default AWS credential providers,
-						i.e. ~/.aws/credentials or environment variables. These credentials are only used locally to
-						make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						通过提供访问密钥和秘密或使用默认的AWS凭据提供程序进行身份验证，
+						即~/.aws/credentials或环境变量。这些凭据仅用于从此扩展发出API请求。
 					</div>
 					{apiConfiguration?.awsUseProfile ? (
 						<VSCodeTextField
@@ -499,7 +502,7 @@ const ApiOptions = ({
 								value={apiConfiguration?.awsAccessKey || ""}
 								type="password"
 								onInput={handleInputChange("awsAccessKey")}
-								placeholder="Enter Access Key..."
+								placeholder="输入访问密钥..."
 								className="w-full">
 								<span className="font-medium">AWS Access Key</span>
 							</VSCodeTextField>
@@ -507,7 +510,7 @@ const ApiOptions = ({
 								value={apiConfiguration?.awsSecretKey || ""}
 								type="password"
 								onInput={handleInputChange("awsSecretKey")}
-								placeholder="Enter Secret Key..."
+								placeholder="输入秘密密钥..."
 								className="w-full">
 								<span className="font-medium">AWS Secret Key</span>
 							</VSCodeTextField>
@@ -515,7 +518,7 @@ const ApiOptions = ({
 								value={apiConfiguration?.awsSessionToken || ""}
 								type="password"
 								onInput={handleInputChange("awsSessionToken")}
-								placeholder="Enter Session Token..."
+								placeholder="输入会话令牌..."
 								className="w-full">
 								<span className="font-medium">AWS Session Token</span>
 							</VSCodeTextField>
@@ -553,7 +556,7 @@ const ApiOptions = ({
 					<Checkbox
 						checked={apiConfiguration?.awsUseCrossRegionInference || false}
 						onChange={handleInputChange("awsUseCrossRegionInference", noTransform)}>
-						Use cross-region inference
+						使用跨区域推理
 					</Checkbox>
 				</>
 			)}
@@ -561,48 +564,47 @@ const ApiOptions = ({
 			{selectedProvider === "vertex" && (
 				<>
 					<div className="text-sm text-vscode-descriptionForeground">
-						<div>To use Google Cloud Vertex AI, you need to:</div>
+						<div>要使用Google Cloud Vertex AI，您需要：</div>
 						<div>
 							<VSCodeLink
 								href="https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude#before_you_begin"
 								className="text-sm">
-								1. Create a Google Cloud account, enable the Vertex AI API & enable the desired Claude
-								models.
+								1. 创建Google Cloud账户，启用Vertex AI API & 启用所需的Claude模型。
 							</VSCodeLink>
 						</div>
 						<div>
 							<VSCodeLink
 								href="https://cloud.google.com/docs/authentication/provide-credentials-adc#google-idp"
 								className="text-sm">
-								2. Install the Google Cloud CLI & configure application default credentials.
+								2. 安装Google Cloud CLI并配置应用程序默认凭据。
 							</VSCodeLink>
 						</div>
 						<div>
 							<VSCodeLink
 								href="https://developers.google.com/workspace/guides/create-credentials?hl=en#service-account"
 								className="text-sm">
-								3. Or create a service account with credentials.
+								3. 或创建一个具有凭据的服务账户。
 							</VSCodeLink>
 						</div>
 					</div>
 					<VSCodeTextField
 						value={apiConfiguration?.vertexJsonCredentials || ""}
 						onInput={handleInputChange("vertexJsonCredentials")}
-						placeholder="Enter Credentials JSON..."
+						placeholder="输入凭证JSON..."
 						className="w-full">
 						<span className="font-medium">Google Cloud Credentials</span>
 					</VSCodeTextField>
 					<VSCodeTextField
 						value={apiConfiguration?.vertexKeyFile || ""}
 						onInput={handleInputChange("vertexKeyFile")}
-						placeholder="Enter Key File Path..."
+						placeholder="输入密钥文件路径..."
 						className="w-full">
 						<span className="font-medium">Google Cloud Key File Path</span>
 					</VSCodeTextField>
 					<VSCodeTextField
 						value={apiConfiguration?.vertexProjectId || ""}
 						onInput={handleInputChange("vertexProjectId")}
-						placeholder="Enter Project ID..."
+						placeholder="输入项目ID..."
 						className="w-full">
 						<span className="font-medium">Google Cloud Project ID</span>
 					</VSCodeTextField>
@@ -634,12 +636,12 @@ const ApiOptions = ({
 						value={apiConfiguration?.geminiApiKey || ""}
 						type="password"
 						onInput={handleInputChange("geminiApiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
 						<span className="font-medium">Gemini API Key</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.geminiApiKey && (
 						<VSCodeButtonLink href="https://ai.google.dev/" appearance="secondary">
@@ -655,7 +657,7 @@ const ApiOptions = ({
 						value={apiConfiguration?.openAiBaseUrl || ""}
 						type="url"
 						onInput={handleInputChange("openAiBaseUrl")}
-						placeholder={"Enter base URL..."}
+						placeholder={"输入基础URL..."}
 						className="w-full">
 						<span className="font-medium">Base URL</span>
 					</VSCodeTextField>
@@ -663,7 +665,7 @@ const ApiOptions = ({
 						value={apiConfiguration?.openAiApiKey || ""}
 						type="password"
 						onInput={handleInputChange("openAiApiKey")}
-						placeholder="Enter API Key..."
+						placeholder="输入API密钥..."
 						className="w-full">
 						<span className="font-medium">API Key</span>
 					</VSCodeTextField>
@@ -675,8 +677,9 @@ const ApiOptions = ({
 						models={openAiModels}
 						modelIdKey="openAiModelId"
 						modelInfoKey="openAiCustomModelInfo"
-						serviceName="OpenAI"
-						serviceUrl="https://platform.openai.com"
+						serviceName="OpenAI Compatible"
+						serviceUrl="https://platform.openai.com/docs/models"
+						showOpenRouterInfo={false}
 					/>
 					<Checkbox
 						checked={apiConfiguration?.openAiStreamingEnabled ?? true}
@@ -698,7 +701,7 @@ const ApiOptions = ({
 									setApiConfigurationField("azureApiVersion", "")
 								}
 							}}>
-							Set Azure API version
+							设置Azure API版本
 						</Checkbox>
 						{azureApiVersionSelected && (
 							<VSCodeTextField
@@ -712,8 +715,7 @@ const ApiOptions = ({
 
 					<div className="flex flex-col gap-3">
 						<div className="text-sm text-vscode-descriptionForeground">
-							Configure the capabilities and pricing for your custom OpenAI-compatible model. Be careful
-							when specifying the model capabilities, as they can affect how Roo Code performs.
+							配置您的自定义OpenAI兼容模型的功能和定价。在指定模型功能时要小心，因为它们会影响Magic Code的性能。
 						</div>
 
 						<div>
@@ -737,7 +739,7 @@ const ApiOptions = ({
 											: "var(--vscode-errorForeground)"
 									})(),
 								}}
-								title="Maximum number of tokens the model can generate in a single response"
+								title="模型可以在单个响应中生成的最大令牌数"
 								onInput={handleInputChange("openAiCustomModelInfo", (e) => {
 									const value = parseInt((e.target as HTMLInputElement).value)
 
@@ -746,13 +748,12 @@ const ApiOptions = ({
 										maxTokens: isNaN(value) ? undefined : value,
 									}
 								})}
-								placeholder="e.g. 4096"
+								placeholder="例如：4096"
 								className="w-full">
-								<span className="font-medium">Max Output Tokens</span>
+								<span className="font-medium">最大输出令牌数</span>
 							</VSCodeTextField>
 							<div className="text-sm text-vscode-descriptionForeground">
-								Maximum number of tokens the model can generate in a response. (Specify -1 to allow the
-								server to set the max tokens.)
+								模型可以在单个响应中生成的最大令牌数。（指定-1以允许服务器设置最大令牌数。）
 							</div>
 						</div>
 
@@ -777,7 +778,7 @@ const ApiOptions = ({
 											: "var(--vscode-errorForeground)"
 									})(),
 								}}
-								title="Total number of tokens (input + output) the model can process in a single request"
+								title="模型在单个请求中可以处理的令牌总数（输入+输出）"
 								onInput={handleInputChange("openAiCustomModelInfo", (e) => {
 									const value = (e.target as HTMLInputElement).value
 									const parsed = parseInt(value)
@@ -789,12 +790,12 @@ const ApiOptions = ({
 											: parsed,
 									}
 								})}
-								placeholder="e.g. 128000"
+								placeholder="例如：128000"
 								className="w-full">
-								<span className="font-medium">Context Window Size</span>
+								<span className="font-medium">上下文窗口大小</span>
 							</VSCodeTextField>
 							<div className="text-sm text-vscode-descriptionForeground">
-								Total tokens (input + output) the model can process.
+								模型可以处理的令牌总数（输入+输出）。
 							</div>
 						</div>
 
@@ -811,16 +812,16 @@ const ApiOptions = ({
 											supportsImages: checked,
 										}
 									})}>
-									<span className="font-medium">Image Support</span>
+									<span className="font-medium">图像支持</span>
 								</Checkbox>
 								<i
 									className="codicon codicon-info text-vscode-descriptionForeground"
-									title="Enable if the model can process and understand images in the input. Required for image-based assistance and visual code understanding."
+									title="如果模型可以处理和理解输入中的图像。需要图像辅助和视觉代码理解。"
 									style={{ fontSize: "12px" }}
 								/>
 							</div>
 							<div className="text-sm text-vscode-descriptionForeground">
-								Is this model capable of processing and understanding images?
+								这个模型能够处理和理解图像吗？
 							</div>
 						</div>
 
@@ -834,16 +835,16 @@ const ApiOptions = ({
 											supportsComputerUse: checked,
 										}
 									})}>
-									<span className="font-medium">Computer Use</span>
+									<span className="font-medium">计算机使用</span>
 								</Checkbox>
 								<i
 									className="codicon codicon-info text-vscode-descriptionForeground"
-									title="Enable if the model can interact with your computer through commands and file operations. Required for automated tasks and file modifications."
+									title="如果模型可以通过命令和文件操作与您的计算机交互。需要自动任务和文件修改。"
 									style={{ fontSize: "12px" }}
 								/>
 							</div>
 							<div className="text-sm text-vscode-descriptionForeground [pt">
-								Is this model capable of interacting with a browser? (e.g. Claude 3.7 Sonnet).
+							这个模型能够与浏览器交互吗？（例如：Claude 3.7 Sonnet）
 							</div>
 						</div>
 
@@ -877,13 +878,13 @@ const ApiOptions = ({
 										inputPrice: isNaN(parsed) ? openAiModelInfoSaneDefaults.inputPrice : parsed,
 									}
 								})}
-								placeholder="e.g. 0.0001"
+								placeholder="例如：0.0001"
 								className="w-full">
 								<div className="flex items-center gap-1">
-									<span className="font-medium">Input Price</span>
+									<span className="font-medium">输入价格</span>
 									<i
 										className="codicon codicon-info text-vscode-descriptionForeground"
-										title="Cost per million tokens in the input/prompt. This affects the cost of sending context and instructions to the model."
+										title="输入/提示中每百万令牌的成本。这会影响向模型发送上下文和指令的成本。"
 										style={{ fontSize: "12px" }}
 									/>
 								</div>
@@ -920,13 +921,13 @@ const ApiOptions = ({
 										outputPrice: isNaN(parsed) ? openAiModelInfoSaneDefaults.outputPrice : parsed,
 									}
 								})}
-								placeholder="e.g. 0.0002"
+								placeholder="例如：0.0002"
 								className="w-full">
 								<div className="flex items-center gap-1">
-									<span className="font-medium">Output Price</span>
+									<span className="font-medium">输出价格</span>
 									<i
 										className="codicon codicon-info text-vscode-descriptionForeground"
-										title="Cost per million tokens in the model's response. This affects the cost of generated content and completions."
+										title="模型响应中每百万令牌的成本。这会影响生成内容和完成的成本。"
 										style={{ fontSize: "12px" }}
 									/>
 								</div>
@@ -950,16 +951,16 @@ const ApiOptions = ({
 						value={apiConfiguration?.lmStudioBaseUrl || ""}
 						type="url"
 						onInput={handleInputChange("lmStudioBaseUrl")}
-						placeholder={"Default: http://localhost:1234"}
+						placeholder={"默认: http://localhost:1234"}
 						className="w-full">
-						<span className="font-medium">Base URL (optional)</span>
+						<span className="font-medium">基础URL (可选)</span>
 					</VSCodeTextField>
 					<VSCodeTextField
 						value={apiConfiguration?.lmStudioModelId || ""}
 						onInput={handleInputChange("lmStudioModelId")}
-						placeholder={"e.g. meta-llama-3.1-8b-instruct"}
+						placeholder={"例如：meta-llama-3.1-8b-instruct"}
 						className="w-full">
-						<span className="font-medium">Model ID</span>
+						<span className="font-medium">模型ID</span>
 					</VSCodeTextField>
 					{lmStudioModels.length > 0 && (
 						<VSCodeRadioGroup
@@ -985,7 +986,7 @@ const ApiOptions = ({
 							// Explicitly set the boolean value using direct method.
 							setApiConfigurationField("lmStudioSpeculativeDecodingEnabled", checked)
 						}}>
-						Enable Speculative Decoding
+						启用推测性解码
 					</Checkbox>
 					{apiConfiguration?.lmStudioSpeculativeDecodingEnabled && (
 						<>
@@ -993,13 +994,12 @@ const ApiOptions = ({
 								<VSCodeTextField
 									value={apiConfiguration?.lmStudioDraftModelId || ""}
 									onInput={handleInputChange("lmStudioDraftModelId")}
-									placeholder={"e.g. lmstudio-community/llama-3.2-1b-instruct"}
+									placeholder={"例如：lmstudio-community/llama-3.2-1b-instruct"}
 									className="w-full">
-									<span className="font-medium">Draft Model ID</span>
+									<span className="font-medium">草稿模型ID</span>
 								</VSCodeTextField>
 								<div className="text-sm text-vscode-descriptionForeground">
-									Draft model must be from the same model family for speculative decoding to work
-									correctly.
+									草稿模型必须来自相同的模型系列，推测性解码才能正常工作。
 								</div>
 							</div>
 							{lmStudioModels.length > 0 && (
@@ -1026,8 +1026,7 @@ const ApiOptions = ({
 												border: "1px solid var(--vscode-inputValidation-infoBorder)",
 												color: "var(--vscode-inputValidation-infoForeground)",
 											}}>
-											No draft models found. Please ensure LM Studio is running with Server Mode
-											enabled.
+											未找到草稿模型。请确保LM Studio在启用服务器模式的情况下运行。
 										</div>
 									)}
 								</>
@@ -1035,14 +1034,13 @@ const ApiOptions = ({
 						</>
 					)}
 					<div className="text-sm text-vscode-descriptionForeground">
-						LM Studio allows you to run models locally on your computer. For instructions on how to get
-						started, see their <VSCodeLink href="https://lmstudio.ai/docs">quickstart guide</VSCodeLink>.
-						You will also need to start LM Studio's{" "}
-						<VSCodeLink href="https://lmstudio.ai/docs/basics/server">local server</VSCodeLink> feature to
-						use it with this extension.
+						LM Studio允许您在本地计算机上运行模型。有关如何入门的说明，请参阅他们的 <VSCodeLink href="https://lmstudio.ai/docs">快速入门指南</VSCodeLink>。
+						您还需要启动LM Studio的{" "}
+						<VSCodeLink href="https://lmstudio.ai/docs/basics/server">本地服务器</VSCodeLink> 功能才能
+						与此扩展一起使用。
 						<span className="text-vscode-errorForeground ml-1">
-							<span className="font-medium">Note:</span> Roo Code uses complex prompts and works best with
-							Claude models. Less capable models may not work as expected.
+							<span className="font-medium">注意：</span> Magic Code使用复杂的提示词，最适合与
+							Claude模型配合使用。能力较弱的模型可能无法按预期工作。
 						</span>
 					</div>
 				</>
@@ -1054,16 +1052,15 @@ const ApiOptions = ({
 						value={apiConfiguration?.deepSeekApiKey || ""}
 						type="password"
 						onInput={handleInputChange("deepSeekApiKey")}
-						placeholder="Enter API Key..."
 						className="w-full">
-						<span className="font-medium">DeepSeek API Key</span>
+						<span className="font-medium">DeepSeek API 密钥</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.deepSeekApiKey && (
 						<VSCodeButtonLink href="https://platform.deepseek.com/" appearance="secondary">
-							Get DeepSeek API Key
+							获取 DeepSeek API 密钥
 						</VSCodeButtonLink>
 					)}
 				</>
@@ -1118,16 +1115,16 @@ const ApiOptions = ({
 						value={apiConfiguration?.ollamaBaseUrl || ""}
 						type="url"
 						onInput={handleInputChange("ollamaBaseUrl")}
-						placeholder={"Default: http://localhost:11434"}
+						placeholder={"默认: http://localhost:11434"}
 						className="w-full">
-						<span className="font-medium">Base URL (optional)</span>
+						<span className="font-medium">基础URL (可选)</span>
 					</VSCodeTextField>
 					<VSCodeTextField
 						value={apiConfiguration?.ollamaModelId || ""}
 						onInput={handleInputChange("ollamaModelId")}
-						placeholder={"e.g. llama3.1"}
+						placeholder={"例如：llama3.1"}
 						className="w-full">
-						<span className="font-medium">Model ID</span>
+						<span className="font-medium">模型ID</span>
 					</VSCodeTextField>
 					{ollamaModels.length > 0 && (
 						<VSCodeRadioGroup
@@ -1148,15 +1145,14 @@ const ApiOptions = ({
 						</VSCodeRadioGroup>
 					)}
 					<div className="text-sm text-vscode-descriptionForeground">
-						Ollama allows you to run models locally on your computer. For instructions on how to get
-						started, see their
+						Ollama允许您在本地计算机上运行模型。有关如何入门的说明，请参阅他们的
 						<VSCodeLink href="https://github.com/ollama/ollama/blob/main/README.md">
-							quickstart guide
+							快速入门指南
 						</VSCodeLink>
-						.
+						。
 						<span className="text-vscode-errorForeground ml-1">
-							<span className="font-medium">Note:</span> Roo Code uses complex prompts and works best with
-							Claude models. Less capable models may not work as expected.
+							<span className="font-medium">注意：</span> Magic Code使用复杂的提示词，最适合与
+							Claude模型配合使用。能力较弱的模型可能无法按预期工作。
 						</span>
 					</div>
 				</>
@@ -1168,12 +1164,11 @@ const ApiOptions = ({
 						value={apiConfiguration?.unboundApiKey || ""}
 						type="password"
 						onInput={handleInputChange("unboundApiKey")}
-						placeholder="Enter API Key..."
 						className="w-full">
-						<span className="font-medium">Unbound API Key</span>
+						<span className="font-medium">Unbound API 密钥</span>
 					</VSCodeTextField>
-					<div className="text-sm text-vscode-descriptionForeground -mt-2">
-						This key is stored locally and only used to make API requests from this extension.
+					<div className="mt-1 text-xs opacity-70">
+						此密钥存储在本地，仅用于从此扩展发出API请求。
 					</div>
 					{!apiConfiguration?.unboundApiKey && (
 						<VSCodeButtonLink href="https://gateway.getunbound.ai" appearance="secondary">
@@ -1210,6 +1205,7 @@ const ApiOptions = ({
 					modelInfoKey="openRouterModelInfo"
 					serviceName="OpenRouter"
 					serviceUrl="https://openrouter.ai/models"
+					showOpenRouterInfo={true}
 				/>
 			)}
 
@@ -1220,10 +1216,11 @@ const ApiOptions = ({
 					defaultModelId={glamaDefaultModelId}
 					defaultModelInfo={glamaDefaultModelInfo}
 					models={glamaModels}
-					modelInfoKey="glamaModelInfo"
 					modelIdKey="glamaModelId"
+					modelInfoKey="glamaModelInfo"
 					serviceName="Glama"
-					serviceUrl="https://glama.ai/models"
+					serviceUrl="https://glama.ai"
+					showOpenRouterInfo={false}
 				/>
 			)}
 
@@ -1233,11 +1230,12 @@ const ApiOptions = ({
 					defaultModelId={unboundDefaultModelId}
 					defaultModelInfo={unboundDefaultModelInfo}
 					models={unboundModels}
-					modelInfoKey="unboundModelInfo"
 					modelIdKey="unboundModelId"
-					serviceName="Unbound"
-					serviceUrl="https://api.getunbound.ai/models"
+					modelInfoKey="unboundModelInfo"
+					serviceName="Unbound Security"
+					serviceUrl="https://unbound.security/"
 					setApiConfigurationField={setApiConfigurationField}
+					showOpenRouterInfo={false}
 				/>
 			)}
 
@@ -1251,7 +1249,8 @@ const ApiOptions = ({
 					modelIdKey="requestyModelId"
 					modelInfoKey="requestyModelInfo"
 					serviceName="Requesty"
-					serviceUrl="https://requesty.ai"
+					serviceUrl="https://requesty.ai/"
+					showOpenRouterInfo={false}
 				/>
 			)}
 

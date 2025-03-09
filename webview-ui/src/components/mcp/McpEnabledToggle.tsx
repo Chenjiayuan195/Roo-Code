@@ -24,8 +24,7 @@ const McpEnabledToggle = () => {
 					marginTop: "5px",
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				When enabled, Roo will be able to interact with MCP servers for advanced functionality. If you're not
-				using MCP, you can disable this to reduce Roo's token usage.
+				启用后，Magic将能够与MCP服务器交互以实现高级功能。如果你没有使用MCP，你可以禁用它来减少Magic的令牌使用
 			</p>
 		</div>
 	)

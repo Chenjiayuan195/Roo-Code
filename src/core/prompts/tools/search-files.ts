@@ -2,19 +2,19 @@ import { ToolArgs } from "./types"
 
 export function getSearchFilesDescription(args: ToolArgs): string {
 	return `## search_files
-Description: Request to perform a regex search across files in a specified directory, providing context-rich results. This tool searches for patterns or specific content across multiple files, displaying each match with encapsulating context.
+Description: 请求在指定目录中执行正则表达式搜索，提供丰富的上下文结果。此工具在多个文件中搜索模式或特定内容，显示每个匹配项及其上下文。
 Parameters:
-- path: (required) The path of the directory to search in (relative to the current working directory ${args.cwd}). This directory will be recursively searched.
-- regex: (required) The regular expression pattern to search for. Uses Rust regex syntax.
-- file_pattern: (optional) Glob pattern to filter files (e.g., '*.ts' for TypeScript files). If not provided, it will search all files (*).
+- path: (required) 要搜索的目录的路径（相对于当前工作目录 ${args.cwd}). 此目录将递归搜索。
+- regex: (required) 要搜索的正则表达式模式。使用Rust正则表达式语法。
+- file_pattern: (optional) 文件过滤模式（例如，'*.ts'用于TypeScript文件）。如果未提供，它将搜索所有文件（*）。
 Usage:
 <search_files>
-<path>Directory path here</path>
-<regex>Your regex pattern here</regex>
-<file_pattern>file pattern here (optional)</file_pattern>
+<path>目录路径</path>
+<regex>您的正则表达式模式</regex>
+<file_pattern>文件模式（可选）</file_pattern>
 </search_files>
 
-Example: Requesting to search for all .ts files in the current directory
+Example: 请求在当前目录中搜索所有.ts文件
 <search_files>
 <path>.</path>
 <regex>.*</regex>

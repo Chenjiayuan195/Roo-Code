@@ -1,23 +1,22 @@
-import { useCallback, useEffect } from "react"
+import React, { useCallback, useEffect } from "react"
 import { useKeyPress } from "react-use"
-import { AlertDialogProps } from "@radix-ui/react-alert-dialog"
-
+import { Button } from "../ui/button"
 import {
 	AlertDialog,
-	AlertDialogAction,
-	AlertDialogCancel,
 	AlertDialogContent,
-	AlertDialogDescription,
-	AlertDialogFooter,
-	AlertDialogHeader,
 	AlertDialogTitle,
-	Button,
-} from "@/components/ui"
+	AlertDialogDescription,
+	AlertDialogCancel,
+	AlertDialogAction,
+	AlertDialogHeader,
+	AlertDialogFooter,
+} from "../ui/alert-dialog"
+import { vscode } from "../../utils/vscode"
 
-import { vscode } from "@/utils/vscode"
-
-interface DeleteTaskDialogProps extends AlertDialogProps {
+interface DeleteTaskDialogProps {
 	taskId: string
+	open?: boolean
+	onOpenChange?: (open: boolean) => void
 }
 
 export const DeleteTaskDialog = ({ taskId, ...props }: DeleteTaskDialogProps) => {
@@ -42,18 +41,18 @@ export const DeleteTaskDialog = ({ taskId, ...props }: DeleteTaskDialogProps) =>
 		<AlertDialog {...props}>
 			<AlertDialogContent onEscapeKeyDown={() => onOpenChange?.(false)}>
 				<AlertDialogHeader>
-					<AlertDialogTitle>Delete Task</AlertDialogTitle>
+					<AlertDialogTitle>删除任务</AlertDialogTitle>
 					<AlertDialogDescription>
-						Are you sure you want to delete this task? This action cannot be undone.
+						您确定要删除此任务吗？此操作无法撤消。
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
 					<AlertDialogCancel asChild>
-						<Button variant="secondary">Cancel</Button>
+						<Button variant="secondary">取消</Button>
 					</AlertDialogCancel>
 					<AlertDialogAction asChild>
 						<Button variant="destructive" onClick={onDelete}>
-							Delete
+							删除
 						</Button>
 					</AlertDialogAction>
 				</AlertDialogFooter>
