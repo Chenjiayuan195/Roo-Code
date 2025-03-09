@@ -300,22 +300,25 @@ const ApiOptions = ({
 						<>
 							<div className="mt-2">
 								<VSCodeCheckbox
-									checked={!!apiConfiguration.openRouterBaseUrl}
+									checked={openRouterBaseUrlSelected}
 									onChange={(e: any) => {
-										if (e.target.checked && !apiConfiguration.openRouterBaseUrl) {
-											setApiConfigurationField("openRouterBaseUrl", "")
-										} else if (!e.target.checked) {
+										const isChecked = e.target.checked;
+										setOpenRouterBaseUrlSelected(isChecked)
+										
+										if (!isChecked) {
 											setApiConfigurationField("openRouterBaseUrl", undefined)
+										} else if (isChecked && !apiConfiguration.openRouterBaseUrl) {
+											setApiConfigurationField("openRouterBaseUrl", "")
 										}
 									}}>
 									<span>使用自定义URL</span>
 								</VSCodeCheckbox>
 							</div>
 
-							{apiConfiguration.openRouterBaseUrl !== undefined && (
+							{openRouterBaseUrlSelected && (
 								<div className="mt-2">
 									<VSCodeTextField
-										value={apiConfiguration.openRouterBaseUrl}
+										value={apiConfiguration.openRouterBaseUrl || ""}
 										onChange={(e: any) => setApiConfigurationField("openRouterBaseUrl", e.target.value)}>
 										<span className="font-medium">自定义URL</span>
 									</VSCodeTextField>
