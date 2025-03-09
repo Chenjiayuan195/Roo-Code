@@ -687,12 +687,12 @@ const ApiOptions = ({
 					<Checkbox
 						checked={apiConfiguration?.openAiStreamingEnabled ?? true}
 						onChange={handleInputChange("openAiStreamingEnabled", noTransform)}>
-						Enable streaming
+						启用流媒体
 					</Checkbox>
 					<Checkbox
 						checked={apiConfiguration?.openAiUseAzure ?? false}
 						onChange={handleInputChange("openAiUseAzure", noTransform)}>
-						Use Azure
+						使用Azure
 					</Checkbox>
 					<div>
 						<Checkbox
