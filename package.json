@@ -4,7 +4,7 @@
 	"description": "A whole dev team of AI agents in your editor.",
 	"publisher": "RooVeterinaryInc",
 	"version": "3.8.1",
-	"icon": "assets/icons/rocket.png",
+	"icon": "assets/icons/icoPng.ico",
 	"galleryBanner": {
 		"color": "#617A91",
 		"theme": "dark"
@@ -17,9 +17,9 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/RooVetGit/Roo-Code"
+		"url": "https://github.com/Chenjiayuan195/Roo-Code"
 	},
-	"homepage": "https://github.com/RooVetGit/Roo-Code",
+	"homepage": "https://github.com/Chenjiayuan195/Roo-Code",
 	"categories": [
 		"AI",
 		"Chat",
@@ -55,7 +55,7 @@
 				{
 					"id": "roo-cline-ActivityBar",
 					"title": "Roo Code",
-					"icon": "$(rocket)"
+					"icon": "./assets/icons/icoPng.ico"
 				}
 			]
 		},
