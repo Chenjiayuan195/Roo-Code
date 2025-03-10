@@ -542,7 +542,7 @@ describe("ClineProvider", () => {
 		;(vscode.env as any).language = "unsupported-LANG"
 
 		const state = await provider.getState()
-		expect(state.preferredLanguage).toBe("English")
+		expect(state.preferredLanguage).toBe("Simplified Chinese")
 	})
 
 	test("diffEnabled defaults to true when not set", async () => {

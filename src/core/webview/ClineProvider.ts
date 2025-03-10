@@ -2248,7 +2248,7 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 			soundVolume: soundVolume ?? 0.5,
 			browserViewportSize: browserViewportSize ?? "900x600",
 			screenshotQuality: screenshotQuality ?? 75,
-			preferredLanguage: preferredLanguage ?? "English",
+			preferredLanguage: preferredLanguage ?? "Simplified Chinese",
 			writeDelayMs: writeDelayMs ?? 1000,
 			terminalOutputLimit: terminalOutputLimit ?? TERMINAL_OUTPUT_LIMIT,
 			fuzzyMatchThreshold: fuzzyMatchThreshold ?? 1.0,
@@ -2433,8 +2433,8 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 						"zh-tw": "Traditional Chinese",
 						tr: "Turkish",
 					}
-					// Return mapped language or default to English
-					return langMap[vscodeLang] ?? langMap[vscodeLang.split("-")[0]] ?? "English"
+					// Return mapped language or default to Simplified Chinese
+					return langMap[vscodeLang] ?? langMap[vscodeLang.split("-")[0]] ?? "Simplified Chinese"
 				})(),
 			mcpEnabled: stateValues.mcpEnabled ?? true,
 			enableMcpServerCreation: stateValues.enableMcpServerCreation ?? true,
