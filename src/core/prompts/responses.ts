@@ -117,9 +117,9 @@ ${toolUseInstructionsReminder}
 		if (didHitLimit) {
 			return `${rooIgnoreParsed.join(
 				"\n",
-			)}\n\n(File list truncated. Use list_files on specific subdirectories if you need to explore further.)`
+			)}\n\n(文件列表已截断。如果您需要进一步探索,请使用 list_files 工具在特定子目录上。)`
 		} else if (rooIgnoreParsed.length === 0 || (rooIgnoreParsed.length === 1 && rooIgnoreParsed[0] === "")) {
-			return "No files found."
+			return "未找到文件。"
 		} else {
 			return rooIgnoreParsed.join("\n")
 		}
