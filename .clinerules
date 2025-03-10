@@ -6,8 +6,17 @@
 
 2. Lint 规则:
    - 未经用户明确批准，切勿禁用任何 lint 规则
+   - 如果需要禁用 lint 规则，请先询问用户并解释原因
+   - 优先修复潜在问题，而不是禁用 lint 规则
+   - 对于任何批准的 lint 规则禁用，都要通过注释说明原因
 
-3. 样式指南:
+3. 日志记录指南:
+   - 始终使用从 `src\utils\logging\index.ts` 导入的日志器来记录代码更改
+   - 这将有助于高效调试，同时不影响生产环境（因为日志器在测试环境外会禁用）
+   - 日志可以在 `logs\app.log` 中找到
+   - 每次运行时日志文件都会被覆盖，以保持体积可控
+
+4. 样式指南:
    - 对新标记使用 Tailwind CSS 类而不是内联样式对象
    - 在 Tailwind 类中使用 VSCode CSS 变量前，必须先将其添加到 webview-ui/src/index.css
    - 示例: 使用 `<div className="text-md text-vscode-descriptionForeground mb-2" />` 而不是样式对象

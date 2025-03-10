@@ -352,7 +352,7 @@ const PromptsView = ({ onDone }: PromptsViewProps) => {
 			} else if (message.type === "systemPrompt") {
 				if (message.text) {
 					setSelectedPromptContent(message.text)
-					setSelectedPromptTitle(`System Prompt (${message.mode} mode)`)
+					setSelectedPromptTitle(`系统提示词 (${message.mode} 模式)`)
 					setIsDialogOpen(true)
 				}
 			}
@@ -495,9 +495,7 @@ const PromptsView = ({ onDone }: PromptsViewProps) => {
 								</div>
 							</PopoverContent>
 						</Popover>
-						<p className="text-xs mt-1.5 text-vscode-descriptionForeground">
-							选择 Magic 用于交流的语言。
-						</p>
+						<p className="text-xs mt-1.5 text-vscode-descriptionForeground">选择 Magic 用于交流的语言。</p>
 					</div>
 
 					<div className="font-bold mb-1">所有模式的自定义指令</div>
@@ -914,8 +912,7 @@ const PromptsView = ({ onDone }: PromptsViewProps) => {
 								color: "var(--vscode-descriptionForeground)",
 								marginTop: "5px",
 							}}>
-							也可以加载特定于{getCurrentMode()?.name || "Code"}模式的自定义指令
-							从{" "}
+							也可以加载特定于{getCurrentMode()?.name || "Code"}模式的自定义指令 从{" "}
 							<span
 								style={{
 									color: "var(--vscode-textLink-foreground)",
@@ -980,9 +977,7 @@ const PromptsView = ({ onDone }: PromptsViewProps) => {
 							className="flex items-center gap-2 cursor-pointer"
 							onClick={() => setIsSystemPromptDisclosureOpen(!isSystemPromptDisclosureOpen)}>
 							<span
-								className={`codicon codicon-chevron-${
-									isSystemPromptDisclosureOpen ? "down" : "right"
-								}`}
+								className={`codicon codicon-chevron-${isSystemPromptDisclosureOpen ? "down" : "right"}`}
 							/>
 							<span>高级：覆盖系统提示词</span>
 						</div>
@@ -1108,9 +1103,7 @@ const PromptsView = ({ onDone }: PromptsViewProps) => {
 										}}></div>
 									<div style={{ marginBottom: "12px" }}>
 										<div style={{ marginBottom: "8px" }}>
-											<div style={{ fontWeight: "bold", marginBottom: "4px" }}>
-												API 配置
-											</div>
+											<div style={{ fontWeight: "bold", marginBottom: "4px" }}>API 配置</div>
 											<div
 												style={{
 													fontSize: "13px",
@@ -1131,9 +1124,7 @@ const PromptsView = ({ onDone }: PromptsViewProps) => {
 												})
 											}}
 											style={{ width: "300px" }}>
-											<VSCodeOption value="">
-												使用当前选择的API配置
-											</VSCodeOption>
+											<VSCodeOption value="">使用当前选择的API配置</VSCodeOption>
 											{(listApiConfigMeta || []).map((config) => (
 												<VSCodeOption key={config.id} value={config.id}>
 													{config.name}
