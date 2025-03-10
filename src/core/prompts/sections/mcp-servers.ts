@@ -89,7 +89,7 @@ cd weather-server
 npm install axios
 \`\`\`
 
-This will create a new project with the following structure:
+这将创建一个具有以下结构的新项目：
 
 \`\`\`
 weather-server/
@@ -109,7 +109,7 @@ weather-server/
           └── index.ts      # Main server implementation
 \`\`\`
 
-2. Replace \`src/index.ts\` with the following:
+2. 用以下内容替换 \`src/index.ts\`：
 
 \`\`\`typescript
 #!/usr/bin/env node
