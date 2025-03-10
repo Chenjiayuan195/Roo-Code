@@ -5,15 +5,15 @@ export function getUseMcpToolDescription(args: ToolArgs): string | undefined {
 		return undefined
 	}
 	return `## use_mcp_tool
-Description: Request to use a tool provided by a connected MCP server. Each MCP server can provide multiple tools with different capabilities. Tools have defined input schemas that specify required and optional parameters.
-Parameters:
-- server_name: (required) The name of the MCP server providing the tool
-- tool_name: (required) The name of the tool to execute
-- arguments: (required) A JSON object containing the tool's input parameters, following the tool's input schema
-Usage:
+描述: 请求使用已连接的 MCP 服务器提供的工具。每个 MCP 服务器可以提供具有不同功能的多种工具。工具具有定义的输入架构，指定了必需和可选参数。
+参数:
+- server_name: (必填) 提供工具的 MCP 服务器名称
+- tool_name: (必填) 要执行的工具名称
+- arguments: (必填) 包含工具输入参数的 JSON 对象，遵循工具的输入架构
+用法:
 <use_mcp_tool>
-<server_name>server name here</server_name>
-<tool_name>tool name here</tool_name>
+<server_name>服务器名称</server_name>
+<tool_name>工具名称</tool_name>
 <arguments>
 {
   "param1": "value1",
@@ -22,7 +22,7 @@ Usage:
 </arguments>
 </use_mcp_tool>
 
-Example: Requesting to use an MCP tool
+示例: 请求使用 MCP 工具
 
 <use_mcp_tool>
 <server_name>weather-server</server_name>

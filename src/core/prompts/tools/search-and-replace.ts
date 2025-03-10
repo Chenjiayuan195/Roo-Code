@@ -2,8 +2,8 @@ import { ToolArgs } from "./types"
 
 export function getSearchAndReplaceDescription(args: ToolArgs): string {
 	return `## search_and_replace
-Description: 请求对文件执行搜索和替换操作。每个操作可以指定一个搜索模式（字符串或正则表达式）和替换文本，并带有可选的行范围限制和正则表达式标志。在应用更改之前显示一个差异预览。
-Parameters:
+描述: 请求对文件执行搜索和替换操作。每个操作可以指定一个搜索模式（字符串或正则表达式）和替换文本，并带有可选的行范围限制和正则表达式标志。在应用更改之前显示一个差异预览。
+参数:
 - path: (required) 要修改的文件的路径（相对于当前工作目录 ${args.cwd.toPosix()})
 - operations: (required) 一个JSON数组，包含搜索/替换操作。每个操作是一个对象，具有以下属性：
     * search: (required) 要搜索的文本或模式
@@ -13,7 +13,7 @@ Parameters:
     * use_regex: (optional) 是否将搜索视为正则表达式模式
     * ignore_case: (optional) 是否在匹配时忽略大小写
     * regex_flags: (optional) 当use_regex为true时，附加的正则表达式标志
-Usage:
+使用:
 <search_and_replace>
 <path>文件路径</path>
 <operations>[
@@ -25,7 +25,7 @@ Usage:
   }
 ]</operations>
 </search_and_replace>
-Example: 将"foo"替换为"bar"在example.ts的第1行到第10行
+示例: 将"foo"替换为"bar"在example.ts的第1行到第10行
 <search_and_replace>
 <path>example.ts</path>
 <operations>[
@@ -37,7 +37,7 @@ Example: 将"foo"替换为"bar"在example.ts的第1行到第10行
   }
 ]</operations>
 </search_and_replace>
-Example: 使用正则表达式将所有"old"替换为"new"
+示例: 使用正则表达式将所有"old"替换为"new"
 <search_and_replace>
 <path>example.ts</path>
 <operations>[

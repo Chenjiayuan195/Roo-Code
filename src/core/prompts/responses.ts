@@ -4,39 +4,39 @@ import * as diff from "diff"
 import { RooIgnoreController, LOCK_TEXT_SYMBOL } from "../ignore/RooIgnoreController"
 
 export const formatResponse = {
-	toolDenied: () => `The user denied this operation.`,
+	toolDenied: () => `用户拒绝了此操作。`,
 
 	toolDeniedWithFeedback: (feedback?: string) =>
-		`The user denied this operation and provided the following feedback:\n<feedback>\n${feedback}\n</feedback>`,
+		`用户拒绝了此操作并提供了以下反馈：\n<feedback>\n${feedback}\n</feedback>`,
 
 	toolApprovedWithFeedback: (feedback?: string) =>
-		`The user approved this operation and provided the following context:\n<feedback>\n${feedback}\n</feedback>`,
+		`用户批准了此操作并提供了以下上下文：\n<feedback>\n${feedback}\n</feedback>`,
 
-	toolError: (error?: string) => `The tool execution failed with the following error:\n<error>\n${error}\n</error>`,
+	toolError: (error?: string) => `工具执行失败，出现以下错误：\n<e>\n${error}\n</e>`,
 
 	rooIgnoreError: (path: string) =>
-		`Access to ${path} is blocked by the .rooignore file settings. You must try to continue in the task without using this file, or ask the user to update the .rooignore file.`,
+		`通过 .rooignore 文件设置阻止访问 ${path}。您必须尝试在不使用此文件的情况下继续任务，或请用户更新 .rooignore 文件。`,
 
 	noToolsUsed: () =>
-		`[ERROR] You did not use a tool in your previous response! Please retry with a tool use.
+		`[错误] 您在上一次回复中没有使用工具！请使用工具重试。
 
 ${toolUseInstructionsReminder}
 
-# Next Steps
+# 下一步
 
-If you have completed the user's task, use the attempt_completion tool. 
-If you require additional information from the user, use the ask_followup_question tool. 
-Otherwise, if you have not completed the task and do not need additional information, then proceed with the next step of the task. 
-(This is an automated message, so do not respond to it conversationally.)`,
+如果您已完成用户的任务，请使用 attempt_completion 工具。
+如果您需要用户提供其他信息，请使用 ask_followup_question 工具。
+否则，如果您尚未完成任务且不需要其他信息，则继续执行任务的下一步。
+（这是一条自动消息，请不要对其进行对话式回复。）`,
 
 	tooManyMistakes: (feedback?: string) =>
-		`You seem to be having trouble proceeding. The user has provided the following feedback to help guide you:\n<feedback>\n${feedback}\n</feedback>`,
+		`您似乎在进行过程中遇到困难。用户已提供以下反馈以帮助指导您：\n<feedback>\n${feedback}\n</feedback>`,
 
 	missingToolParameterError: (paramName: string) =>
-		`Missing value for required parameter '${paramName}'. Please retry with complete response.\n\n${toolUseInstructionsReminder}`,
+		`缺少必需参数 '${paramName}' 的值。请使用完整响应重试。\n\n${toolUseInstructionsReminder}`,
 
 	invalidMcpToolArgumentError: (serverName: string, toolName: string) =>
-		`Invalid JSON argument used with ${serverName} for ${toolName}. Please retry with a properly formatted JSON argument.`,
+		`对 ${serverName} 上的 ${toolName} 使用了无效的 JSON 参数。请使用格式正确的 JSON 参数重试。`,
 
 	toolResult: (
 		text: string,
@@ -149,9 +149,9 @@ const formatImagesIntoBlocks = (images?: string[]): Anthropic.ImageBlockParam[] 
 		: []
 }
 
-const toolUseInstructionsReminder = `# Reminder: Instructions for Tool Use
+const toolUseInstructionsReminder = `# 提示：工具使用说明
 
-Tool uses are formatted using XML-style tags. The tool name is enclosed in opening and closing tags, and each parameter is similarly enclosed within its own set of tags. Here's the structure:
+工具使用采用 XML 样式标签格式。工具名称被包含在开放和关闭标签中，每个参数同样被包含在它自己的标签集中。以下是结构：
 
 <tool_name>
 <parameter1_name>value1</parameter1_name>
@@ -159,12 +159,12 @@ Tool uses are formatted using XML-style tags. The tool name is enclosed in openi
 ...
 </tool_name>
 
-For example:
+例如：
 
 <attempt_completion>
-<result>
-I have completed the task...
-</result>
+<r>
+我已完成任务...
+</r>
 </attempt_completion>
 
-Always adhere to this format for all tool uses to ensure proper parsing and execution.`
+始终遵循此格式进行所有工具使用，以确保正确解析和执行。`

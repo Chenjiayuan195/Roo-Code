@@ -47,13 +47,13 @@ export async function getMcpServersSection(
 					.join("\n\n")}`
 			: "(No MCP servers currently connected)"
 
-	const baseSection = `MCP SERVERS
+	const baseSection = `MCP 服务器
 
-The Model Context Protocol (MCP) enables communication between the system and locally running MCP servers that provide additional tools and resources to extend your capabilities.
+模型上下文协议 (MCP) 实现了系统与本地运行的 MCP 服务器之间的通信，这些服务器提供额外的工具和资源来扩展您的能力。
 
-# Connected MCP Servers
+# 已连接的 MCP 服务器
 
-When a server is connected, you can use the server's tools via the \`use_mcp_tool\` tool, and access the server's resources via the \`access_mcp_resource\` tool.
+当服务器连接后，您可以通过 \`use_mcp_tool\` 工具使用服务器的工具，并通过 \`access_mcp_resource\` 工具访问服务器的资源。
 
 ${connectedServers}`
 
@@ -65,27 +65,27 @@ ${connectedServers}`
 		baseSection +
 		`
 
-## Creating an MCP Server
+## 创建 MCP 服务器
 
-The user may ask you something along the lines of "add a tool" that does some function, in other words to create an MCP server that provides tools and resources that may connect to external APIs for example. You have the ability to create an MCP server and add it to a configuration file that will then expose the tools and resources for you to use with \`use_mcp_tool\` and \`access_mcp_resource\`.
+用户可能会要求您"添加一个工具"来执行某些功能，换句话说，创建一个 MCP 服务器，提供可能连接到外部 API 的工具和资源。您有能力创建 MCP 服务器并将其添加到配置文件中，然后您就可以使用 \`use_mcp_tool\` 和 \`access_mcp_resource\` 来使用这些工具和资源。
 
-When creating MCP servers, it's important to understand that they operate in a non-interactive environment. The server cannot initiate OAuth flows, open browser windows, or prompt for user input during runtime. All credentials and authentication tokens must be provided upfront through environment variables in the MCP settings configuration. For example, Spotify's API uses OAuth to get a refresh token for the user, but the MCP server cannot initiate this flow. While you can walk the user through obtaining an application client ID and secret, you may have to create a separate one-time setup script (like get-refresh-token.js) that captures and logs the final piece of the puzzle: the user's refresh token (i.e. you might run the script using execute_command which would open a browser for authentication, and then log the refresh token so that you can see it in the command output for you to use in the MCP settings configuration).
+创建 MCP 服务器时，重要的是要理解它们在非交互式环境中运行。服务器不能启动 OAuth 流程、打开浏览器窗口或在运行时提示用户输入。所有凭据和认证令牌必须通过 MCP 设置配置中的环境变量预先提供。例如，Spotify 的 API 使用 OAuth 获取用户的刷新令牌，但 MCP 服务器无法启动此流程。虽然您可以指导用户获取应用程序客户端 ID 和密钥，但您可能必须创建一个一次性设置脚本（如 get-refresh-token.js），该脚本捕获并记录最后一部分：用户的刷新令牌（即您可能使用 execute_command 运行脚本，该脚本会打开浏览器进行身份验证，然后记录刷新令牌，以便您可以在命令输出中看到它，并在 MCP 设置配置中使用）。
 
-Unless the user specifies otherwise, new MCP servers should be created in: ${await mcpHub.getMcpServersPath()}
+除非用户另有指定，否则新的 MCP 服务器应创建在: ${await mcpHub.getMcpServersPath()}
 
-### Example MCP Server
+### MCP 服务器示例
 
-For example, if the user wanted to give you the ability to retrieve weather information, you could create an MCP server that uses the OpenWeather API to get weather information, add it to the MCP settings configuration file, and then notice that you now have access to new tools and resources in the system prompt that you might use to show the user your new capabilities.
+例如，如果用户想让您能够检索天气信息，您可以创建一个使用 OpenWeather API 获取天气信息的 MCP 服务器，将其添加到 MCP 设置配置文件中，然后注意到您现在可以在系统提示中访问新的工具和资源，您可以使用这些工具向用户展示您的新功能。
 
-The following example demonstrates how to build an MCP server that provides weather data functionality. While this example shows how to implement resources, resource templates, and tools, in practice you should prefer using tools since they are more flexible and can handle dynamic parameters. The resource and resource template implementations are included here mainly for demonstration purposes of the different MCP capabilities, but a real weather server would likely just expose tools for fetching weather data. (The following steps are for macOS)
+以下示例演示如何构建提供天气数据功能的 MCP 服务器。虽然此示例展示了如何实现资源、资源模板和工具，但实际上您应该优先使用工具，因为它们更灵活，可以处理动态参数。资源和资源模板实现主要是为了演示不同的 MCP 功能而包含在这里，但实际的天气服务器可能只会公开用于获取天气数据的工具。（以下步骤适用于 macOS）
 
-1. Use the \`create-typescript-server\` tool to bootstrap a new project in the default MCP servers directory:
+1. 使用 \`create-typescript-server\` 工具在默认 MCP 服务器目录中引导新项目：
 
 \`\`\`bash
 cd ${await mcpHub.getMcpServersPath()}
 npx @modelcontextprotocol/create-server weather-server
 cd weather-server
-# Install dependencies
+# 安装依赖
 npm install axios
 \`\`\`
 

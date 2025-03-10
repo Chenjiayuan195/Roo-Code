@@ -2,15 +2,15 @@ import { ToolArgs } from "./types"
 
 export function getExecuteCommandDescription(args: ToolArgs): string | undefined {
 	return `## execute_command
-Description: Request to execute a CLI command on the system. Use this when you need to perform system operations or run specific commands to accomplish any step in the user's task. You must tailor your command to the user's system and provide a clear explanation of what the command does. For command chaining, use the appropriate chaining syntax for the user's shell. Prefer to execute complex CLI commands over creating executable scripts, as they are more flexible and easier to run. Commands will be executed in the current working directory: ${args.cwd}
-Parameters:
-- command: (required) The CLI command to execute. This should be valid for the current operating system. Ensure the command is properly formatted and does not contain any harmful instructions.
-Usage:
+描述: 请求在系统上执行 CLI 命令。当您需要执行系统操作或运行特定命令以完成用户任务中的任何步骤时，使用此功能。您必须根据用户的系统调整命令，并提供关于该命令功能的清晰解释。对于命令链接，请使用适合用户 shell 的链接语法。优先执行复杂的 CLI 命令而不是创建可执行脚本，因为它们更灵活、更容易运行。命令将在当前工作目录中执行: ${args.cwd}
+参数:
+- command: (必填) 要执行的 CLI 命令。这应该对当前操作系统有效。确保命令格式正确，不包含任何有害指令。
+用法:
 <execute_command>
-<command>Your command here</command>
+<command>在此输入您的命令</command>
 </execute_command>
 
-Example: Requesting to execute npm run dev
+示例: 请求执行 npm run dev
 <execute_command>
 <command>npm run dev</command>
 </execute_command>`

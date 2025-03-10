@@ -46,19 +46,17 @@ export async function addCustomInstructions(
 
 	// Add language preference if provided
 	if (options.preferredLanguage) {
-		sections.push(
-			`Language Preference:\nYou should always speak and think in the ${options.preferredLanguage} language.`,
-		)
+		sections.push(`语言偏好:\n您应该始终使用 ${options.preferredLanguage} 语言进行交流和思考。`)
 	}
 
 	// Add global instructions first
 	if (typeof globalCustomInstructions === "string" && globalCustomInstructions.trim()) {
-		sections.push(`Global Instructions:\n${globalCustomInstructions.trim()}`)
+		sections.push(`全局指令:\n${globalCustomInstructions.trim()}`)
 	}
 
 	// Add mode-specific instructions after
 	if (typeof modeCustomInstructions === "string" && modeCustomInstructions.trim()) {
-		sections.push(`Mode-specific Instructions:\n${modeCustomInstructions.trim()}`)
+		sections.push(`模式特定指令:\n${modeCustomInstructions.trim()}`)
 	}
 
 	// Add rules - include both mode-specific and generic rules if they exist
@@ -81,7 +79,7 @@ export async function addCustomInstructions(
 	}
 
 	if (rules.length > 0) {
-		sections.push(`Rules:\n\n${rules.join("\n\n")}`)
+		sections.push(`规则:\n\n${rules.join("\n\n")}`)
 	}
 
 	const joinedSections = sections.join("\n\n")
@@ -90,9 +88,9 @@ export async function addCustomInstructions(
 		? `
 ====
 
-USER'S CUSTOM INSTRUCTIONS
+用户自定义指令
 
-The following additional instructions are provided by the user, and should be followed to the best of your ability without interfering with the TOOL USE guidelines.
+以下是用户提供的额外指令，您应尽力遵循这些指令，同时不干扰工具使用指南。
 
 ${joinedSections}`
 		: ""

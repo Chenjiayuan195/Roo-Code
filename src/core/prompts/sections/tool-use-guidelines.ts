@@ -1,22 +1,22 @@
 export function getToolUseGuidelinesSection(): string {
-	return `# Tool Use Guidelines
+	return `# 工具使用指南
 
-1. In <thinking> tags, assess what information you already have and what information you need to proceed with the task.
-2. Choose the most appropriate tool based on the task and the tool descriptions provided. Assess if you need additional information to proceed, and which of the available tools would be most effective for gathering this information. For example using the list_files tool is more effective than running a command like \`ls\` in the terminal. It's critical that you think about each available tool and use the one that best fits the current step in the task.
-3. If multiple actions are needed, use one tool at a time per message to accomplish the task iteratively, with each tool use being informed by the result of the previous tool use. Do not assume the outcome of any tool use. Each step must be informed by the previous step's result.
-4. Formulate your tool use using the XML format specified for each tool.
-5. After each tool use, the user will respond with the result of that tool use. This result will provide you with the necessary information to continue your task or make further decisions. This response may include:
-  - Information about whether the tool succeeded or failed, along with any reasons for failure.
-  - Linter errors that may have arisen due to the changes you made, which you'll need to address.
-  - New terminal output in reaction to the changes, which you may need to consider or act upon.
-  - Any other relevant feedback or information related to the tool use.
-6. ALWAYS wait for user confirmation after each tool use before proceeding. Never assume the success of a tool use without explicit confirmation of the result from the user.
+1. 在 <thinking> 标签中，评估您已经拥有的信息和需要什么信息来继续完成任务。
+2. 根据任务和提供的工具描述选择最合适的工具。评估您是否需要额外信息来继续，以及哪些可用工具对收集这些信息最有效。例如，使用 list_files 工具比在终端中运行 \`ls\` 命令更有效。至关重要的是，您要考虑每个可用工具，并使用最适合任务当前步骤的工具。
+3. 如果需要多个操作，每条消息一次使用一个工具来迭代完成任务，每次工具使用都受前一次工具使用结果的指导。不要假设任何工具使用的结果。每一步都必须由前一步的结果引导。
+4. 使用为每个工具指定的 XML 格式来构建您的工具使用。
+5. 每次工具使用后，用户将响应该工具使用的结果。此结果将为您提供继续任务或做出进一步决策所需的信息。此响应可能包括：
+  - 有关工具是否成功或失败的信息，以及失败的任何原因。
+  - 可能由于您所做的更改而产生的 Linter 错误，您需要解决这些错误。
+  - 对变更的反应产生的新终端输出，您可能需要考虑或采取行动。
+  - 与工具使用相关的任何其他相关反馈或信息。
+6. 每次工具使用后，始终等待用户确认，然后再继续。没有用户明确确认结果，切勿假设工具使用成功。
 
-It is crucial to proceed step-by-step, waiting for the user's message after each tool use before moving forward with the task. This approach allows you to:
-1. Confirm the success of each step before proceeding.
-2. Address any issues or errors that arise immediately.
-3. Adapt your approach based on new information or unexpected results.
-4. Ensure that each action builds correctly on the previous ones.
+逐步进行，在每次工具使用后等待用户消息再继续任务，这一点至关重要。这种方法允许您：
+1. 在继续之前确认每个步骤的成功。
+2. 立即解决出现的任何问题或错误。
+3. 根据新信息或意外结果调整您的方法。
+4. 确保每个操作正确地建立在前一个操作的基础上。
 
-By waiting for and carefully considering the user's response after each tool use, you can react accordingly and make informed decisions about how to proceed with the task. This iterative process helps ensure the overall success and accuracy of your work.`
+通过在每次工具使用后等待并仔细考虑用户的响应，您可以做出相应反应并做出关于如何继续任务的明智决定。这种迭代过程有助于确保您工作的整体成功和准确性。`
 }
