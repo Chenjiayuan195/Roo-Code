@@ -169,12 +169,12 @@ export class Cline {
 		startTask = true,
 	}: ClineOptions) {
 		if (startTask && !task && !images && !historyItem) {
-			throw new Error("Either historyItem or task/images must be provided")
+			throw new Error("必须提供historyItem或task/images")
 		}
 
 		this.rooIgnoreController = new RooIgnoreController(cwd)
 		this.rooIgnoreController.initialize().catch((error) => {
-			console.error("Failed to initialize RooIgnoreController:", error)
+			console.error("RooIgnoreController初始化失败:", error)
 		})
 
 		this.taskId = historyItem ? historyItem.id : crypto.randomUUID()
@@ -210,7 +210,7 @@ export class Cline {
 			} else if (historyItem) {
 				this.resumeTaskFromHistory()
 			} else {
-				throw new Error("Either historyItem or task/images must be provided")
+				throw new Error("必须提供historyItem或task/images")
 			}
 		}
 	}
@@ -225,7 +225,7 @@ export class Cline {
 		} else if (historyItem) {
 			promise = instance.resumeTaskFromHistory()
 		} else {
-			throw new Error("Either historyItem or task/images must be provided")
+			throw new Error("必须提供historyItem或task/images")
 		}
 
 		return [instance, promise]
@@ -296,7 +296,7 @@ export class Cline {
 	private async ensureTaskDirectoryExists(): Promise<string> {
 		const globalStoragePath = this.providerRef.deref()?.context.globalStorageUri.fsPath
 		if (!globalStoragePath) {
-			throw new Error("Global storage uri is invalid")
+			throw new Error("全局存储URI无效")
 		}
 		const taskDir = path.join(globalStoragePath, "tasks", this.taskId)
 		await fs.mkdir(taskDir, { recursive: true })
@@ -328,8 +328,8 @@ export class Cline {
 			const filePath = path.join(await this.ensureTaskDirectoryExists(), GlobalFileNames.apiConversationHistory)
 			await fs.writeFile(filePath, JSON.stringify(this.apiConversationHistory))
 		} catch (error) {
-			// in the off chance this fails, we don't want to stop the task
-			console.error("Failed to save API conversation history:", error)
+			// 万一此操作失败，我们不希望停止任务
+			console.error("保存API对话历史记录失败:", error)
 		}
 	}
 
@@ -381,7 +381,7 @@ export class Cline {
 				taskDirSize = await getFolderSize.loose(taskDir)
 			} catch (err) {
 				console.error(
-					`[saveClineMessages] failed to get task directory size (${taskDir}): ${err instanceof Error ? err.message : String(err)}`,
+					`[saveClineMessages] 无法获取任务目录大小 (${taskDir}): ${err instanceof Error ? err.message : String(err)}`,
 				)
 			}
 
@@ -398,7 +398,7 @@ export class Cline {
 				size: taskDirSize,
 			})
 		} catch (error) {
-			console.error("Failed to save cline messages:", error)
+			console.error("保存对话消息失败:", error)
 		}
 	}
 
@@ -413,7 +413,7 @@ export class Cline {
 	): Promise<{ response: ClineAskResponse; text?: string; images?: string[] }> {
 		// If this Cline instance was aborted by the provider, then the only thing keeping us alive is a promise still running in the background, in which case we don't want to send its result to the webview as it is attached to a new instance of Cline now. So we can safely ignore the result of any active promises, and this class will be deallocated. (Although we set Cline = undefined in provider, that simply removes the reference to this instance, but the instance is still alive until this promise resolves or rejects.)
 		if (this.abort) {
-			throw new Error(`Task: ${this.taskNumber} Magic Code instance aborted (#1)`)
+			throw new Error(`Task: ${this.taskNumber} Magic Code 实例已中止 (#1)`)
 		}
 		let askTs: number
 		if (partial !== undefined) {
@@ -432,7 +432,7 @@ export class Cline {
 					await this.providerRef
 						.deref()
 						?.postMessageToWebview({ type: "partialMessage", partialMessage: lastMessage })
-					throw new Error("Current ask promise was ignored (#1)")
+					throw new Error("当前请求已被忽略 (#1)")
 				} else {
 					// this is a new partial message, so add it with partial state
 					// this.askResponse = undefined
@@ -442,7 +442,7 @@ export class Cline {
 					this.lastMessageTs = askTs
 					await this.addToClineMessages({ ts: askTs, type: "ask", ask: type, text, partial })
 					await this.providerRef.deref()?.postStateToWebview()
-					throw new Error("Current ask promise was ignored (#2)")
+					throw new Error("当前请求已被忽略 (#2)")
 				}
 			} else {
 				// partial=false means its a complete version of a previously partial message
@@ -495,7 +495,7 @@ export class Cline {
 
 		await pWaitFor(() => this.askResponse !== undefined || this.lastMessageTs !== askTs, { interval: 100 })
 		if (this.lastMessageTs !== askTs) {
-			throw new Error("Current ask promise was ignored") // could happen if we send multiple asks in a row i.e. with command_output. It's important that when we know an ask could fail, it is handled gracefully
+			throw new Error("当前请求已被忽略") // could happen if we send multiple asks in a row i.e. with command_output. It's important that when we know an ask could fail, it is handled gracefully
 		}
 		const result = { response: this.askResponse!, text: this.askResponseText, images: this.askResponseImages }
 		this.askResponse = undefined
@@ -519,7 +519,7 @@ export class Cline {
 		progressStatus?: ToolProgressStatus,
 	): Promise<undefined> {
 		if (this.abort) {
-			throw new Error(`Task: ${this.taskNumber} Magic Code instance aborted (#2)`)
+			throw new Error(`Task: ${this.taskNumber} Magic Code 实例已中止 (#2)`)
 		}
 
 		if (partial !== undefined) {
@@ -580,9 +580,9 @@ export class Cline {
 	async sayAndCreateMissingParamError(toolName: ToolUseName, paramName: string, relPath?: string) {
 		await this.say(
 			"error",
-			`Magic tried to use ${toolName}${
-				relPath ? ` for '${relPath.toPosix()}'` : ""
-			} without value for required parameter '${paramName}'. Retrying...`,
+			`Magic 尝试使用 ${toolName}${
+				relPath ? ` 为 '${relPath.toPosix()}'` : ""
+			} 但没有提供必需的参数 '${paramName}'。重试...`,
 		)
 		return formatResponse.toolError(formatResponse.missingToolParameterError(paramName))
 	}
@@ -628,9 +628,7 @@ export class Cline {
 				],
 			})
 		} catch (error) {
-			this.providerRef
-				.deref()
-				?.log(`Error failed to add reply from subtast into conversation of parent task, error: ${error}`)
+			this.providerRef.deref()?.log(`错误：无法将子任务回复添加到父任务对话中，错误: ${error}`)
 			throw error
 		}
 	}
@@ -818,10 +816,10 @@ export class Cline {
 					modifiedOldUserContent = [...existingUserContent]
 				}
 			} else {
-				throw new Error("Unexpected: Last message is not a user or assistant message")
+				throw new Error("意外情况：最后一条消息不是用户或助手消息")
 			}
 		} else {
-			throw new Error("Unexpected: No existing API conversation history")
+			throw new Error("意外情况：没有现有的API对话历史")
 		}
 
 		let newUserContent: UserContent = [...modifiedOldUserContent]
@@ -1074,11 +1072,11 @@ export class Cline {
 		if (mcpEnabled ?? true) {
 			mcpHub = this.providerRef.deref()?.getMcpHub()
 			if (!mcpHub) {
-				throw new Error("MCP hub not available")
+				throw new Error("MCP中心不可用")
 			}
 			// Wait for MCP servers to be connected before generating system prompt
 			await pWaitFor(() => mcpHub!.isConnecting !== true, { timeout: 10_000 }).catch(() => {
-				console.error("MCP servers failed to connect in time")
+				console.error("MCP服务器连接超时")
 			})
 		}
 
@@ -1097,7 +1095,7 @@ export class Cline {
 		const systemPrompt = await (async () => {
 			const provider = this.providerRef.deref()
 			if (!provider) {
-				throw new Error("Provider not available")
+				throw new Error("提供者不可用")
 			}
 			return SYSTEM_PROMPT(
 				provider.context,
@@ -1189,7 +1187,7 @@ export class Cline {
 		} catch (error) {
 			// note that this api_req_failed ask is unique in that we only present this option if the api hasn't streamed any content yet (ie it fails on the first chunk due), as it would allow them to hit a retry button. However if the api failed mid-stream, it could be in any arbitrary state where some tools may have executed, so that error is handled differently and requires cancelling the task entirely.
 			if (alwaysApproveResubmit) {
-				const errorMsg = error.error?.metadata?.raw ?? error.message ?? "Unknown error"
+				const errorMsg = error.error?.metadata?.raw ?? error.message ?? "未知错误"
 				const baseDelay = requestDelaySeconds || 5
 				const exponentialDelay = Math.ceil(baseDelay * Math.pow(2, retryAttempt))
 				// Wait for the greater of the exponential delay or the rate limit delay
@@ -1223,7 +1221,7 @@ export class Cline {
 				)
 				if (response !== "yesButtonClicked") {
 					// this will never happen since if noButtonClicked, we will clear current task, aborting this instance
-					throw new Error("API request failed")
+					throw new Error("API请求失败")
 				}
 				await this.say("api_req_retried")
 				// delegate generator output from the recursive call
@@ -1240,7 +1238,7 @@ export class Cline {
 
 	async presentAssistantMessage() {
 		if (this.abort) {
-			throw new Error(`Task: ${this.taskNumber} Magic Code instance aborted (#3)`)
+			throw new Error(`Task: ${this.taskNumber} Magic Code 实例已中止 (#3)`)
 		}
 
 		if (this.presentAssistantMessageLocked) {
@@ -1438,10 +1436,10 @@ export class Cline {
 				}
 
 				const handleError = async (action: string, error: Error) => {
-					const errorString = `Error ${action}: ${JSON.stringify(serializeError(error))}`
+					const errorString = `错误 ${action}: ${JSON.stringify(serializeError(error))}`
 					await this.say(
 						"error",
-						`Error ${action}:\n${error.message ?? JSON.stringify(serializeError(error), null, 2)}`,
+						`错误 ${action}:\n${error.message ?? JSON.stringify(serializeError(error), null, 2)}`,
 					)
 					// this.toolResults.push({
 					// 	type: "tool_result",
@@ -1747,7 +1745,7 @@ export class Cline {
 
 								if (!fileExists) {
 									this.consecutiveMistakeCount++
-									const formattedError = `File does not exist at path: ${absolutePath}\n\n<error_details>\nThe specified file could not be found. Please verify the file path and try again.\n</error_details>`
+									const formattedError = `文件在路径不存在: ${absolutePath}\n\n<error_details>\n找不到指定的文件。请验证文件路径并重试。\n</error_details>`
 									await this.say("error", formattedError)
 									pushToolResult(formattedError)
 									break
@@ -1763,7 +1761,7 @@ export class Cline {
 									parseInt(block.params.end_line ?? ""),
 								)) ?? {
 									success: false,
-									error: "No diff strategy available",
+									error: "没有可用的差异策略",
 								}
 								let partResults = ""
 
@@ -1908,7 +1906,7 @@ export class Cline {
 
 							if (!fileExists) {
 								this.consecutiveMistakeCount++
-								const formattedError = `File does not exist at path: ${absolutePath}\n\n<error_details>\nThe specified file could not be found. Please verify the file path and try again.\n</error_details>`
+								const formattedError = `文件在路径不存在: ${absolutePath}\n\n<error_details>\n找不到指定的文件。请验证文件路径并重试。\n</error_details>`
 								await this.say("error", formattedError)
 								pushToolResult(formattedError)
 								break
@@ -1922,11 +1920,11 @@ export class Cline {
 							try {
 								parsedOperations = JSON.parse(operations)
 								if (!Array.isArray(parsedOperations)) {
-									throw new Error("Operations must be an array")
+									throw new Error("操作必须是数组")
 								}
 							} catch (error) {
 								this.consecutiveMistakeCount++
-								await this.say("error", `Failed to parse operations JSON: ${error.message}`)
+								await this.say("error", `解析操作JSON失败: ${error.message}`)
 								pushToolResult(formatResponse.toolError("Invalid operations JSON format"))
 								break
 							}
@@ -2059,7 +2057,7 @@ export class Cline {
 
 								if (!fileExists) {
 									this.consecutiveMistakeCount++
-									const formattedError = `File does not exist at path: ${absolutePath}\n\n<error_details>\nThe specified file could not be found. Please verify the file path and try again.\n</error_details>`
+									const formattedError = `文件在路径不存在: ${absolutePath}\n\n<error_details>\n找不到指定的文件。请验证文件路径并重试。\n</error_details>`
 									await this.say("error", formattedError)
 									pushToolResult(formattedError)
 									break
@@ -2078,11 +2076,11 @@ export class Cline {
 								try {
 									parsedOperations = JSON.parse(operations)
 									if (!Array.isArray(parsedOperations)) {
-										throw new Error("Operations must be an array")
+										throw new Error("操作必须是数组")
 									}
 								} catch (error) {
 									this.consecutiveMistakeCount++
-									await this.say("error", `Failed to parse operations JSON: ${error.message}`)
+									await this.say("error", `解析操作JSON失败: ${error.message}`)
 									pushToolResult(formatResponse.toolError("Invalid operations JSON format"))
 									break
 								}
@@ -2650,7 +2648,7 @@ export class Cline {
 
 								// TODO: add progress indicator and ability to parse images and non-text responses
 								const toolResultPretty =
-									(toolResult?.isError ? "Error:\n" : "") +
+									(toolResult?.isError ? "错误:\n" : "") +
 										toolResult?.content
 											.map((item) => {
 												if (item.type === "text") {
@@ -3104,15 +3102,15 @@ export class Cline {
 		includeFileDetails: boolean = false,
 	): Promise<boolean> {
 		if (this.abort) {
-			throw new Error(`Task: ${this.taskNumber} Magic Code instance aborted (#4)`)
+			throw new Error(`Task: ${this.taskNumber} Magic Code 实例已中止 (#4)`)
 		}
 
 		if (this.consecutiveMistakeCount >= 3) {
 			const { response, text, images } = await this.ask(
 				"mistake_limit_reached",
 				this.api.getModel().id.includes("claude")
-					? `This may indicate a failure in his thought process or inability to use a tool properly, which can be mitigated with some user guidance (e.g. "Try breaking down the task into smaller steps").`
-					: "Magic Code uses complex prompts and iterative task execution that may be challenging for less capable models. For best results, it's recommended to use Claude 3.7 Sonnet for its advanced agentic coding capabilities.",
+					? `这可能表明其思考过程存在问题或无法正确使用工具，可以通过一些用户指导来缓解（例如："尝试将任务分解为更小的步骤"）。`
+					: "Magic Code 使用复杂的提示和迭代任务执行，这对能力较弱的模型可能具有挑战性。为获得最佳结果，建议使用 Claude 3.7 Sonnet，因为它具有先进的代理编码能力。",
 			)
 			if (response === "messageResponse") {
 				userContent.push(
@@ -3342,7 +3340,7 @@ export class Cline {
 
 			// need to call here in case the stream was aborted
 			if (this.abort || this.abandoned) {
-				throw new Error(`Task: ${this.taskNumber} Magic Code instance aborted (#5)`)
+				throw new Error(`Task: ${this.taskNumber} Magic Code 实例已中止 (#5)`)
 			}
 
 			this.didCompleteReadingStream = true
