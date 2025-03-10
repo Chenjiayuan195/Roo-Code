@@ -1,14 +1,11 @@
 
 <div align="center">
 <h1>Magic Code</h1>
+<h3>一款辅助web开发的AI编程助手<h3>
 </div>
 
 ## 本地开发
 
-1. **Clone** the repo:
-    ```bash
-    git clone https://github.com/RooVetGit/Magic-Code.git
-    ```
 1. **Install dependencies**:
     ```bash
     npm run install:all
@@ -23,8 +20,8 @@ if that fails, try:
     ```bash
     npm run build
     ```
-    - A `.vsix` file will appear in the `bin/` directory.
-3. **Install** the `.vsix` manually if desired:
+    -  `.vsix` 文件将会出现在 `bin/` 文件夹下.
+3. **Install** the `.vsix`:
     ```bash
     code --install-extension bin/magic-code-1.0.0.vsix
     ```

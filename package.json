@@ -1,10 +1,10 @@
 {
 	"name": "Magic-Code",
 	"displayName": "Magic Code",
-	"description": "一个协助Web开发人员编写代码的智能体",
-	"publisher": "Web Group",
+	"description": "一款辅助web开发的AI编程助手",
+	"publisher": "产品工程院FE",
 	"version": "1.0.0",
-	"icon": "assets/icons/rocket.png",
+	"icon": "assets/icons/icoPng.ico",
 	"galleryBanner": {
 		"color": "#617A91",
 		"theme": "dark"
@@ -55,7 +55,7 @@
 				{
 					"id": "roo-cline-ActivityBar",
 					"title": "Magic Code",
-					"icon": "$(rocket)"
+					"icon": "./assets/icons/icoPng.ico"
 				}
 			]
 		},
