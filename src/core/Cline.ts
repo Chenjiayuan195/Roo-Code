@@ -2920,8 +2920,56 @@ export class Cline {
 						await this.say("user_feedback", text ?? "", images)
 						return [
 						*/
-						const result: string | undefined = block.params.result
-						const command: string | undefined = block.params.command
+						// 从参数中获取result和command
+						let result: string | undefined = block.params.result
+						let command: string | undefined = block.params.command
+
+						// 增强的兼容性处理：处理不同模型可能使用的不同格式
+						// 1. 部分模型可能使用其他参数名称，我们把它们添加为任意字符串索引
+						const params = block.params as Record<string, string | undefined>
+						if (!result && params.r) {
+							result = params.r
+						}
+
+						// 2. 处理特殊情况：deepseek和qwq可能以不同方式提供参数
+						// 查找工具使用的原始内容，查找模式类似 <r>content</r>
+						const assistantMessage = this.clineMessages.find(
+							(msg) => msg.type === "say" && msg.say === "text",
+						)
+
+						// 如果找不到assistantMessage，尝试查找包含最近文本内容的消息
+						const recentTextMessage = !assistantMessage
+							? this.clineMessages
+									.filter((msg) => msg.type === "say" && msg.text)
+									.sort((a, b) => b.ts - a.ts)[0]
+							: undefined
+
+						const messageText = assistantMessage?.text || recentTextMessage?.text
+
+						if (!result && messageText) {
+							// 尝试从文本内容中提取result
+							const resultMatch = messageText.match(/<r>([\s\S]*?)<\/r>/)
+							if (resultMatch && resultMatch[1]) {
+								result = resultMatch[1].trim()
+							} else if (messageText.includes("<attempt_completion>")) {
+								// 如果找到了尝试完成标记但没有正确的r标签，尝试提取内容
+								const attemptMatch = messageText.match(
+									/<attempt_completion>([\s\S]*?)<\/attempt_completion>/,
+								)
+								if (attemptMatch && attemptMatch[1]) {
+									result = attemptMatch[1].trim()
+								}
+							}
+						}
+
+						// 同样处理command参数
+						if (!command && messageText) {
+							const commandMatch = messageText.match(/<command>([\s\S]*?)<\/command>/)
+							if (commandMatch && commandMatch[1]) {
+								command = commandMatch[1].trim()
+							}
+						}
+
 						try {
 							const lastMessage = this.clineMessages.at(-1)
 							if (block.partial) {

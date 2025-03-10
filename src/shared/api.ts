@@ -17,6 +17,7 @@ export type ApiProvider =
 	| "unbound"
 	| "requesty"
 	| "human-relay"
+	| "qwq"
 
 export interface ApiHandlerOptions {
 	apiModelId?: string
@@ -57,19 +58,22 @@ export interface ApiHandlerOptions {
 	geminiApiKey?: string
 	openAiNativeApiKey?: string
 	mistralApiKey?: string
-	mistralCodestralUrl?: string // Codestral URL的新选项
+	mistralCodestralUrl?: string
 	azureApiVersion?: string
 	openRouterUseMiddleOutTransform?: boolean
 	openAiStreamingEnabled?: boolean
 	deepSeekBaseUrl?: string
 	deepSeekApiKey?: string
-	includeMaxTokens?: boolean
 	unboundApiKey?: string
 	unboundModelId?: string
 	unboundModelInfo?: ModelInfo
 	requestyApiKey?: string
 	requestyModelId?: string
 	requestyModelInfo?: ModelInfo
+	qwqApiKey?: string
+	qwqBaseUrl?: string
+	qwqModelId?: string
+	includeMaxTokens?: boolean
 	modelTemperature?: number | null
 	modelMaxTokens?: number
 	modelMaxThinkingTokens?: number
@@ -835,6 +839,22 @@ export const deepSeekModels = {
 		cacheWritesPrice: 0.55, // 每百万令牌$0.55（缓存未命中）
 		cacheReadsPrice: 0.14, // 每百万令牌$0.14（缓存命中）
 		description: `DeepSeek-R1在数学、代码和推理任务上达到了与OpenAI-o1相当的性能。支持最多32K令牌的思维链推理。`,
+	},
+} as const satisfies Record<string, ModelInfo>
+
+// QWQ
+// 自定义模型配置
+export type QwqModelId = keyof typeof qwqModels
+export const qwqDefaultModelId: QwqModelId = "qwq-32b"
+export const qwqModels = {
+	"qwq-32b": {
+		maxTokens: 8192,
+		contextWindow: 32_000,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 0, // 如需添加价格，可在这里设置
+		outputPrice: 0, // 如需添加价格，可在这里设置
+		description: `QWQ-32B是一个32B参数的大型语言模型，拥有强大的代码和自然语言处理能力。`,
 	},
 } as const satisfies Record<string, ModelInfo>
 
