@@ -1103,7 +1103,8 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 					<div style={{ padding: "0 20px", flexShrink: 0 }}>
 						<h2>Magic Code可以做什么？</h2>
 						<p>
-							得益于智能代理编码能力的最新突破，我能够逐步处理复杂的软件开发任务。通过可以创建和编辑文件、探索复杂项目、使用浏览器以及执行终端命令（在您授权后）的工具，我能够以超越代码补全或技术支持的方式为您提供帮助。我甚至可以使用 MCP 创建新工具并扩展自己的能力.
+							得益于LLM和Agent的最新突破，我能够逐步处理复杂的软件开发任务。通过可以创建和编辑文件、探索复杂项目、使用浏览器以及执行终端命令（在您授权后）的工具，我能够以超越代码补全或技术支持的方式为您提供帮助。我甚至可以使用
+							MCP 创建新工具并扩展自己的能力.
 						</p>
 					</div>
 					{taskHistory.length > 0 && <HistoryPreview showHistoryView={showHistoryView} />}
