@@ -41,19 +41,19 @@ export class SearchReplaceDiffStrategy implements DiffStrategy {
 
 	getToolDescription(args: { cwd: string; toolOptions?: { [key: string]: string } }): string {
 		return `## apply_diff
-Description: Request to replace existing code using a search and replace block.
-This tool allows for precise, surgical replaces to files by specifying exactly what content to search for and what to replace it with.
-The tool will maintain proper indentation and formatting while making changes.
-Only a single operation is allowed per tool use.
-The SEARCH section must exactly match existing content including whitespace and indentation.
-If you're not confident in the exact content to search for, use the read_file tool first to get the exact content.
-When applying the diffs, be extra careful to remember to change any closing brackets or other syntax that may be affected by the diff farther down in the file.
+描述: 请求使用搜索和替换块替换现有代码。
+这个工具允许通过指定要搜索的内容以及要替换的内容来精确地对文件进行手术替换。
+工具将在保持适当的缩进和格式的同时进行更改。
+每个工具只能执行一次操作。
+搜索部分必须完全匹配现有内容，包括空白和缩进。
+如果对要搜索的内容不自信，请先使用read_file工具获取精确的内容。
+在应用diffs时，请特别小心，记住更改任何可能受diff更远处的文件影响的关闭括号或其他语法。
 
-Parameters:
-- path: (required) The path of the file to modify (relative to the current working directory ${args.cwd})
-- diff: (required) The search/replace block defining the changes.
-- start_line: (required) The line number where the search block starts.
-- end_line: (required) The line number where the search block ends.
+参数:
+- path: (required) 要修改的文件路径 (相对于当前工作目录 ${args.cwd})
+- diff: (required) 定义更改的搜索/替换块。
+- start_line: (required) 搜索块开始的行号。
+- end_line: (required) 搜索块结束的行号。
 
 Diff format:
 \`\`\`
@@ -112,7 +112,7 @@ Your search/replace content here
 		if (!match) {
 			return {
 				success: false,
-				error: `Invalid diff format - missing required SEARCH/REPLACE sections\n\nDebug Info:\n- Expected Format: <<<<<<< SEARCH\\n[search content]\\n=======\\n[replace content]\\n>>>>>>> REPLACE\n- Tip: Make sure to include both SEARCH and REPLACE sections with correct markers`,
+				error: `无效的diff格式 - 缺少必需的SEARCH/REPLACE部分\n\n调试信息:\n- 预期格式: <<<<<<< SEARCH\\n[search content]\\n=======\\n[replace content]\\n>>>>>>> REPLACE\n- 提示: 确保包含SEARCH和REPLACE部分，并使用正确的标记`,
 			}
 		}
 
@@ -136,7 +136,7 @@ Your search/replace content here
 		if (searchLines.length === 0 && !startLine) {
 			return {
 				success: false,
-				error: `Empty search content requires start_line to be specified\n\nDebug Info:\n- Empty search content is only valid for insertions at a specific line\n- For insertions, specify the line number where content should be inserted`,
+				error: `Empty search content requires start_line to be specified\n\n调试信息:\n- Empty search content is only valid for insertions at a specific line\n- For insertions, specify the line number where content should be inserted`,
 			}
 		}
 
@@ -144,7 +144,7 @@ Your search/replace content here
 		if (searchLines.length === 0 && startLine && endLine && startLine !== endLine) {
 			return {
 				success: false,
-				error: `Empty search content requires start_line and end_line to be the same (got ${startLine}-${endLine})\n\nDebug Info:\n- Empty search content is only valid for insertions at a specific line\n- For insertions, use the same line number for both start_line and end_line`,
+				error: `Empty search content requires start_line and end_line to be the same (got ${startLine}-${endLine})\n\n调试信息:\n- Empty search content is only valid for insertions at a specific line\n- For insertions, use the same line number for both start_line and end_line`,
 			}
 		}
 

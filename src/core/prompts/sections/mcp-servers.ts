@@ -218,7 +218,7 @@ class WeatherServer {
       })
     );
 
-    // ReadResourceRequestSchema is used for both static resources and dynamic resource templates
+    // ReadResourceRequestSchema 用于静态资源和动态资源模板
     this.server.setRequestHandler(
       ReadResourceRequestSchema,
       async (request) => {
@@ -275,9 +275,9 @@ class WeatherServer {
     );
   }
 
-  /* MCP Tools enable servers to expose executable functionality to the system. Through these tools, you can interact with external systems, perform computations, and take actions in the real world.
-   * - Like resources, tools are identified by unique names and can include descriptions to guide their usage. However, unlike resources, tools represent dynamic operations that can modify state or interact with external systems.
-   * - While resources and tools are similar, you should prefer to create tools over resources when possible as they provide more flexibility.
+  /* MCP 工具使服务器能够向系统公开可执行的功能。通过这些工具，您可以与外部系统交互、执行计算并采取现实世界的行动。
+   * - 与资源类似，工具由唯一的名称标识，可以包含描述来指导其使用。然而，与资源不同，工具代表动态操作，可以修改状态或与外部系统交互。
+   * - 虽然资源和工具相似，但您应该优先创建工具而不是资源，因为它们提供更大的灵活性。
    */
   private setupToolHandlers() {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
@@ -372,19 +372,19 @@ const server = new WeatherServer();
 server.run().catch(console.error);
 \`\`\`
 
-(Remember: This is just an example–you may use different dependencies, break the implementation up into multiple files, etc.)
+(记住：这只是示例–您可以使用不同的依赖项，将实现分解为多个文件等。)
 
-3. Build and compile the executable JavaScript file
+3. 构建和编译可执行的 JavaScript 文件
 
 \`\`\`bash
 npm run build
 \`\`\`
 
-4. Whenever you need an environment variable such as an API key to configure the MCP server, walk the user through the process of getting the key. For example, they may need to create an account and go to a developer dashboard to generate the key. Provide step-by-step instructions and URLs to make it easy for the user to retrieve the necessary information. Then use the ask_followup_question tool to ask the user for the key, in this case the OpenWeather API key.
+4. 每当您需要环境变量（例如 API 密钥）来配置 MCP 服务器时，引导用户完成获取密钥的过程。例如，他们可能需要创建一个帐户并访问开发人员仪表板以生成密钥。提供逐步说明和 URL 以方便用户检索必要的信息。然后使用 ask_followup_question 工具向用户询问密钥，在这种情况下是 OpenWeather API 密钥。
 
-5. Install the MCP Server by adding the MCP server configuration to the settings file located at '${await mcpHub.getMcpSettingsFilePath()}'. The settings file may have other MCP servers already configured, so you would read it first and then add your new server to the existing \`mcpServers\` object.
+5. 安装 MCP 服务器，通过将 MCP 服务器配置添加到位于 '${await mcpHub.getMcpSettingsFilePath()}' 的设置文件中。设置文件可能已经配置了其他 MCP 服务器，因此您需要先读取它，然后将其添加到现有的 \`mcpServers\` 对象中。
 
-IMPORTANT: Regardless of what else you see in the MCP settings file, you must default any new MCP servers you create to disabled=false and alwaysAllow=[].
+重要提示: 无论 MCP 设置文件中看到什么, 您必须将任何新创建的 MCP 服务器默认设置为 disabled=false 和 alwaysAllow=[]。
 
 \`\`\`json
 {
@@ -401,27 +401,27 @@ IMPORTANT: Regardless of what else you see in the MCP settings file, you must de
 }
 \`\`\`
 
-(Note: the user may also ask you to install the MCP server to the Claude desktop app, in which case you would read then modify \`~/Library/Application\ Support/Claude/claude_desktop_config.json\` on macOS for example. It follows the same format of a top level \`mcpServers\` object.)
+(提示: 用户可能会要求您将 MCP 服务器安装到 Claude 桌面应用程序中，在这种情况下，您需要读取并修改 \`~/Library/Application\ Support/Claude/claude_desktop_config.json\` 在 macOS 上，例如。它遵循顶级 \`mcpServers\` 对象的格式。)
 
-6. After you have edited the MCP settings configuration file, the system will automatically run all the servers and expose the available tools and resources in the 'Connected MCP Servers' section.
+6. 编辑 MCP 设置配置文件后，系统将自动运行所有服务器并公开可用工具和资源，在 'Connected MCP Servers' 部分。
 
-7. Now that you have access to these new tools and resources, you may suggest ways the user can command you to invoke them - for example, with this new weather tool now available, you can invite the user to ask "what's the weather in San Francisco?"
+7. 现在您可以访问这些新工具和资源，您可以邀请用户询问 "旧金山天气如何？"
 
-## Editing MCP Servers
+## 编辑 MCP 服务器
 
-The user may ask to add tools or resources that may make sense to add to an existing MCP server (listed under 'Connected MCP Servers' above: ${
+用户可能会要求您添加工具或资源，这些工具或资源可能适合添加到现有的 MCP 服务器中（在 'Connected MCP Servers' 部分列出：${
 			mcpHub
 				.getServers()
 				.map((server) => server.name)
 				.join(", ") || "(None running currently)"
-		}, e.g. if it would use the same API. This would be possible if you can locate the MCP server repository on the user's system by looking at the server arguments for a filepath. You might then use list_files and read_file to explore the files in the repository, and use write_to_file${diffStrategy ? " or apply_diff" : ""} to make changes to the files.
+		}, 例如，如果它使用相同的 API，则可以将其添加到现有的 MCP 服务器中。如果可以定位 MCP 服务器存储库，则可以通过查看服务器参数来定位它。然后，您可以使用 list_files 和 read_file 探索存储库中的文件，并使用 write_to_file${diffStrategy ? " 或 apply_diff" : ""} 进行更改。
 
-However some MCP servers may be running from installed packages rather than a local repository, in which case it may make more sense to create a new MCP server.
+然而，一些 MCP 服务器可能正在从已安装的包运行，而不是本地存储库，在这种情况下，创建一个新的 MCP 服务器可能更有意义。
 
-# MCP Servers Are Not Always Necessary
+# MCP 服务器不是总是必要的
 
-The user may not always request the use or creation of MCP servers. Instead, they might provide tasks that can be completed with existing tools. While using the MCP SDK to extend your capabilities can be useful, it's important to understand that this is just one specialized type of task you can accomplish. You should only implement MCP servers when the user explicitly requests it (e.g., "add a tool that...").
+用户可能不会总是请求使用或创建 MCP 服务器。相反，他们可能会提供可以与现有工具完成的工作。虽然使用 MCP SDK 扩展您的功能可能很有用，但重要的是要理解这只是一种您可以完成的专门类型的任务。您应该只在用户明确请求时实现 MCP 服务器（例如，"添加一个工具..."）。
 
-Remember: The MCP documentation and example provided above are to help you understand and work with existing MCP servers or create new ones when requested by the user. You already have access to tools and capabilities that can be used to accomplish a wide range of tasks.`
+记住：MCP 文档和上述示例是为了帮助您理解和使用现有的 MCP 服务器或当用户请求时创建新的 MCP 服务器。您已经拥有可以用来完成广泛任务的工具和能力。`
 	)
 }

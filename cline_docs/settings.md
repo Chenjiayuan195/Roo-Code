@@ -1,30 +1,30 @@
-## For All Settings
+## 对于所有设置
 
-1. Add the setting to ExtensionMessage.ts:
+1. 将设置添加到 ExtensionMessage.ts：
 
-    - Add the setting to the ExtensionState interface
-    - Make it required if it has a default value, optional if it can be undefined
-    - Example: `preferredLanguage: string`
+    - 将设置添加到 ExtensionState 接口
+    - 如果它有默认值，则使其成为必需的；如果它可以是 undefined，则使其成为可选的
+    - 示例：`preferredLanguage: string`
 
-2. Add test coverage:
-    - Add the setting to mockState in ClineProvider.test.ts
-    - Add test cases for setting persistence and state updates
-    - Ensure all tests pass before submitting changes
+2. 添加测试覆盖：
+    - 在 ClineProvider.test.ts 中将设置添加到 mockState
+    - 为设置持久性和状态更新添加测试用例
+    - 在提交更改前确保所有测试都通过
 
-## For Checkbox Settings
+## 对于复选框设置
 
-1. Add the message type to WebviewMessage.ts:
+1. 将消息类型添加到 WebviewMessage.ts：
 
-    - Add the setting name to the WebviewMessage type's type union
-    - Example: `| "multisearchDiffEnabled"`
+    - 将设置名称添加到 WebviewMessage 类型的类型联合
+    - 示例：`| "multisearchDiffEnabled"`
 
-2. Add the setting to ExtensionStateContext.tsx:
+2. 将设置添加到 ExtensionStateContext.tsx：
 
-    - Add the setting to the ExtensionStateContextType interface
-    - Add the setter function to the interface
-    - Add the setting to the initial state in useState
-    - Add the setting to the contextValue object
-    - Example:
+    - 将设置添加到 ExtensionStateContextType 接口
+    - 将设置器函数添加到接口
+    - 在 useState 中将设置添加到初始状态
+    - 将设置添加到 contextValue 对象
+    - 示例：
         ```typescript
         interface ExtensionStateContextType {
         	multisearchDiffEnabled: boolean
@@ -32,15 +32,15 @@
         }
         ```
 
-3. Add the setting to ClineProvider.ts:
+3. 将设置添加到 ClineProvider.ts：
 
-    - Add the setting name to the GlobalStateKey type union
-    - Add the setting to the Promise.all array in getState
-    - Add the setting to the return value in getState with a default value
-    - Add the setting to the destructured variables in getStateToPostToWebview
-    - Add the setting to the return value in getStateToPostToWebview
-    - Add a case in setWebviewMessageListener to handle the setting's message type
-    - Example:
+    - 将设置名称添加到 GlobalStateKey 类型联合
+    - 在 getState 的 Promise.all 数组中添加设置
+    - 在 getState 的返回值中添加设置并设置默认值
+    - 在 getStateToPostToWebview 中将设置添加到解构变量
+    - 在 getStateToPostToWebview 的返回值中添加设置
+    - 在 setWebviewMessageListener 中添加一个 case 来处理设置的消息类型
+    - 示例：
         ```typescript
         case "multisearchDiffEnabled":
           await this.updateGlobalState("multisearchDiffEnabled", message.bool)
@@ -48,12 +48,12 @@
           break
         ```
 
-4. Add the checkbox UI to SettingsView.tsx:
+4. 在 SettingsView.tsx 中添加复选框 UI：
 
-    - Import the setting and its setter from ExtensionStateContext
-    - Add the VSCodeCheckbox component with the setting's state and onChange handler
-    - Add appropriate labels and description text
-    - Example:
+    - 从 ExtensionStateContext 导入设置及其设置器
+    - 添加带有设置状态和 onChange 处理程序的 VSCodeCheckbox 组件
+    - 添加适当的标签和描述文本
+    - 示例：
         ```typescript
         <VSCodeCheckbox
           checked={multisearchDiffEnabled}
@@ -63,27 +63,27 @@
         </VSCodeCheckbox>
         ```
 
-5. Add the setting to handleSubmit in SettingsView.tsx:
-    - Add a vscode.postMessage call to send the setting's value when clicking Done
-    - Example:
+5. 在 SettingsView.tsx 的 handleSubmit 中添加设置：
+    - 添加 vscode.postMessage 调用，在点击"完成"时发送设置的值
+    - 示例：
         ```typescript
         vscode.postMessage({ type: "multisearchDiffEnabled", bool: multisearchDiffEnabled })
         ```
 
-## For Select/Dropdown Settings
+## 对于选择/下拉设置
 
-1. Add the message type to WebviewMessage.ts:
+1. 将消息类型添加到 WebviewMessage.ts：
 
-    - Add the setting name to the WebviewMessage type's type union
-    - Example: `| "preferredLanguage"`
+    - 将设置名称添加到 WebviewMessage 类型的类型联合
+    - 示例：`| "preferredLanguage"`
 
-2. Add the setting to ExtensionStateContext.tsx:
+2. 将设置添加到 ExtensionStateContext.tsx：
 
-    - Add the setting to the ExtensionStateContextType interface
-    - Add the setter function to the interface
-    - Add the setting to the initial state in useState with a default value
-    - Add the setting to the contextValue object
-    - Example:
+    - 将设置添加到 ExtensionStateContextType 接口
+    - 将设置器函数添加到接口
+    - 在 useState 中将设置添加到初始状态并设置默认值
+    - 将设置添加到 contextValue 对象
+    - 示例：
         ```typescript
         interface ExtensionStateContextType {
         	preferredLanguage: string
@@ -91,15 +91,15 @@
         }
         ```
 
-3. Add the setting to ClineProvider.ts:
+3. 将设置添加到 ClineProvider.ts：
 
-    - Add the setting name to the GlobalStateKey type union
-    - Add the setting to the Promise.all array in getState
-    - Add the setting to the return value in getState with a default value
-    - Add the setting to the destructured variables in getStateToPostToWebview
-    - Add the setting to the return value in getStateToPostToWebview
-    - Add a case in setWebviewMessageListener to handle the setting's message type
-    - Example:
+    - 将设置名称添加到 GlobalStateKey 类型联合
+    - 在 getState 的 Promise.all 数组中添加设置
+    - 在 getState 的返回值中添加设置并设置默认值
+    - 在 getStateToPostToWebview 中将设置添加到解构变量
+    - 在 getStateToPostToWebview 的返回值中添加设置
+    - 在 setWebviewMessageListener 中添加一个 case 来处理设置的消息类型
+    - 示例：
         ```typescript
         case "preferredLanguage":
           await this.updateGlobalState("preferredLanguage", message.text)
@@ -107,13 +107,13 @@
           break
         ```
 
-4. Add the select UI to SettingsView.tsx:
+4. 在 SettingsView.tsx 中添加选择 UI：
 
-    - Import the setting and its setter from ExtensionStateContext
-    - Add the select element with appropriate styling to match VSCode's theme
-    - Add options for the dropdown
-    - Add appropriate labels and description text
-    - Example:
+    - 从 ExtensionStateContext 导入设置及其设置器
+    - 添加带有适当样式的选择元素，以匹配 VSCode 的主题
+    - 为下拉列表添加选项
+    - 添加适当的标签和描述文本
+    - 示例：
         ```typescript
         <select
           value={preferredLanguage}
@@ -132,17 +132,17 @@
         </select>
         ```
 
-5. Add the setting to handleSubmit in SettingsView.tsx:
-    - Add a vscode.postMessage call to send the setting's value when clicking Done
-    - Example:
+5. 在 SettingsView.tsx 的 handleSubmit 中添加设置：
+    - 添加 vscode.postMessage 调用，在点击"完成"时发送设置的值
+    - 示例：
         ```typescript
         vscode.postMessage({ type: "preferredLanguage", text: preferredLanguage })
         ```
 
-These steps ensure that:
+这些步骤确保：
 
-- The setting's state is properly typed throughout the application
-- The setting persists between sessions
-- The setting's value is properly synchronized between the webview and extension
-- The setting has a proper UI representation in the settings view
-- Test coverage is maintained for the new setting
+- 设置的状态在整个应用程序中都有适当的类型
+- 设置在会话之间持久保存
+- 设置的值在 webview 和扩展之间正确同步
+- 设置在设置视图中有适当的 UI 表示
+- 为新设置维护测试覆盖

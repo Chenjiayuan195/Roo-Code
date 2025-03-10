@@ -43,18 +43,18 @@ export class MultiSearchReplaceDiffStrategy implements DiffStrategy {
 
 	getToolDescription(args: { cwd: string; toolOptions?: { [key: string]: string } }): string {
 		return `## apply_diff
-Description: Request to replace existing code using a search and replace block.
-This tool allows for precise, surgical replaces to files by specifying exactly what content to search for and what to replace it with.
-The tool will maintain proper indentation and formatting while making changes.
-Only a single operation is allowed per tool use.
-The SEARCH section must exactly match existing content including whitespace and indentation.
-If you're not confident in the exact content to search for, use the read_file tool first to get the exact content.
-When applying the diffs, be extra careful to remember to change any closing brackets or other syntax that may be affected by the diff farther down in the file.
+描述: 请求使用搜索和替换块替换现有代码。
+这个工具允许通过指定要搜索的内容以及要替换的内容来精确地对文件进行手术替换。
+工具将在保持适当的缩进和格式的同时进行更改。
+每个工具只能执行一次操作。
+搜索部分必须完全匹配现有内容，包括空白和缩进。
+如果对要搜索的内容不自信，请先使用read_file工具获取精确的内容。
+在应用diffs时，请特别小心，记住更改任何可能受diff更远处的文件影响的关闭括号或其他语法。
 ALWAYS make as many changes in a single 'apply_diff' request as possible using multiple SEARCH/REPLACE blocks
 
-Parameters:
-- path: (required) The path of the file to modify (relative to the current working directory ${args.cwd})
-- diff: (required) The search/replace block defining the changes.
+参数:
+- path: (required) 要修改的文件路径 (相对于当前工作目录 ${args.cwd})
+- diff: (required) 定义更改的搜索/替换块。
 
 Diff format:
 \`\`\`
