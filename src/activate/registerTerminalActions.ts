@@ -14,14 +14,9 @@ const TERMINAL_COMMAND_IDS = {
 export const registerTerminalActions = (context: vscode.ExtensionContext) => {
 	registerTerminalAction(context, TERMINAL_COMMAND_IDS.ADD_TO_CONTEXT, "TERMINAL_ADD_TO_CONTEXT")
 
-	registerTerminalActionPair(context, TERMINAL_COMMAND_IDS.FIX, "TERMINAL_FIX", "What would you like Magic to fix?")
+	registerTerminalActionPair(context, TERMINAL_COMMAND_IDS.FIX, "TERMINAL_FIX", "您希望Magic修复什么？")
 
-	registerTerminalActionPair(
-		context,
-		TERMINAL_COMMAND_IDS.EXPLAIN,
-		"TERMINAL_EXPLAIN",
-		"What would you like Magic to explain?",
-	)
+	registerTerminalActionPair(context, TERMINAL_COMMAND_IDS.EXPLAIN, "TERMINAL_EXPLAIN", "您希望Magic解释什么？")
 }
 
 const registerTerminalAction = (
@@ -64,8 +59,8 @@ const registerTerminalActionPair = (
 	promptType: "TERMINAL_ADD_TO_CONTEXT" | "TERMINAL_FIX" | "TERMINAL_EXPLAIN",
 	inputPrompt?: string,
 ) => {
-	// Register new task version
+	// 注册新任务版本
 	registerTerminalAction(context, baseCommand, promptType, inputPrompt)
-	// Register current task version
+	// 注册当前任务版本
 	registerTerminalAction(context, `${baseCommand}InCurrentTask`, promptType, inputPrompt)
 }

@@ -2,11 +2,11 @@ import * as vscode from "vscode"
 import { EditorUtils } from "./EditorUtils"
 
 export const ACTION_NAMES = {
-	EXPLAIN: "Magic Code: Explain Code",
-	FIX: "Magic Code: Fix Code",
-	FIX_LOGIC: "Magic Code: Fix Logic",
-	IMPROVE: "Magic Code: Improve Code",
-	ADD_TO_CONTEXT: "Magic Code: Add to Context",
+	EXPLAIN: "Magic Code: 解释代码",
+	FIX: "Magic Code: 修复代码",
+	FIX_LOGIC: "Magic Code: 修复逻辑",
+	IMPROVE: "Magic Code: 改进代码",
+	ADD_TO_CONTEXT: "Magic Code: 添加到上下文",
 } as const
 
 export const COMMAND_IDS = {
@@ -35,8 +35,8 @@ export class CodeActionProvider implements vscode.CodeActionProvider {
 		args: any[],
 	): vscode.CodeAction[] {
 		return [
-			this.createAction(`${baseTitle} in New Task`, kind, baseCommand, args),
-			this.createAction(`${baseTitle} in Current Task`, kind, `${baseCommand}InCurrentTask`, args),
+			this.createAction(`${baseTitle} 在新任务中`, kind, baseCommand, args),
+			this.createAction(`${baseTitle} 在当前任务中`, kind, `${baseCommand}InCurrentTask`, args),
 		]
 	}
 
@@ -105,7 +105,7 @@ export class CodeActionProvider implements vscode.CodeActionProvider {
 
 			return actions
 		} catch (error) {
-			console.error("Error providing code actions:", error)
+			console.error("错误提供代码操作:", error)
 			return []
 		}
 	}

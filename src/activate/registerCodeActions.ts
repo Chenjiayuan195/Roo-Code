@@ -9,25 +9,13 @@ export const registerCodeActions = (context: vscode.ExtensionContext) => {
 		context,
 		COMMAND_IDS.EXPLAIN,
 		"EXPLAIN",
-		"What would you like Magic to explain?",
-		"E.g. How does the error handling work?",
+		"您希望Magic解释什么？",
+		"例如：错误处理是如何工作的？",
 	)
 
-	registerCodeActionPair(
-		context,
-		COMMAND_IDS.FIX,
-		"FIX",
-		"What would you like Magic to fix?",
-		"E.g. Maintain backward compatibility",
-	)
+	registerCodeActionPair(context, COMMAND_IDS.FIX, "FIX", "您希望Magic修复什么？", "例如：保持向后兼容性")
 
-	registerCodeActionPair(
-		context,
-		COMMAND_IDS.IMPROVE,
-		"IMPROVE",
-		"What would you like Magic to improve?",
-		"E.g. Focus on performance optimization",
-	)
+	registerCodeActionPair(context, COMMAND_IDS.IMPROVE, "IMPROVE", "您希望Magic改进什么？", "例如：专注于性能优化")
 
 	registerCodeAction(context, COMMAND_IDS.ADD_TO_CONTEXT, "ADD_TO_CONTEXT")
 }
@@ -50,16 +38,16 @@ const registerCodeAction = (
 				})
 			}
 
-			// Handle both code action and direct command cases.
+			// 处理代码操作和直接命令两种情况
 			let filePath: string
 			let selectedText: string
 			let diagnostics: any[] | undefined
 
 			if (args.length > 1) {
-				// Called from code action.
+				// 从代码操作调用
 				;[filePath, selectedText, diagnostics] = args
 			} else {
-				// Called directly from command palette.
+				// 直接从命令面板调用
 				const context = EditorUtils.getEditorContext()
 				if (!context) return
 				;({ filePath, selectedText, diagnostics } = context)
@@ -83,9 +71,9 @@ const registerCodeActionPair = (
 	inputPrompt?: string,
 	inputPlaceholder?: string,
 ) => {
-	// Register new task version.
+	// 注册新任务版本
 	registerCodeAction(context, baseCommand, promptType, inputPrompt, inputPlaceholder)
 
-	// Register current task version.
+	// 注册当前任务版本
 	registerCodeAction(context, `${baseCommand}InCurrentTask`, promptType, inputPrompt, inputPlaceholder)
 }

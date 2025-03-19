@@ -71,82 +71,82 @@
 		"commands": [
 			{
 				"command": "magic-code.plusButtonClicked",
-				"title": "New Task",
+				"title": "新任务",
 				"icon": "$(add)"
 			},
 			{
 				"command": "magic-code.mcpButtonClicked",
-				"title": "MCP Servers",
+				"title": "MCP 服务器",
 				"icon": "$(server)"
 			},
 			{
 				"command": "magic-code.promptsButtonClicked",
-				"title": "Prompts",
+				"title": "提示词",
 				"icon": "$(notebook)"
 			},
 			{
 				"command": "magic-code.historyButtonClicked",
-				"title": "History",
+				"title": "历史",
 				"icon": "$(history)"
 			},
 			{
 				"command": "magic-code.popoutButtonClicked",
-				"title": "Open in Editor",
+				"title": "在编辑器中打开",
 				"icon": "$(link-external)"
 			},
 			{
 				"command": "magic-code.settingsButtonClicked",
-				"title": "Settings",
+				"title": "设置",
 				"icon": "$(settings-gear)"
 			},
 			{
 				"command": "magic-code.openInNewTab",
-				"title": "Open In New Tab",
+				"title": "在新的标签页中打开",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.explainCode",
-				"title": "Magic Code: Explain Code",
+				"title": "Magic Code: 解释代码",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.fixCode",
-				"title": "Magic Code: Fix Code",
+				"title": "Magic Code: 修复代码",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.improveCode",
-				"title": "Magic Code: Improve Code",
+				"title": "Magic Code: 改进代码",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.addToContext",
-				"title": "Magic Code: Add To Context",
+				"title": "Magic Code: 添加到上下文",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.terminalAddToContext",
-				"title": "Magic Code: Add Terminal Content to Context",
+				"title": "Magic Code: 添加终端内容到上下文",
 				"category": "Terminal"
 			},
 			{
 				"command": "magic-code.terminalFixCommand",
-				"title": "Magic Code: Fix This Command",
+				"title": "Magic Code: 修复此命令",
 				"category": "Terminal"
 			},
 			{
 				"command": "magic-code.terminalExplainCommand",
-				"title": "Magic Code: Explain This Command",
+				"title": "Magic Code: 解释此命令",
 				"category": "Terminal"
 			},
 			{
 				"command": "magic-code.terminalFixCommandInCurrentTask",
-				"title": "Magic Code: Fix This Command (Current Task)",
+				"title": "Magic Code: 修复此命令 (当前任务)",
 				"category": "Terminal"
 			},
 			{
 				"command": "magic-code.terminalExplainCommandInCurrentTask",
-				"title": "Magic Code: Explain This Command (Current Task)",
+				"title": "Magic Code: 解释此命令 (当前任务)",
 				"category": "Terminal"
 			}
 		],

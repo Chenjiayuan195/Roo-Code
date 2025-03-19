@@ -1,10 +1,10 @@
-// Support prompts
+// 支持提示
 type PromptParams = Record<string, string | any[]>
 
 const generateDiagnosticText = (diagnostics?: any[]) => {
 	if (!diagnostics?.length) return ""
-	return `\nCurrent problems detected:\n${diagnostics
-		.map((d) => `- [${d.source || "Error"}] ${d.message}${d.code ? ` (${d.code})` : ""}`)
+	return `\n检测到当前问题：\n${diagnostics
+		.map((d) => `- [${d.source || "错误"}] ${d.message}${d.code ? ` (${d.code})` : ""}`)
 		.join("\n")}`
 }
 
@@ -18,7 +18,7 @@ export const createPrompt = (template: string, params: PromptParams): string => 
 		}
 	}
 
-	// Replace any remaining placeholders with empty strings
+	// 将任何剩余的占位符替换为空字符串
 	result = result.replaceAll(/\${[^}]*}/g, "")
 
 	return result
@@ -32,34 +32,34 @@ interface SupportPromptConfig {
 
 const supportPromptConfigs: Record<string, SupportPromptConfig> = {
 	ENHANCE: {
-		label: "Enhance Prompt",
+		label: "增强提示",
 		description:
-			"Use prompt enhancement to get tailored suggestions or improvements for your inputs. This ensures Magic understands your intent and provides the best possible responses. Available via the ✨ icon in chat.",
-		template: `Generate an enhanced version of this prompt (reply with only the enhanced prompt - no conversation, explanations, lead-in, bullet points, placeholders, or surrounding quotes):
+			"使用提示增强功能获取为您的输入量身定制的建议或改进。这确保了Magic理解您的意图并提供最佳响应。可通过聊天中的✨图标使用。",
+		template: `生成此提示的增强版本（仅回复增强的提示 - 不包含对话、解释、引导、项目符号、占位符或引号）：
 
 \${userInput}`,
 	},
 	EXPLAIN: {
-		label: "Explain Code",
+		label: "解释代码",
 		description:
-			"Get detailed explanations of code snippets, functions, or entire files. Useful for understanding complex code or learning new patterns. Available in code actions (lightbulb icon in the editor) and the editor context menu (right-click on selected code).",
-		template: `Explain the following code from file path @/\${filePath}:
+			"获取代码片段、函数或整个文件的详细解释。对于理解复杂代码或学习新模式很有用。可在代码操作（编辑器中的灯泡图标）和编辑器上下文菜单（右键单击选定的代码）中使用。",
+		template: `解释以下来自文件路径 @/\${filePath} 的代码：
 \${userInput}
 
 \`\`\`
 \${selectedText}
 \`\`\`
 
-Please provide a clear and concise explanation of what this code does, including:
-1. The purpose and functionality
-2. Key components and their interactions
-3. Important patterns or techniques used`,
+请提供清晰简洁的解释，说明这段代码的功能，包括：
+1. 目的和功能
+2. 关键组件及其交互
+3. 使用的重要模式或技术`,
 	},
 	FIX: {
-		label: "Fix Issues",
+		label: "修复问题",
 		description:
-			"Get help identifying and resolving bugs, errors, or code quality issues. Provides step-by-step guidance for fixing problems. Available in code actions (lightbulb icon in the editor) and the editor context menu (right-click on selected code).",
-		template: `Fix any issues in the following code from file path @/\${filePath}
+			"获取帮助识别和解决错误、问题或代码质量问题。提供逐步指导以修复问题。可在代码操作（编辑器中的灯泡图标）和编辑器上下文菜单（右键单击选定的代码）中使用。",
+		template: `修复以下来自文件路径 @/\${filePath} 的代码中的任何问题
 \${diagnosticText}
 \${userInput}
 
@@ -67,79 +67,77 @@ Please provide a clear and concise explanation of what this code does, including
 \${selectedText}
 \`\`\`
 
-Please:
-1. Address all detected problems listed above (if any)
-2. Identify any other potential bugs or issues
-3. Provide corrected code
-4. Explain what was fixed and why`,
+请：
+1. 解决上面列出的所有检测到的问题（如果有）
+2. 识别任何其他潜在的错误或问题
+3. 提供修正后的代码
+4. 解释修复了什么以及为什么`,
 	},
 	IMPROVE: {
-		label: "Improve Code",
+		label: "改进代码",
 		description:
-			"Receive suggestions for code optimization, better practices, and architectural improvements while maintaining functionality. Available in code actions (lightbulb icon in the editor) and the editor context menu (right-click on selected code).",
-		template: `Improve the following code from file path @/\${filePath}:
+			"获取代码优化、更好的实践和架构改进的建议，同时保持功能性。可在代码操作（编辑器中的灯泡图标）和编辑器上下文菜单（右键单击选定的代码）中使用。",
+		template: `改进以下来自文件路径 @/\${filePath} 的代码：
 \${userInput}
 
 \`\`\`
 \${selectedText}
 \`\`\`
 
-Please suggest improvements for:
-1. Code readability and maintainability
-2. Performance optimization
-3. Best practices and patterns
-4. Error handling and edge cases
+请为以下方面提供改进建议：
+1. 代码可读性和可维护性
+2. 性能优化
+3. 最佳实践和模式
+4. 错误处理和边缘情况
 
-Provide the improved code along with explanations for each enhancement.`,
+提供改进后的代码，并解释每项增强。`,
 	},
 	ADD_TO_CONTEXT: {
-		label: "Add to Context",
+		label: "添加到上下文",
 		description:
-			"Add context to your current task or conversation. Useful for providing additional information or clarifications. Available in code actions (lightbulb icon in the editor). and the editor context menu (right-click on selected code).",
+			"为当前任务或对话添加上下文。用于提供额外信息或说明。可在代码操作（编辑器中的灯泡图标）和编辑器上下文菜单（右键单击选定的代码）中使用。",
 		template: `\${filePath}:
 \`\`\`
 \${selectedText}
 \`\`\``,
 	},
 	TERMINAL_ADD_TO_CONTEXT: {
-		label: "Add Terminal Content to Context",
+		label: "添加终端内容到上下文",
 		description:
-			"Add terminal output to your current task or conversation. Useful for providing command outputs or logs. Available in the terminal context menu (right-click on selected terminal content).",
+			"将终端输出添加到当前任务或对话中。用于提供命令输出或日志。可在终端上下文菜单（右键单击选定的终端内容）中使用。",
 		template: `\${userInput}
-Terminal output:
+终端输出：
 \`\`\`
 \${terminalContent}
 \`\`\``,
 	},
 	TERMINAL_FIX: {
-		label: "Fix Terminal Command",
-		description:
-			"Get help fixing terminal commands that failed or need improvement. Available in the terminal context menu (right-click on selected terminal content).",
+		label: "修复终端命令",
+		description: "获取帮助修复失败或需要改进的终端命令。可在终端上下文菜单（右键单击选定的终端内容）中使用。",
 		template: `\${userInput}
-Fix this terminal command:
+修复这个终端命令：
 \`\`\`
 \${terminalContent}
 \`\`\`
 
-Please:
-1. Identify any issues in the command
-2. Provide the corrected command
-3. Explain what was fixed and why`,
+请：
+1. 识别命令中的任何问题
+2. 提供修正后的命令
+3. 解释修复了什么以及为什么`,
 	},
 	TERMINAL_EXPLAIN: {
-		label: "Explain Terminal Command",
-		description:
-			"Get detailed explanations of terminal commands and their outputs. Available in the terminal context menu (right-click on selected terminal content).",
+		label: "解释终端命令",
+		description: "获取终端命令及其输出的详细解释。可在终端上下文菜单（右键单击选定的终端内容）中使用。",
 		template: `\${userInput}
-Explain this terminal command:
+解释这个终端命令：
 \`\`\`
 \${terminalContent}
 \`\`\`
 
-Please provide:
-1. What the command does
-2. Explanation of each part/flag
-3. Expected output and behavior`,
+请提供：
+1. 这个命令的作用
+2. 每个部分/标志的解释
+3. 预期的输出和行为`,
 	},
 } as const
 
@@ -158,7 +156,7 @@ export const supportPrompt = {
 
 export type { SupportPromptType }
 
-// Expose labels and descriptions for UI
+// 为UI导出标签和描述
 export const supportPromptLabels = Object.fromEntries(
 	Object.entries(supportPromptConfigs).map(([key, config]) => [key, config.label]),
 ) as Record<SupportPromptType, string>

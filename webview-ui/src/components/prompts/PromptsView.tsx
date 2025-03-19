@@ -348,7 +348,7 @@ const PromptsView = ({ onDone }: PromptsViewProps) => {
 			} else if (message.type === "systemPrompt") {
 				if (message.text) {
 					setSelectedPromptContent(message.text)
-					setSelectedPromptTitle(`System Prompt (${message.mode} mode)`)
+					setSelectedPromptTitle(`系统提示词 (${message.mode} 模式)`)
 					setIsDialogOpen(true)
 				}
 			}

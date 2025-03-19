@@ -19,7 +19,7 @@ export async function getMcpServersSection(
 						const tools = server.tools
 							?.map((tool) => {
 								const schemaStr = tool.inputSchema
-									? `    Input Schema:
+									? `    输入模式:
     ${JSON.stringify(tool.inputSchema, null, 2).split("\n").join("\n    ")}`
 									: ""
 
@@ -47,7 +47,7 @@ export async function getMcpServersSection(
 					.join("\n\n")}`
 			: "(没有连接的MCP服务器)"
 
-	const baseSection = `MCP SERVERS
+	const baseSection = `MCP 服务器
 
 模型上下文协议（MCP）使系统与MCP服务器之间的通信成为可能，这些服务器提供额外的工具和资源来扩展您的功能。MCP服务器可以是两种类型之一：
 
@@ -70,7 +70,7 @@ ${connectedServers}`
 
 ## 创建一个MCP服务器
 
-用户可能会要求您创建一个工具，例如“添加一个工具”，这意味着创建一个MCP服务器，提供工具和资源，这些工具和资源可以连接到外部API。您有能力创建一个MCP服务器，并将其添加到配置文件中，这将使您可以使用\`use_mcp_tool\`和\`access_mcp_resource\`工具访问工具和资源。
+用户可能会要求您创建一个工具，例如"添加一个工具"，这意味着创建一个MCP服务器，提供工具和资源，这些工具和资源可以连接到外部API。您有能力创建一个MCP服务器，并将其添加到配置文件中，这将使您可以使用\`use_mcp_tool\`和\`access_mcp_resource\`工具访问工具和资源。
 
 在创建MCP服务器时，重要的是要理解它们在非交互环境中运行。服务器不能启动OAuth流程，打开浏览器窗口，或在使用期间提示用户输入。所有凭证和认证令牌必须通过MCP设置配置中的环境变量提前提供。例如，Spotify的API使用OAuth获取用户的刷新令牌，但MCP服务器不能启动此流程。虽然您可以引导用户通过获取应用程序客户端ID和秘密，您可能需要创建一个单独的一次性设置脚本（如get-refresh-token.js），捕获并记录最后一块拼图：用户的刷新令牌（即您可能会使用execute_command运行脚本，这将打开浏览器进行身份验证，然后记录刷新令牌，以便您可以在命令输出中看到它，并将其用于MCP设置配置）。
 
@@ -219,8 +219,8 @@ class WeatherServer {
     this.setupResourceHandlers();
     this.setupToolHandlers();
     
-    // Error handling
-    this.server.onerror = (error) => console.error('[MCP Error]', error);
+    // 错误处理
+    this.server.onerror = (error) => console.error('[MCP错误]', error);
     process.on('SIGINT', async () => {
       await this.server.close();
       process.exit(0);
@@ -232,12 +232,12 @@ class WeatherServer {
     // 对于静态资源，服务器可以暴露资源列表：
     this.server.setRequestHandler(ListResourcesRequestSchema, async () => ({
       resources: [
-        // This is a poor example since you could use the resource template to get the same information but this demonstrates how to define a static resource
+        // 这是一个不太好的例子，因为您可以使用资源模板获取相同的信息，但这展示了如何定义静态资源
         {
-          uri: \`weather://San Francisco/current\`, // Unique identifier for San Francisco weather resource
-          name: \`Current weather in San Francisco\`, // Human-readable name
-          mimeType: 'application/json', // Optional MIME type
-          // Optional description
+          uri: \`weather://San Francisco/current\`, // 旧金山天气资源的唯一标识符
+          name: \`Current weather in San Francisco\`, // 人类可读的名称
+          mimeType: 'application/json', // 可选的MIME类型
+          // 可选描述
           description:
             'Real-time weather data for San Francisco including temperature, conditions, humidity, and wind speed',
         },
@@ -446,7 +446,7 @@ npm run build
 
 6. 编辑MCP设置配置文件后，系统将自动运行所有服务器，并在'已连接的MCP服务器'部分暴露可用的工具和资源。
 
-7. 现在您可以访问这些新工具和资源，您可以建议用户如何命令您调用它们 - 例如，现在有了这个新的天气工具，您可以邀请用户询问“旧金山天气如何？”
+7. 现在您可以访问这些新工具和资源，您可以建议用户如何命令您调用它们 - 例如，现在有了这个新的天气工具，您可以邀请用户询问"旧金山天气如何？"
 
 ## 编辑MCP服务器
 
@@ -454,14 +454,14 @@ npm run build
 			mcpHub
 				.getServers()
 				.map((server) => server.name)
-				.join(", ") || "(None running currently)"
-		}, e.g. if it would use the same API. This would be possible if you can locate the MCP server repository on the user's system by looking at the server arguments for a filepath. You might then use list_files and read_file to explore the files in the repository, and use write_to_file${diffStrategy ? " or apply_diff" : ""} to make changes to the files.
+				.join(", ") || "(当前没有运行的服务器)"
+		}, 例如，如果它们会使用相同的API。如果您能够通过查看服务器参数中的文件路径在用户系统上找到MCP服务器仓库，这是可能的。然后您可以使用list_files和read_file探索仓库中的文件，并使用write_to_file${diffStrategy ? "或apply_diff" : ""}对文件进行修改。
 
 然而，一些MCP服务器可能正在从已安装的包运行，而不是本地仓库，在这种情况下，创建一个新的MCP服务器可能更有意义。
 
 # MCP服务器并不总是必要的
 
-用户可能并不总是请求使用或创建MCP服务器。相反，他们可能会提供可以由现有工具完成的任务。虽然使用MCP SDK扩展您的功能可以很有用，但重要的是要理解这只是一种您可以完成的专门类型的任务。只有在用户明确请求时才实现MCP服务器（例如，“添加一个工具，...”）。
+用户可能并不总是请求使用或创建MCP服务器。相反，他们可能会提供可以由现有工具完成的任务。虽然使用MCP SDK扩展您的功能可以很有用，但重要的是要理解这只是一种您可以完成的专门类型的任务。只有在用户明确请求时才实现MCP服务器（例如，"添加一个工具，..."）。
 
 记住：MCP文档和示例提供的目的是帮助您理解和使用现有的MCP服务器或当用户请求时创建新的MCP服务器。您已经拥有可以用于完成广泛任务的工具和能力。`
 	)
