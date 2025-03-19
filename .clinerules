@@ -1,17 +1,17 @@
-# Code Quality Rules
+# 代码质量规则
 
-1. Test Coverage:
-   - Before attempting completion, always make sure that any code changes have test coverage
-   - Ensure all tests pass before submitting changes
+1. 测试覆盖率：
+   - 在尝试完成之前，始终确保任何代码更改都有测试覆盖
+   - 确保所有测试在提交更改前通过
 
-2. Lint Rules:
-   - Never disable any lint rules without explicit user approval
+2. Lint规则：
+   - 没有明确的用户批准，切勿禁用任何lint规则
 
-3. Styling Guidelines:
-   - Use Tailwind CSS classes instead of inline style objects for new markup
-   - VSCode CSS variables must be added to webview-ui/src/index.css before using them in Tailwind classes
-   - Example: `<div className="text-md text-vscode-descriptionForeground mb-2" />` instead of style objects
+3. 样式指南：
+   - 对新标记使用Tailwind CSS类而不是内联样式对象
+   - 在Tailwind类中使用VSCode CSS变量前，必须先将其添加到webview-ui/src/index.css
+   - 示例：`<div className="text-md text-vscode-descriptionForeground mb-2" />` 而不是使用样式对象
 
-# Adding a New Setting
+# 添加新设置
 
-To add a new setting that persists its state, follow the steps in cline_docs/settings.md
+要添加一个保持其状态的新设置，请按照cline_docs/settings.md中的步骤操作

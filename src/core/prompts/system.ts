@@ -45,13 +45,13 @@ async function generatePrompt(
 	rooIgnoreInstructions?: string,
 ): Promise<string> {
 	if (!context) {
-		throw new Error("Extension context is required for generating system prompt")
+		throw new Error("生成系统提示词需要扩展上下文")
 	}
 
-	// If diff is disabled, don't pass the diffStrategy
+	// 如果禁用了diff，不传递diffStrategy
 	const effectiveDiffStrategy = diffEnabled ? diffStrategy : undefined
 
-	// Get the full mode config to ensure we have the role definition
+	// 获取完整的模式配置以确保我们有角色定义
 	const modeConfig = getModeBySlug(mode, customModeConfigs) || modes.find((m) => m.slug === mode) || modes[0]
 	const roleDefinition = promptComponent?.roleDefinition || modeConfig.roleDefinition
 
@@ -114,7 +114,7 @@ export const SYSTEM_PROMPT = async (
 	rooIgnoreInstructions?: string,
 ): Promise<string> => {
 	if (!context) {
-		throw new Error("Extension context is required for generating system prompt")
+		throw new Error("生成系统提示词需要扩展上下文")
 	}
 
 	const getPromptComponent = (value: unknown) => {
@@ -124,16 +124,16 @@ export const SYSTEM_PROMPT = async (
 		return undefined
 	}
 
-	// Try to load custom system prompt from file
+	// 尝试从文件加载自定义系统提示词
 	const fileCustomSystemPrompt = await loadSystemPromptFile(cwd, mode)
 
-	// Check if it's a custom mode
+	// 检查是否为自定义模式
 	const promptComponent = getPromptComponent(customModePrompts?.[mode])
 
-	// Get full mode config from custom modes or fall back to built-in modes
+	// 从自定义模式获取完整的模式配置，或者回退到内置模式
 	const currentMode = getModeBySlug(mode, customModes) || modes.find((m) => m.slug === mode) || modes[0]
 
-	// If a file-based custom system prompt exists, use it
+	// 如果存在基于文件的自定义系统提示词，则使用它
 	if (fileCustomSystemPrompt) {
 		const roleDefinition = promptComponent?.roleDefinition || currentMode.roleDefinition
 		const customInstructions = await addCustomInstructions(
@@ -143,7 +143,7 @@ export const SYSTEM_PROMPT = async (
 			mode,
 			{ language: language ?? formatLanguage(vscode.env.language), rooIgnoreInstructions },
 		)
-		// For file-based prompts, don't include the tool sections
+		// 对于基于文件的提示词，不包含工具部分
 		return `${roleDefinition}
 
 ${fileCustomSystemPrompt}
@@ -151,7 +151,7 @@ ${fileCustomSystemPrompt}
 ${customInstructions}`
 	}
 
-	// If diff is disabled, don't pass the diffStrategy
+	// 如果禁用了diff，不传递diffStrategy
 	const effectiveDiffStrategy = diffEnabled ? diffStrategy : undefined
 
 	return generatePrompt(

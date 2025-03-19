@@ -9,23 +9,23 @@ export function getCapabilitiesSection(
 ): string {
 	return `====
 
-CAPABILITIES
+能力
 
-- You have access to tools that let you execute CLI commands on the user's computer, list files, view source code definitions, regex search${
-		supportsComputerUse ? ", use the browser" : ""
-	}, read and write files, and ask follow-up questions. These tools help you effectively accomplish a wide range of tasks, such as writing code, making edits or improvements to existing files, understanding the current state of a project, performing system operations, and much more.
-- When the user initially gives you a task, a recursive list of all filepaths in the current working directory ('${cwd}') will be included in environment_details. This provides an overview of the project's file structure, offering key insights into the project from directory/file names (how developers conceptualize and organize their code) and file extensions (the language used). This can also guide decision-making on which files to explore further. If you need to further explore directories such as outside the current working directory, you can use the list_files tool. If you pass 'true' for the recursive parameter, it will list files recursively. Otherwise, it will list files at the top level, which is better suited for generic directories where you don't necessarily need the nested structure, like the Desktop.
-- You can use search_files to perform regex searches across files in a specified directory, outputting context-rich results that include surrounding lines. This is particularly useful for understanding code patterns, finding specific implementations, or identifying areas that need refactoring.
-- You can use the list_code_definition_names tool to get an overview of source code definitions for all files at the top level of a specified directory. This can be particularly useful when you need to understand the broader context and relationships between certain parts of the code. You may need to call this tool multiple times to understand various parts of the codebase related to the task.
-    - For example, when asked to make edits or improvements you might analyze the file structure in the initial environment_details to get an overview of the project, then use list_code_definition_names to get further insight using source code definitions for files located in relevant directories, then read_file to examine the contents of relevant files, analyze the code and suggest improvements or make necessary edits, then use ${diffStrategy ? "the apply_diff or write_to_file" : "the write_to_file"} tool to apply the changes. If you refactored code that could affect other parts of the codebase, you could use search_files to ensure you update other files as needed.
-- You can use the execute_command tool to run commands on the user's computer whenever you feel it can help accomplish the user's task. When you need to execute a CLI command, you must provide a clear explanation of what the command does. Prefer to execute complex CLI commands over creating executable scripts, since they are more flexible and easier to run. Interactive and long-running commands are allowed, since the commands are run in the user's VSCode terminal. The user may keep commands running in the background and you will be kept updated on their status along the way. Each command you execute is run in a new terminal instance.${
+- 您可以访问一系列工具，这些工具允许您在用户的计算机上执行CLI命令、列出文件、查看源代码定义、正则表达式搜索${
+		supportsComputerUse ? "、使用浏览器" : ""
+	}、读取和写入文件以及提出后续问题。这些工具可帮助您有效地完成各种任务，例如编写代码、对现有文件进行编辑或改进、了解项目的当前状态、执行系统操作等等。
+- 当用户最初给您一个任务时，当前工作目录('${cwd}')中所有文件路径的递归列表将包含在environment_details中。这提供了项目文件结构的概览，通过目录/文件名（开发人员如何概念化和组织他们的代码）和文件扩展名（使用的语言）提供对项目的关键洞察。这也可以指导您决定哪些文件需要进一步探索。如果您需要进一步探索当前工作目录外的目录，可以使用list_files工具。如果您为recursive参数传递'true'，它将递归列出文件。否则，它将仅列出顶层文件，这更适合于您不一定需要嵌套结构的通用目录，如桌面。
+- 您可以使用search_files在指定目录中执行正则表达式搜索，输出包含周围行的上下文丰富的结果。这对于理解代码模式、查找特定实现或识别需要重构的区域特别有用。
+- 您可以使用list_code_definition_names工具获取指定目录顶层所有文件的源代码定义概览。当您需要了解代码的特定部分之间的更广泛上下文和关系时，这尤其有用。您可能需要多次调用此工具以了解与任务相关的代码库的各个部分。
+    - 例如，当被要求进行编辑或改进时，您可能会分析初始environment_details中的文件结构以获取项目概览，然后使用list_code_definition_names通过相关目录中文件的源代码定义获取进一步的洞察，接着使用read_file检查相关文件的内容，分析代码并建议改进或进行必要的编辑，然后使用${diffStrategy ? "apply_diff或write_to_file" : "write_to_file"}工具应用更改。如果您重构了可能影响代码库其他部分的代码，您可以使用search_files确保按需更新其他文件。
+- 当您认为这对完成用户任务有帮助时，您可以使用execute_command工具在用户的计算机上运行命令。当您需要执行CLI命令时，必须提供清晰的命令功能解释。相比创建可执行脚本，优先执行复杂的CLI命令，因为它们更灵活且更容易运行。允许交互式和长时间运行的命令，因为这些命令在用户的VSCode终端中运行。用户可能会在后台保持命令运行，您将一直收到关于其状态的更新。您执行的每个命令都在新的终端实例中运行。${
 		supportsComputerUse
-			? "\n- You can use the browser_action tool to interact with websites (including html files and locally running development servers) through a Puppeteer-controlled browser when you feel it is necessary in accomplishing the user's task. This tool is particularly useful for web development tasks as it allows you to launch a browser, navigate to pages, interact with elements through clicks and keyboard input, and capture the results through screenshots and console logs. This tool may be useful at key stages of web development tasks-such as after implementing new features, making substantial changes, when troubleshooting issues, or to verify the result of your work. You can analyze the provided screenshots to ensure correct rendering or identify errors, and review console logs for runtime issues.\n  - For example, if asked to add a component to a react website, you might create the necessary files, use execute_command to run the site locally, then use browser_action to launch the browser, navigate to the local server, and verify the component renders & functions correctly before closing the browser."
+			? "\n- 当您认为在完成用户任务时有必要时，可以使用browser_action工具通过Puppeteer控制的浏览器与网站（包括html文件和本地运行的开发服务器）进行交互。此工具对Web开发任务特别有用，因为它允许您启动浏览器、导航到页面、通过点击和键盘输入与元素交互，并通过屏幕截图和控制台日志捕获结果。此工具在Web开发任务的关键阶段可能很有用——例如在实现新功能、进行重大更改、排除问题或验证工作结果后。您可以分析提供的屏幕截图，确保正确渲染或识别错误，并查看控制台日志了解运行时问题。\n  - 例如，如果被要求向React网站添加组件，您可能会创建必要的文件，使用execute_command在本地运行站点，然后使用browser_action启动浏览器，导航到本地服务器，并验证组件是否正确渲染和功能正常，然后关闭浏览器。"
 			: ""
 	}${
 		mcpHub
 			? `
-- You have access to MCP servers that may provide additional tools and resources. Each server may provide different capabilities that you can use to accomplish tasks more effectively.
+- 您可以访问可能提供额外工具和资源的MCP服务器。每个服务器可能提供不同的能力，您可以使用这些能力更有效地完成任务。
 `
 			: ""
 	}`

@@ -22,7 +22,7 @@ export async function loadRuleFiles(cwd: string): Promise<string> {
 	for (const file of ruleFiles) {
 		const content = await safeReadFile(path.join(cwd, file))
 		if (content) {
-			combinedRules += `\n# Rules from ${file}:\n${content}\n`
+			combinedRules += `\n# 来自${file}的规则：\n${content}\n`
 		}
 	}
 
@@ -48,18 +48,18 @@ export async function addCustomInstructions(
 	// Add language preference if provided
 	if (options.language) {
 		sections.push(
-			`Language Preference:\nYou should always speak and think in the "${options.language}" language unless the user gives you instructions below to do otherwise.`,
+			`语言偏好：\n您应该始终用"${options.language}"语言说话和思考，除非用户在下面提供指令要求您用其他语言。`,
 		)
 	}
 
 	// Add global instructions first
 	if (typeof globalCustomInstructions === "string" && globalCustomInstructions.trim()) {
-		sections.push(`Global Instructions:\n${globalCustomInstructions.trim()}`)
+		sections.push(`全局指令：\n${globalCustomInstructions.trim()}`)
 	}
 
 	// Add mode-specific instructions after
 	if (typeof modeCustomInstructions === "string" && modeCustomInstructions.trim()) {
-		sections.push(`Mode-specific Instructions:\n${modeCustomInstructions.trim()}`)
+		sections.push(`模式特定指令：\n${modeCustomInstructions.trim()}`)
 	}
 
 	// Add rules - include both mode-specific and generic rules if they exist
@@ -68,7 +68,7 @@ export async function addCustomInstructions(
 	// Add mode-specific rules first if they exist
 	if (modeRuleContent && modeRuleContent.trim()) {
 		const modeRuleFile = `.clinerules-${mode}`
-		rules.push(`# Rules from ${modeRuleFile}:\n${modeRuleContent}`)
+		rules.push(`# 来自${modeRuleFile}的规则：\n${modeRuleContent}`)
 	}
 
 	if (options.rooIgnoreInstructions) {
@@ -82,7 +82,7 @@ export async function addCustomInstructions(
 	}
 
 	if (rules.length > 0) {
-		sections.push(`Rules:\n\n${rules.join("\n\n")}`)
+		sections.push(`规则：\n\n${rules.join("\n\n")}`)
 	}
 
 	const joinedSections = sections.join("\n\n")
@@ -91,9 +91,9 @@ export async function addCustomInstructions(
 		? `
 ====
 
-USER'S CUSTOM INSTRUCTIONS
+用户提供的附加指令
 
-The following additional instructions are provided by the user, and should be followed to the best of your ability without interfering with the TOOL USE guidelines.
+以下附加指令由用户提供，应尽可能遵循，但不要干扰工具使用指南。
 
 ${joinedSections}`
 		: ""

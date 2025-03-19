@@ -19,7 +19,7 @@ import { Mode, ModeConfig, getModeConfig, isToolAllowedForMode, getGroupName } f
 import { ToolName, TOOL_GROUPS, ALWAYS_AVAILABLE_TOOLS } from "../../../shared/tool-groups"
 import { ToolArgs } from "./types"
 
-// Map of tool names to their description functions
+// 工具名称到其描述函数的映射
 const toolDescriptionMap: Record<string, (args: ToolArgs) => string | undefined> = {
 	execute_command: (args) => getExecuteCommandDescription(args),
 	read_file: (args) => getReadFileDescription(args),
