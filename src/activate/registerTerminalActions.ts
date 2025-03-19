@@ -4,23 +4,23 @@ import { Terminal } from "../integrations/terminal/Terminal"
 import { t } from "../i18n"
 
 const TERMINAL_COMMAND_IDS = {
-	ADD_TO_CONTEXT: "roo-cline.terminalAddToContext",
-	FIX: "roo-cline.terminalFixCommand",
-	FIX_IN_CURRENT_TASK: "roo-cline.terminalFixCommandInCurrentTask",
-	EXPLAIN: "roo-cline.terminalExplainCommand",
-	EXPLAIN_IN_CURRENT_TASK: "roo-cline.terminalExplainCommandInCurrentTask",
+	ADD_TO_CONTEXT: "magic-code.terminalAddToContext",
+	FIX: "magic-code.terminalFixCommand",
+	FIX_IN_CURRENT_TASK: "magic-code.terminalFixCommandInCurrentTask",
+	EXPLAIN: "magic-code.terminalExplainCommand",
+	EXPLAIN_IN_CURRENT_TASK: "magic-code.terminalExplainCommandInCurrentTask",
 } as const
 
 export const registerTerminalActions = (context: vscode.ExtensionContext) => {
 	registerTerminalAction(context, TERMINAL_COMMAND_IDS.ADD_TO_CONTEXT, "TERMINAL_ADD_TO_CONTEXT")
 
-	registerTerminalActionPair(context, TERMINAL_COMMAND_IDS.FIX, "TERMINAL_FIX", "What would you like Roo to fix?")
+	registerTerminalActionPair(context, TERMINAL_COMMAND_IDS.FIX, "TERMINAL_FIX", "What would you like Magic to fix?")
 
 	registerTerminalActionPair(
 		context,
 		TERMINAL_COMMAND_IDS.EXPLAIN,
 		"TERMINAL_EXPLAIN",
-		"What would you like Roo to explain?",
+		"What would you like Magic to explain?",
 	)
 }
 

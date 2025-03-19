@@ -77,8 +77,8 @@ export type ClineProviderEvents = {
 }
 
 export class ClineProvider extends EventEmitter<ClineProviderEvents> implements vscode.WebviewViewProvider {
-	public static readonly sideBarId = "roo-cline.SidebarProvider" // used in package.json as the view's id. This value cannot be changed due to how vscode caches views based on their id, and updating the id would break existing instances of the extension.
-	public static readonly tabPanelId = "roo-cline.TabPanelProvider"
+	public static readonly sideBarId = "magic-code.SidebarProvider" // used in package.json as the view's id. This value cannot be changed due to how vscode caches views based on their id, and updating the id would break existing instances of the extension.
+	public static readonly tabPanelId = "magic-code.TabPanelProvider"
 	private static activeInstances: Set<ClineProvider> = new Set()
 	private disposables: vscode.Disposable[] = []
 	private view?: vscode.WebviewView | vscode.WebviewPanel
@@ -244,7 +244,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 
 		// If no visible provider, try to show the sidebar view
 		if (!visibleProvider) {
-			await vscode.commands.executeCommand("roo-cline.SidebarProvider.focus")
+			await vscode.commands.executeCommand("magic-code.SidebarProvider.focus")
 			// Wait briefly for the view to become visible
 			await delay(100)
 			visibleProvider = ClineProvider.getVisibleInstance()
@@ -623,7 +623,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 					<meta http-equiv="Content-Security-Policy" content="${csp.join("; ")}">
 					<link rel="stylesheet" type="text/css" href="${stylesUri}">
 					<link href="${codiconsUri}" rel="stylesheet" />
-					<title>Roo Code</title>
+					<title>Magic Code</title>
 				</head>
 				<body>
 					<div id="root"></div>
@@ -703,7 +703,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource}; style-src ${webview.cspSource} 'unsafe-inline'; img-src ${webview.cspSource} data:; script-src 'nonce-${nonce}' https://us-assets.i.posthog.com; connect-src https://openrouter.ai https://us.i.posthog.com https://us-assets.i.posthog.com;">
             <link rel="stylesheet" type="text/css" href="${stylesUri}">
 			<link href="${codiconsUri}" rel="stylesheet" />
-            <title>Roo Code</title>
+            <title>Magic Code</title>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -1178,7 +1178,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 						await this.context.globalState.update("allowedCommands", message.commands)
 						// Also update workspace settings
 						await vscode.workspace
-							.getConfiguration("roo-cline")
+							.getConfiguration("magic-code")
 							.update("allowedCommands", message.commands, vscode.ConfigurationTarget.Global)
 						break
 					case "openMcpSettings": {
@@ -1633,7 +1633,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 						await this.postStateToWebview()
 						break
 					case "language":
-						changeLanguage(message.text ?? "en")
+						changeLanguage(message.text ?? "zh-CN")
 						await this.updateGlobalState("language", message.text)
 						await this.postStateToWebview()
 						break
@@ -1950,7 +1950,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 						break
 					case "humanRelayResponse":
 						if (message.requestId && message.text) {
-							vscode.commands.executeCommand("roo-cline.handleHumanRelayResponse", {
+							vscode.commands.executeCommand("magic-code.handleHumanRelayResponse", {
 								requestId: message.requestId,
 								text: message.text,
 								cancelled: false,
@@ -1960,7 +1960,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 
 					case "humanRelayCancel":
 						if (message.requestId) {
-							vscode.commands.executeCommand("roo-cline.handleHumanRelayResponse", {
+							vscode.commands.executeCommand("magic-code.handleHumanRelayResponse", {
 								requestId: message.requestId,
 								cancelled: true,
 							})
@@ -2159,14 +2159,14 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		// Get platform-specific application data directory
 		let mcpServersDir: string
 		if (process.platform === "win32") {
-			// Windows: %APPDATA%\Roo-Code\MCP
-			mcpServersDir = path.join(os.homedir(), "AppData", "Roaming", "Roo-Code", "MCP")
+			// Windows: %APPDATA%\Magic-Code\MCP
+			mcpServersDir = path.join(os.homedir(), "AppData", "Roaming", "Magic-Code", "MCP")
 		} else if (process.platform === "darwin") {
 			// macOS: ~/Documents/Cline/MCP
 			mcpServersDir = path.join(os.homedir(), "Documents", "Cline", "MCP")
 		} else {
 			// Linux: ~/.local/share/Cline/MCP
-			mcpServersDir = path.join(os.homedir(), ".local", "share", "Roo-Code", "MCP")
+			mcpServersDir = path.join(os.homedir(), ".local", "share", "Magic-Code", "MCP")
 		}
 
 		try {
@@ -2450,7 +2450,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 
 		const telemetryKey = process.env.POSTHOG_API_KEY
 		const machineId = vscode.env.machineId
-		const allowedCommands = vscode.workspace.getConfiguration("roo-cline").get<string[]>("allowedCommands") || []
+		const allowedCommands = vscode.workspace.getConfiguration("magic-code").get<string[]>("allowedCommands") || []
 		const cwd = this.cwd
 
 		return {
@@ -2652,10 +2652,10 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			terminalShellIntegrationTimeout:
 				stateValues.terminalShellIntegrationTimeout ?? TERMINAL_SHELL_INTEGRATION_TIMEOUT,
 			mode: stateValues.mode ?? defaultModeSlug,
-			language: stateValues.language ?? formatLanguage(vscode.env.language),
+			language: stateValues.language ?? "zh-CN",
 			mcpEnabled: stateValues.mcpEnabled ?? true,
 			enableMcpServerCreation: stateValues.enableMcpServerCreation ?? true,
-			alwaysApproveResubmit: stateValues.alwaysApproveResubmit ?? false,
+				alwaysApproveResubmit: stateValues.alwaysApproveResubmit ?? false,
 			requestDelaySeconds: Math.max(5, stateValues.requestDelaySeconds ?? 10),
 			rateLimitSeconds: stateValues.rateLimitSeconds ?? 0,
 			currentApiConfigName: stateValues.currentApiConfigName ?? "default",
@@ -2731,6 +2731,11 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		await this.contextProxy.resetAllState()
 		await this.configManager.resetAllConfigs()
 		await this.customModesManager.resetCustomModes()
+		
+		// 确保重置后语言设置为中文
+		await this.updateGlobalState("language", "zh-CN")
+		changeLanguage("zh-CN")
+		
 		await this.removeClineFromStack()
 		await this.postStateToWebview()
 		await this.postMessageToWebview({ type: "action", action: "chatButtonClicked" })

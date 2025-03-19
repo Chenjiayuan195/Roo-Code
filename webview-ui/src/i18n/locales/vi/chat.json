@@ -1,5 +1,5 @@
 {
-	"greeting": "Roo có thể giúp gì cho bạn?",
+	"greeting": "Magic có thể giúp gì cho bạn?",
 	"task": {
 		"title": "Nhiệm vụ",
 		"seeMore": "Xem thêm",
@@ -81,7 +81,7 @@
 	"edit": "Chỉnh sửa...",
 	"forNextMode": "cho chế độ tiếp theo",
 	"error": "Lỗi",
-	"troubleMessage": "Roo đang gặp sự cố...",
+	"troubleMessage": "Magic đang gặp sự cố...",
 	"apiRequest": {
 		"title": "Yêu cầu API",
 		"failed": "Yêu cầu API thất bại",
@@ -106,40 +106,40 @@
 		"current": "Hiện tại"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo muốn đọc tệp này:",
-		"didRead": "Roo đã đọc tệp này:",
-		"wantsToEdit": "Roo muốn chỉnh sửa tệp này:",
-		"wantsToCreate": "Roo muốn tạo một tệp mới:"
+		"wantsToRead": "Magic muốn đọc tệp này:",
+		"didRead": "Magic đã đọc tệp này:",
+		"wantsToEdit": "Magic muốn chỉnh sửa tệp này:",
+		"wantsToCreate": "Magic muốn tạo một tệp mới:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo muốn xem các tệp cấp cao nhất trong thư mục này:",
-		"didViewTopLevel": "Roo đã xem các tệp cấp cao nhất trong thư mục này:",
-		"wantsToViewRecursive": "Roo muốn xem đệ quy tất cả các tệp trong thư mục này:",
-		"didViewRecursive": "Roo đã xem đệ quy tất cả các tệp trong thư mục này:",
-		"wantsToViewDefinitions": "Roo muốn xem tên định nghĩa mã nguồn được sử dụng trong thư mục này:",
-		"didViewDefinitions": "Roo đã xem tên định nghĩa mã nguồn được sử dụng trong thư mục này:",
-		"wantsToSearch": "Roo muốn tìm kiếm trong thư mục này cho <code>{{regex}}</code>:",
-		"didSearch": "Roo đã tìm kiếm trong thư mục này cho <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "Magic muốn xem các tệp cấp cao nhất trong thư mục này:",
+		"didViewTopLevel": "Magic đã xem các tệp cấp cao nhất trong thư mục này:",
+		"wantsToViewRecursive": "Magic muốn xem đệ quy tất cả các tệp trong thư mục này:",
+		"didViewRecursive": "Magic đã xem đệ quy tất cả các tệp trong thư mục này:",
+		"wantsToViewDefinitions": "Magic muốn xem tên định nghĩa mã nguồn được sử dụng trong thư mục này:",
+		"didViewDefinitions": "Magic đã xem tên định nghĩa mã nguồn được sử dụng trong thư mục này:",
+		"wantsToSearch": "Magic muốn tìm kiếm trong thư mục này cho <code>{{regex}}</code>:",
+		"didSearch": "Magic đã tìm kiếm trong thư mục này cho <code>{{regex}}</code>:"
 	},
 	"commandOutput": "Kết quả lệnh",
 	"response": "Phản hồi",
 	"arguments": "Tham số",
 	"mcp": {
-		"wantsToUseTool": "Roo muốn sử dụng một công cụ trên máy chủ MCP {{serverName}}:",
-		"wantsToAccessResource": "Roo muốn truy cập một tài nguyên trên máy chủ MCP {{serverName}}:"
+		"wantsToUseTool": "Magic muốn sử dụng một công cụ trên máy chủ MCP {{serverName}}:",
+		"wantsToAccessResource": "Magic muốn truy cập một tài nguyên trên máy chủ MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo muốn chuyển sang chế độ <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo muốn chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}",
-		"didSwitch": "Roo đã chuyển sang chế độ <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo đã chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}"
+		"wantsToSwitch": "Magic muốn chuyển sang chế độ <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Magic muốn chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}",
+		"didSwitch": "Magic đã chuyển sang chế độ <code>{{mode}}</code>",
+		"didSwitchWithReason": "Magic đã chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo muốn tạo một nhiệm vụ phụ mới trong chế độ <code>{{mode}}</code>:",
-		"wantsToFinish": "Roo muốn hoàn thành nhiệm vụ phụ này"
+		"wantsToCreate": "Magic muốn tạo một nhiệm vụ phụ mới trong chế độ <code>{{mode}}</code>:",
+		"wantsToFinish": "Magic muốn hoàn thành nhiệm vụ phụ này"
 	},
 	"questions": {
-		"hasQuestion": "Roo có một câu hỏi:"
+		"hasQuestion": "Magic có một câu hỏi:"
 	},
 	"taskCompleted": "Nhiệm vụ hoàn thành",
 	"shellIntegration": {
@@ -152,7 +152,7 @@
 	"autoApprove": {
 		"title": "Tự động phê duyệt:",
 		"none": "Không",
-		"description": "Tự động phê duyệt cho phép Roo Code thực hiện hành động mà không cần xin phép. Chỉ bật cho các hành động bạn hoàn toàn tin tưởng.",
+		"description": "Tự động phê duyệt cho phép Magic Code thực hiện hành động mà không cần xin phép. Chỉ bật cho các hành động bạn hoàn toàn tin tưởng.",
 		"actions": {
 			"readFiles": {
 				"label": "Đọc tệp và thư mục",
@@ -201,8 +201,8 @@
 		"seconds": "{{count}} giây"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.9 Released",
-		"description": "Roo Code đã trở nên quốc tế hóa trong phiên bản 3.9!",
+		"title": "🎉 Magic Code 3.9 Released",
+		"description": "Magic Code đã trở nên quốc tế hóa trong phiên bản 3.9!",
 		"whatsNew": "Có gì mới",
 		"feature1": "Bản dịch cho 14 ngôn ngữ",
 		"feature2": "MCP qua SSE",
@@ -213,7 +213,7 @@
 		"detailsDiscussLinks": "Nhận thêm chi tiết và thảo luận tại <discordLink>Discord</discordLink> và <redditLink>Reddit</redditLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo muốn sử dụng trình duyệt:",
+		"rooWantsToUse": "Magic muốn sử dụng trình duyệt:",
 		"consoleLogs": "Nhật ký bảng điều khiển",
 		"noNewLogs": "(Không có nhật ký mới)",
 		"screenshot": "Ảnh chụp màn hình trình duyệt",

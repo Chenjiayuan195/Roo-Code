@@ -7,8 +7,8 @@ import { initReactI18next } from "react-i18next"
  */
 export const setupI18nForTests = () => {
 	i18next.use(initReactI18next).init({
-		lng: "en",
-		fallbackLng: "en",
+		lng: "zh-CN",
+		fallbackLng: "zh-CN",
 		debug: false,
 		interpolation: {
 			escapeValue: false,

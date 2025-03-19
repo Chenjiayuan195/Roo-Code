@@ -1,5 +1,5 @@
 {
-	"greeting": "Roo能为您做什么？",
+	"greeting": "Magic能为您做什么？",
 	"task": {
 		"title": "任务",
 		"seeMore": "查看更多",
@@ -81,7 +81,7 @@
 	"edit": "编辑...",
 	"forNextMode": "用于下一个模式",
 	"error": "错误",
-	"troubleMessage": "Roo遇到问题...",
+	"troubleMessage": "Magic遇到问题...",
 	"apiRequest": {
 		"title": "API请求",
 		"failed": "API请求失败",
@@ -106,40 +106,40 @@
 		"current": "当前"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo想读取此文件:",
-		"didRead": "Roo已读取此文件:",
-		"wantsToEdit": "Roo想编辑此文件:",
-		"wantsToCreate": "Roo想创建新文件:"
+		"wantsToRead": "Magic想读取此文件:",
+		"didRead": "Magic已读取此文件:",
+		"wantsToEdit": "Magic想编辑此文件:",
+		"wantsToCreate": "Magic想创建新文件:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo想查看此目录中的顶层文件:",
-		"didViewTopLevel": "Roo已查看此目录中的顶层文件:",
-		"wantsToViewRecursive": "Roo想递归查看此目录中的所有文件:",
-		"didViewRecursive": "Roo已递归查看此目录中的所有文件:",
-		"wantsToViewDefinitions": "Roo想查看此目录中使用的源代码定义名称:",
-		"didViewDefinitions": "Roo已查看此目录中使用的源代码定义名称:",
-		"wantsToSearch": "Roo想在此目录中搜索 <code>{{regex}}</code>:",
-		"didSearch": "Roo已在此目录中搜索 <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "Magic想查看此目录中的顶层文件:",
+		"didViewTopLevel": "Magic已查看此目录中的顶层文件:",
+		"wantsToViewRecursive": "Magic想递归查看此目录中的所有文件:",
+		"didViewRecursive": "Magic已递归查看此目录中的所有文件:",
+		"wantsToViewDefinitions": "Magic想查看此目录中使用的源代码定义名称:",
+		"didViewDefinitions": "Magic已查看此目录中使用的源代码定义名称:",
+		"wantsToSearch": "Magic想在此目录中搜索 <code>{{regex}}</code>:",
+		"didSearch": "Magic已在此目录中搜索 <code>{{regex}}</code>:"
 	},
 	"commandOutput": "命令输出",
 	"response": "响应",
 	"arguments": "参数",
 	"mcp": {
-		"wantsToUseTool": "Roo想在{{serverName}} MCP服务器上使用工具:",
-		"wantsToAccessResource": "Roo想访问{{serverName}} MCP服务器上的资源:"
+		"wantsToUseTool": "Magic想在{{serverName}} MCP服务器上使用工具:",
+		"wantsToAccessResource": "Magic想访问{{serverName}} MCP服务器上的资源:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo想切换到<code>{{mode}}</code>模式",
-		"wantsToSwitchWithReason": "Roo想切换到<code>{{mode}}</code>模式，原因: {{reason}}",
-		"didSwitch": "Roo已切换到<code>{{mode}}</code>模式",
-		"didSwitchWithReason": "Roo已切换到<code>{{mode}}</code>模式，原因: {{reason}}"
+		"wantsToSwitch": "Magic想切换到<code>{{mode}}</code>模式",
+		"wantsToSwitchWithReason": "Magic想切换到<code>{{mode}}</code>模式，原因: {{reason}}",
+		"didSwitch": "Magic已切换到<code>{{mode}}</code>模式",
+		"didSwitchWithReason": "Magic已切换到<code>{{mode}}</code>模式，原因: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo想在<code>{{mode}}</code>模式下创建新子任务:",
-		"wantsToFinish": "Roo想完成此子任务"
+		"wantsToCreate": "Magic想在<code>{{mode}}</code>模式下创建新子任务:",
+		"wantsToFinish": "Magic想完成此子任务"
 	},
 	"questions": {
-		"hasQuestion": "Roo有一个问题:"
+		"hasQuestion": "Magic有一个问题:"
 	},
 	"taskCompleted": "任务完成",
 	"shellIntegration": {
@@ -152,7 +152,7 @@
 	"autoApprove": {
 		"title": "自动批准:",
 		"none": "无",
-		"description": "自动批准允许Roo Code无需请求许可即可执行操作。仅为您完全信任的操作启用。",
+		"description": "自动批准允许Magic Code无需请求许可即可执行操作。仅为您完全信任的操作启用。",
 		"actions": {
 			"readFiles": {
 				"label": "读取文件和目录",
@@ -201,8 +201,8 @@
 		"seconds": "{{count}}秒"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.9 Released",
-		"description": "Roo Code在3.9版本中实现了国际化！",
+		"title": "🎉 Magic Code 3.9 Released",
+		"description": "Magic Code在3.9版本中实现了国际化！",
 		"whatsNew": "新特性",
 		"feature1": "14种语言的翻译",
 		"feature2": "通过SSE的MCP",
@@ -213,7 +213,7 @@
 		"detailsDiscussLinks": "在<discordLink>Discord</discordLink>和<redditLink>Reddit</redditLink>获取更多详情并参与讨论 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo想使用浏览器:",
+		"rooWantsToUse": "Magic想使用浏览器:",
 		"consoleLogs": "控制台日志",
 		"noNewLogs": "(没有新日志)",
 		"screenshot": "浏览器截图",

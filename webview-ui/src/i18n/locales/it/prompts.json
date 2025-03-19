@@ -7,7 +7,7 @@
 		"editModesConfig": "Modifica configurazione modalità",
 		"editGlobalModes": "Modifica modalità globali",
 		"editProjectModes": "Modifica modalità di progetto (.roomodes)",
-		"createModeHelpText": "Clicca sul + per creare una nuova modalità personalizzata, o chiedi semplicemente a Roo nella chat di crearne una per te!"
+		"createModeHelpText": "Clicca sul + per creare una nuova modalità personalizzata, o chiedi semplicemente a Magic nella chat di crearne una per te!"
 	},
 	"apiConfiguration": {
 		"title": "Configurazione API",
@@ -30,7 +30,7 @@
 	"roleDefinition": {
 		"title": "Definizione del ruolo",
 		"resetToDefault": "Ripristina predefiniti",
-		"description": "Definisci l'esperienza e la personalità di Roo per questa modalità. Questa descrizione modella come Roo si presenta e affronta i compiti."
+		"description": "Definisci l'esperienza e la personalità di Magic per questa modalità. Questa descrizione modella come Magic si presenta e affronta i compiti."
 	},
 	"customInstructions": {
 		"title": "Istruzioni personalizzate specifiche per la modalità (opzionale)",
@@ -40,7 +40,7 @@
 	},
 	"globalCustomInstructions": {
 		"title": "Istruzioni personalizzate per tutte le modalità",
-		"description": "Queste istruzioni si applicano a tutte le modalità. Forniscono un insieme base di comportamenti che possono essere migliorati dalle istruzioni specifiche per modalità qui sotto.\nSe desideri che Roo pensi e parli in una lingua diversa dalla lingua di visualizzazione del tuo editor ({{language}}), puoi specificarlo qui.",
+		"description": "Queste istruzioni si applicano a tutte le modalità. Forniscono un insieme base di comportamenti che possono essere migliorati dalle istruzioni specifiche per modalità qui sotto.\nSe desideri che Magic pensi e parli in una lingua diversa dalla lingua di visualizzazione del tuo editor ({{language}}), puoi specificarlo qui.",
 		"loadFromFile": "Le istruzioni possono essere caricate anche da <span>.clinerules</span> nel tuo spazio di lavoro."
 	},
 	"systemPrompt": {
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Migliora prompt",
-				"description": "Utilizza il miglioramento dei prompt per ottenere suggerimenti o miglioramenti personalizzati per i tuoi input. Questo assicura che Roo comprenda la tua intenzione e fornisca le migliori risposte possibili. Disponibile tramite l'icona ✨ nella chat."
+				"description": "Utilizza il miglioramento dei prompt per ottenere suggerimenti o miglioramenti personalizzati per i tuoi input. Questo assicura che Magic comprenda la tua intenzione e fornisca le migliori risposte possibili. Disponibile tramite l'icona ✨ nella chat."
 			},
 			"EXPLAIN": {
 				"label": "Spiega codice",
@@ -96,7 +96,7 @@
 	},
 	"customModeCreation": {
 		"enableTitle": "Abilita creazione di modalità personalizzate tramite prompt",
-		"description": "Quando abilitato, Roo ti permette di creare modalità personalizzate usando prompt come 'Crea una modalità personalizzata che...'. Disabilitarlo riduce il tuo prompt di sistema di circa 700 token quando questa funzionalità non è necessaria. Quando disabilitato, puoi comunque creare manualmente modalità personalizzate usando il pulsante + sopra o modificando il JSON di configurazione correlato."
+		"description": "Quando abilitato, Magic ti permette di creare modalità personalizzate usando prompt come 'Crea una modalità personalizzata che...'. Disabilitarlo riduce il tuo prompt di sistema di circa 700 token quando questa funzionalità non è necessaria. Quando disabilitato, puoi comunque creare manualmente modalità personalizzate usando il pulsante + sopra o modificando il JSON di configurazione correlato."
 	},
 	"advancedSystemPrompt": {
 		"title": "Avanzato: Sovrascrivi prompt di sistema",
@@ -127,7 +127,7 @@
 		},
 		"roleDefinition": {
 			"label": "Definizione del ruolo",
-			"description": "Definisci l'esperienza e la personalità di Roo per questa modalità."
+			"description": "Definisci l'esperienza e la personalità di Magic per questa modalità."
 		},
 		"tools": {
 			"label": "Strumenti disponibili",

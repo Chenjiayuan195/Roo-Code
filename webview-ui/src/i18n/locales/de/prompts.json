@@ -7,7 +7,7 @@
 		"editModesConfig": "Moduskonfiguration bearbeiten",
 		"editGlobalModes": "Globale Modi bearbeiten",
 		"editProjectModes": "Projektmodi bearbeiten (.roomodes)",
-		"createModeHelpText": "Klicken Sie auf +, um einen neuen benutzerdefinierten Modus zu erstellen, oder bitten Sie Roo einfach im Chat, einen für Sie zu erstellen!"
+		"createModeHelpText": "Klicken Sie auf +, um einen neuen benutzerdefinierten Modus zu erstellen, oder bitten Sie Magic einfach im Chat, einen für Sie zu erstellen!"
 	},
 	"apiConfiguration": {
 		"title": "API-Konfiguration",
@@ -30,7 +30,7 @@
 	"roleDefinition": {
 		"title": "Rollendefinition",
 		"resetToDefault": "Auf Standardwerte zurücksetzen",
-		"description": "Definieren Sie Roos Expertise und Persönlichkeit für diesen Modus. Diese Beschreibung prägt, wie Roo sich präsentiert und an Aufgaben herangeht."
+		"description": "Definieren Sie Roos Expertise und Persönlichkeit für diesen Modus. Diese Beschreibung prägt, wie Magic sich präsentiert und an Aufgaben herangeht."
 	},
 	"customInstructions": {
 		"title": "Modusspezifische benutzerdefinierte Anweisungen (optional)",
@@ -40,7 +40,7 @@
 	},
 	"globalCustomInstructions": {
 		"title": "Benutzerdefinierte Anweisungen für alle Modi",
-		"description": "Diese Anweisungen gelten für alle Modi. Sie bieten einen grundlegenden Satz von Verhaltensweisen, die durch modusspezifische Anweisungen unten erweitert werden können.\nWenn Sie möchten, dass Roo in einer anderen Sprache als Ihrer Editor-Anzeigesprache ({{language}}) denkt und spricht, können Sie das hier angeben.",
+		"description": "Diese Anweisungen gelten für alle Modi. Sie bieten einen grundlegenden Satz von Verhaltensweisen, die durch modusspezifische Anweisungen unten erweitert werden können.\nWenn Sie möchten, dass Magic in einer anderen Sprache als Ihrer Editor-Anzeigesprache ({{language}}) denkt und spricht, können Sie das hier angeben.",
 		"loadFromFile": "Anweisungen können auch aus <span>.clinerules</span> in Ihrem Arbeitsbereich geladen werden."
 	},
 	"systemPrompt": {
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Prompt verbessern",
-				"description": "Verwenden Sie die Prompt-Verbesserung, um maßgeschneiderte Vorschläge oder Verbesserungen für Ihre Eingaben zu erhalten. Dies stellt sicher, dass Roo Ihre Absicht versteht und die bestmöglichen Antworten liefert. Verfügbar über das ✨-Symbol im Chat."
+				"description": "Verwenden Sie die Prompt-Verbesserung, um maßgeschneiderte Vorschläge oder Verbesserungen für Ihre Eingaben zu erhalten. Dies stellt sicher, dass Magic Ihre Absicht versteht und die bestmöglichen Antworten liefert. Verfügbar über das ✨-Symbol im Chat."
 			},
 			"EXPLAIN": {
 				"label": "Code erklären",
@@ -96,7 +96,7 @@
 	},
 	"customModeCreation": {
 		"enableTitle": "Erstellung benutzerdefinierter Modi über Prompts aktivieren",
-		"description": "Wenn aktiviert, ermöglicht Roo Ihnen, benutzerdefinierte Modi mit Prompts wie 'Erstelle mir einen benutzerdefinierten Modus, der...' zu erstellen. Die Deaktivierung reduziert Ihren System-Prompt um etwa 700 Tokens, wenn diese Funktion nicht benötigt wird. Bei Deaktivierung können Sie immer noch manuell benutzerdefinierte Modi mit der +-Schaltfläche oben erstellen oder durch Bearbeiten der zugehörigen Konfigurations-JSON."
+		"description": "Wenn aktiviert, ermöglicht Magic Ihnen, benutzerdefinierte Modi mit Prompts wie 'Erstelle mir einen benutzerdefinierten Modus, der...' zu erstellen. Die Deaktivierung reduziert Ihren System-Prompt um etwa 700 Tokens, wenn diese Funktion nicht benötigt wird. Bei Deaktivierung können Sie immer noch manuell benutzerdefinierte Modi mit der +-Schaltfläche oben erstellen oder durch Bearbeiten der zugehörigen Konfigurations-JSON."
 	},
 	"advancedSystemPrompt": {
 		"title": "Erweitert: System-Prompt überschreiben",

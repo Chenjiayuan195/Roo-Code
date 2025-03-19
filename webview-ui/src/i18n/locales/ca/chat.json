@@ -1,5 +1,5 @@
 {
-	"greeting": "Què pot fer Roo per tu?",
+	"greeting": "Què pot fer Magic per tu?",
 	"task": {
 		"title": "Tasca",
 		"seeMore": "Veure més",
@@ -81,7 +81,7 @@
 	"edit": "Edita...",
 	"forNextMode": "per al següent mode",
 	"error": "Error",
-	"troubleMessage": "Roo està tenint problemes...",
+	"troubleMessage": "Magic està tenint problemes...",
 	"apiRequest": {
 		"title": "Sol·licitud API",
 		"failed": "Sol·licitud API ha fallat",
@@ -106,40 +106,40 @@
 		"current": "Actual"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo vol llegir aquest fitxer:",
-		"didRead": "Roo ha llegit aquest fitxer:",
-		"wantsToEdit": "Roo vol editar aquest fitxer:",
-		"wantsToCreate": "Roo vol crear un nou fitxer:"
+		"wantsToRead": "Magic vol llegir aquest fitxer:",
+		"didRead": "Magic ha llegit aquest fitxer:",
+		"wantsToEdit": "Magic vol editar aquest fitxer:",
+		"wantsToCreate": "Magic vol crear un nou fitxer:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo vol veure els fitxers de nivell superior en aquest directori:",
-		"didViewTopLevel": "Roo ha vist els fitxers de nivell superior en aquest directori:",
-		"wantsToViewRecursive": "Roo vol veure recursivament tots els fitxers en aquest directori:",
-		"didViewRecursive": "Roo ha vist recursivament tots els fitxers en aquest directori:",
-		"wantsToViewDefinitions": "Roo vol veure noms de definicions de codi font utilitzats en aquest directori:",
-		"didViewDefinitions": "Roo ha vist noms de definicions de codi font utilitzats en aquest directori:",
-		"wantsToSearch": "Roo vol cercar en aquest directori <code>{{regex}}</code>:",
-		"didSearch": "Roo ha cercat en aquest directori <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "Magic vol veure els fitxers de nivell superior en aquest directori:",
+		"didViewTopLevel": "Magic ha vist els fitxers de nivell superior en aquest directori:",
+		"wantsToViewRecursive": "Magic vol veure recursivament tots els fitxers en aquest directori:",
+		"didViewRecursive": "Magic ha vist recursivament tots els fitxers en aquest directori:",
+		"wantsToViewDefinitions": "Magic vol veure noms de definicions de codi font utilitzats en aquest directori:",
+		"didViewDefinitions": "Magic ha vist noms de definicions de codi font utilitzats en aquest directori:",
+		"wantsToSearch": "Magic vol cercar en aquest directori <code>{{regex}}</code>:",
+		"didSearch": "Magic ha cercat en aquest directori <code>{{regex}}</code>:"
 	},
 	"commandOutput": "Sortida de l'ordre",
 	"response": "Resposta",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Roo vol utilitzar una eina al servidor MCP {{serverName}}:",
-		"wantsToAccessResource": "Roo vol accedir a un recurs al servidor MCP {{serverName}}:"
+		"wantsToUseTool": "Magic vol utilitzar una eina al servidor MCP {{serverName}}:",
+		"wantsToAccessResource": "Magic vol accedir a un recurs al servidor MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo vol canviar a mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
-		"didSwitch": "Roo ha canviat a mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
+		"wantsToSwitch": "Magic vol canviar a mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Magic vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
+		"didSwitch": "Magic ha canviat a mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "Magic ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo vol crear una nova subtasca en mode <code>{{mode}}</code>:",
-		"wantsToFinish": "Roo vol finalitzar aquesta subtasca"
+		"wantsToCreate": "Magic vol crear una nova subtasca en mode <code>{{mode}}</code>:",
+		"wantsToFinish": "Magic vol finalitzar aquesta subtasca"
 	},
 	"questions": {
-		"hasQuestion": "Roo té una pregunta:"
+		"hasQuestion": "Magic té una pregunta:"
 	},
 	"taskCompleted": "Tasca completada",
 	"shellIntegration": {
@@ -152,7 +152,7 @@
 	"autoApprove": {
 		"title": "Aprovació automàtica:",
 		"none": "Cap",
-		"description": "L'aprovació automàtica permet a Roo Code realitzar accions sense demanar permís. Activa-la només per a accions en les que confies plenament.",
+		"description": "L'aprovació automàtica permet a Magic Code realitzar accions sense demanar permís. Activa-la només per a accions en les que confies plenament.",
 		"actions": {
 			"readFiles": {
 				"label": "Llegir fitxers i directoris",
@@ -201,8 +201,8 @@
 		"seconds": "{{count}}s"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.9 Released",
-		"description": "Roo Code s'ha tornat internacional a la versió 3.9!",
+		"title": "🎉 Magic Code 3.9 Released",
+		"description": "Magic Code s'ha tornat internacional a la versió 3.9!",
 		"whatsNew": "Novetats",
 		"feature1": "Traduccions per a 14 idiomes",
 		"feature2": "MCP sobre SSE",
@@ -213,7 +213,7 @@
 		"detailsDiscussLinks": "Obté més detalls i participa a <discordLink>Discord</discordLink> i <redditLink>Reddit</redditLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo vol utilitzar el navegador:",
+		"rooWantsToUse": "Magic vol utilitzar el navegador:",
 		"consoleLogs": "Registres de consola",
 		"noNewLogs": "(Cap registre nou)",
 		"screenshot": "Captura de pantalla del navegador",

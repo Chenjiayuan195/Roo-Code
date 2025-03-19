@@ -49,29 +49,29 @@ export const registerCommands = (options: RegisterCommandOptions) => {
 
 const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOptions) => {
 	return {
-		"roo-cline.plusButtonClicked": async () => {
+		"magic-code.plusButtonClicked": async () => {
 			await provider.removeClineFromStack()
 			await provider.postStateToWebview()
 			await provider.postMessageToWebview({ type: "action", action: "chatButtonClicked" })
 		},
-		"roo-cline.mcpButtonClicked": () => {
+		"magic-code.mcpButtonClicked": () => {
 			provider.postMessageToWebview({ type: "action", action: "mcpButtonClicked" })
 		},
-		"roo-cline.promptsButtonClicked": () => {
+		"magic-code.promptsButtonClicked": () => {
 			provider.postMessageToWebview({ type: "action", action: "promptsButtonClicked" })
 		},
-		"roo-cline.popoutButtonClicked": () => openClineInNewTab({ context, outputChannel }),
-		"roo-cline.openInNewTab": () => openClineInNewTab({ context, outputChannel }),
-		"roo-cline.settingsButtonClicked": () => {
+		"magic-code.popoutButtonClicked": () => openClineInNewTab({ context, outputChannel }),
+		"magic-code.openInNewTab": () => openClineInNewTab({ context, outputChannel }),
+		"magic-code.settingsButtonClicked": () => {
 			provider.postMessageToWebview({ type: "action", action: "settingsButtonClicked" })
 		},
-		"roo-cline.historyButtonClicked": () => {
+		"magic-code.historyButtonClicked": () => {
 			provider.postMessageToWebview({ type: "action", action: "historyButtonClicked" })
 		},
-		"roo-cline.helpButtonClicked": () => {
-			vscode.env.openExternal(vscode.Uri.parse("https://docs.roocode.com"))
-		},
-		"roo-cline.showHumanRelayDialog": (params: { requestId: string; promptText: string }) => {
+		// "magic-code.helpButtonClicked": () => {
+		// 	vscode.env.openExternal(vscode.Uri.parse("https://docs.roocode.com"))
+		// },
+		"magic-code.showHumanRelayDialog": (params: { requestId: string; promptText: string }) => {
 			const panel = getPanel()
 
 			if (panel) {
@@ -82,9 +82,9 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 				})
 			}
 		},
-		"roo-cline.registerHumanRelayCallback": registerHumanRelayCallback,
-		"roo-cline.unregisterHumanRelayCallback": unregisterHumanRelayCallback,
-		"roo-cline.handleHumanRelayResponse": handleHumanRelayResponse,
+		"magic-code.registerHumanRelayCallback": registerHumanRelayCallback,
+		"magic-code.unregisterHumanRelayCallback": unregisterHumanRelayCallback,
+		"magic-code.handleHumanRelayResponse": handleHumanRelayResponse,
 	}
 }
 
@@ -106,7 +106,7 @@ const openClineInNewTab = async ({ context, outputChannel }: Omit<RegisterComman
 
 	const targetCol = hasVisibleEditors ? Math.max(lastCol + 1, 1) : vscode.ViewColumn.Two
 
-	const newPanel = vscode.window.createWebviewPanel(ClineProvider.tabPanelId, "Roo Code", targetCol, {
+	const newPanel = vscode.window.createWebviewPanel(ClineProvider.tabPanelId, "Magic Code", targetCol, {
 		enableScripts: true,
 		retainContextWhenHidden: true,
 		localResourceRoots: [context.extensionUri],

@@ -32,37 +32,6 @@ export const About = ({ version, telemetrySetting, setTelemetrySetting, classNam
 			</SectionHeader>
 
 			<Section>
-				<div>
-					<VSCodeCheckbox
-						style={{ marginBottom: "5px" }}
-						checked={telemetrySetting === "enabled"}
-						onChange={(e: any) => {
-							const checked = e.target.checked === true
-							setTelemetrySetting(checked ? "enabled" : "disabled")
-						}}>
-						{t("settings:footer.telemetry.label")}
-					</VSCodeCheckbox>
-					<p
-						style={{
-							fontSize: "12px",
-							marginTop: "5px",
-							color: "var(--vscode-descriptionForeground)",
-						}}>
-						{t("settings:footer.telemetry.description")}
-					</p>
-				</div>
-
-				<div>
-					<Trans
-						i18nKey="settings:footer.feedback"
-						components={{
-							githubLink: <VSCodeLink href="https://github.com/RooVetGit/Roo-Code" />,
-							redditLink: <VSCodeLink href="https://reddit.com/r/RooCode" />,
-							discordLink: <VSCodeLink href="https://discord.gg/roocode" />,
-						}}
-					/>
-				</div>
-
 				<div className="flex justify-between items-center gap-3">
 					<p>{t("settings:footer.reset.description")}</p>
 					<VSCodeButton

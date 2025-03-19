@@ -70,7 +70,7 @@ RUN npm run build
 
 # Copy exercises
 WORKDIR /home/vscode
-RUN git clone https://github.com/cte/Roo-Code-Benchmark.git exercises
+RUN git clone https://github.com/cte/Magic-Code-Benchmark.git exercises
 
 # Prepare exercises
 WORKDIR /home/vscode/exercises/python

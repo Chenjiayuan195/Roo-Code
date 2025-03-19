@@ -152,7 +152,7 @@
 	"autoApprove": {
 		"title": "自動承認:",
 		"none": "なし",
-		"description": "自動承認はRoo Codeに許可を求めずに操作を実行する権限を与えます。完全に信頼できる操作のみ有効にしてください。",
+		"description": "自動承認はMagic Codeに許可を求めずに操作を実行する権限を与えます。完全に信頼できる操作のみ有効にしてください。",
 		"actions": {
 			"readFiles": {
 				"label": "ファイルとディレクトリの読み取り",
@@ -201,8 +201,8 @@
 		"seconds": "{{count}}秒"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.9 Released",
-		"description": "Roo Code 3.9で国際化が実現しました！",
+		"title": "🎉 Magic Code 3.9 Released",
+		"description": "Magic Code 3.9で国際化が実現しました！",
 		"whatsNew": "新機能",
 		"feature1": "14言語対応の翻訳",
 		"feature2": "SSE経由のMCP",

@@ -69,7 +69,7 @@
 	Contact me if you have any questions:
 		- GitHub: KJ7LNW
 		- Discord: kj7lnw
-		- [roo-cline at z.ewheeler.org]
+		- [magic-code at z.ewheeler.org]
 
 	Cheers,
 		-Eric, KJ7LNW
@@ -285,7 +285,7 @@ export class TerminalProcess extends EventEmitter<TerminalProcessEvents> {
 					(defaultWindowsShellProfile as string)?.toLowerCase().includes("powershell"))
 			if (isPowerShell) {
 				terminal.shellIntegration.executeCommand(
-					`${command} ; "(Roo/PS Workaround: ${this.terminalInfo.cmdCounter++})" > $null; start-sleep -milliseconds 150`,
+					`${command} ; "(Magic/PS Workaround: ${this.terminalInfo.cmdCounter++})" > $null; start-sleep -milliseconds 150`,
 				)
 			} else {
 				terminal.shellIntegration.executeCommand(command)

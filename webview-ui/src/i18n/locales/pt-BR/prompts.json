@@ -7,7 +7,7 @@
 		"editModesConfig": "Editar configuração de modos",
 		"editGlobalModes": "Editar modos globais",
 		"editProjectModes": "Editar modos do projeto (.roomodes)",
-		"createModeHelpText": "Clique em + para criar um novo modo personalizado, ou simplesmente peça ao Roo no chat para criar um para você!"
+		"createModeHelpText": "Clique em + para criar um novo modo personalizado, ou simplesmente peça ao Magic no chat para criar um para você!"
 	},
 	"apiConfiguration": {
 		"title": "Configuração de API",
@@ -30,7 +30,7 @@
 	"roleDefinition": {
 		"title": "Definição de função",
 		"resetToDefault": "Restaurar para padrão",
-		"description": "Defina a expertise e personalidade do Roo para este modo. Esta descrição molda como o Roo se apresenta e aborda tarefas."
+		"description": "Defina a expertise e personalidade do Magic para este modo. Esta descrição molda como o Magic se apresenta e aborda tarefas."
 	},
 	"customInstructions": {
 		"title": "Instruções personalizadas específicas do modo (opcional)",
@@ -40,7 +40,7 @@
 	},
 	"globalCustomInstructions": {
 		"title": "Instruções personalizadas para todos os modos",
-		"description": "Estas instruções se aplicam a todos os modos. Elas fornecem um conjunto base de comportamentos que podem ser aprimorados por instruções específicas do modo abaixo.\nSe você desejar que o Roo pense e fale em um idioma diferente do idioma de exibição do seu editor ({{language}}), você pode especificá-lo aqui.",
+		"description": "Estas instruções se aplicam a todos os modos. Elas fornecem um conjunto base de comportamentos que podem ser aprimorados por instruções específicas do modo abaixo.\nSe você desejar que o Magic pense e fale em um idioma diferente do idioma de exibição do seu editor ({{language}}), você pode especificá-lo aqui.",
 		"loadFromFile": "As instruções também podem ser carregadas de .clinerules no seu espaço de trabalho."
 	},
 	"systemPrompt": {
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Aprimorar Prompt",
-				"description": "Use prompt enhancement to get tailored suggestions or improvements for your inputs. This ensures Roo understands your intent and provides the best possible responses. Available via the ✨ icon in chat."
+				"description": "Use prompt enhancement to get tailored suggestions or improvements for your inputs. This ensures Magic understands your intent and provides the best possible responses. Available via the ✨ icon in chat."
 			},
 			"EXPLAIN": {
 				"label": "Explicar Código",
@@ -96,7 +96,7 @@
 	},
 	"customModeCreation": {
 		"enableTitle": "Ativar criação de modo personalizado através de prompts",
-		"description": "Quando ativado, o Roo permite que você crie modos personalizados usando prompts como 'Crie para mim um modo personalizado que...'. Desativar isto reduz seu prompt de sistema em cerca de 700 tokens quando esta funcionalidade não é necessária. Quando desativado, você ainda pode criar modos personalizados manualmente usando o botão + acima ou editando o JSON de configuração relacionado."
+		"description": "Quando ativado, o Magic permite que você crie modos personalizados usando prompts como 'Crie para mim um modo personalizado que...'. Desativar isto reduz seu prompt de sistema em cerca de 700 tokens quando esta funcionalidade não é necessária. Quando desativado, você ainda pode criar modos personalizados manualmente usando o botão + acima ou editando o JSON de configuração relacionado."
 	},
 	"advancedSystemPrompt": {
 		"title": "Avançado: Substituir prompt do sistema",
@@ -127,7 +127,7 @@
 		},
 		"roleDefinition": {
 			"label": "Definição de função",
-			"description": "Defina a expertise e personalidade do Roo para este modo."
+			"description": "Defina a expertise e personalidade do Magic para este modo."
 		},
 		"tools": {
 			"label": "Ferramentas disponíveis",

@@ -152,7 +152,7 @@
 	"autoApprove": {
 		"title": "자동 승인:",
 		"none": "없음",
-		"description": "자동 승인을 사용하면 Roo Code가 권한을 요청하지 않고 작업을 수행할 수 있습니다. 완전히 신뢰할 수 있는 작업에만 활성화하세요.",
+		"description": "자동 승인을 사용하면 Magic Code가 권한을 요청하지 않고 작업을 수행할 수 있습니다. 완전히 신뢰할 수 있는 작업에만 활성화하세요.",
 		"actions": {
 			"readFiles": {
 				"label": "파일 및 디렉토리 읽기",
@@ -201,8 +201,8 @@
 		"seconds": "{{count}}초"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.9 Released",
-		"description": "Roo Code가 3.9 버전에서 국제화되었습니다!",
+		"title": "🎉 Magic Code 3.9 Released",
+		"description": "Magic Code가 3.9 버전에서 국제화되었습니다!",
 		"whatsNew": "새로운 기능",
 		"feature1": "14개 언어로 번역",
 		"feature2": "SSE를 통한 MCP",

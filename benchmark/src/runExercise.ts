@@ -28,7 +28,7 @@ export async function run() {
 	 * Activate the extension.
 	 */
 
-	const extension = vscode.extensions.getExtension<RooCodeAPI>("RooVeterinaryInc.roo-cline")
+	const extension = vscode.extensions.getExtension<RooCodeAPI>("RooVeterinaryInc.magic-code")
 
 	if (!extension) {
 		throw new Error("Extension not found.")
@@ -37,13 +37,13 @@ export async function run() {
 	const api = extension.isActive ? extension.exports : await extension.activate()
 
 	/**
-	 * Wait for the Roo Code to be ready to accept tasks.
+	 * Wait for the Magic Code to be ready to accept tasks.
 	 */
 
 	await waitUntilReady({ api })
 
 	/**
-	 * Configure Roo Code as needed.
+	 * Configure Magic Code as needed.
 	 *
 	 * Use Claude 3.7 Sonnet via OpenRouter.
 	 * Don't require approval for anything.
@@ -67,7 +67,7 @@ export async function run() {
 	})
 
 	await vscode.workspace
-		.getConfiguration("roo-cline")
+		.getConfiguration("magic-code")
 		.update("allowedCommands", ["*"], vscode.ConfigurationTarget.Global)
 
 	await sleep(2_000)

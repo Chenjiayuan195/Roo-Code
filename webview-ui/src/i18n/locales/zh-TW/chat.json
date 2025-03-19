@@ -152,7 +152,7 @@
 	"autoApprove": {
 		"title": "自動批准:",
 		"none": "無",
-		"description": "自動批准允許Roo Code無需請求許可即可執行操作。僅為您完全信任的操作啟用。",
+		"description": "自動批准允許Magic Code無需請求許可即可執行操作。僅為您完全信任的操作啟用。",
 		"actions": {
 			"readFiles": {
 				"label": "讀取檔案和目錄",
@@ -201,8 +201,8 @@
 		"seconds": "{{count}}秒"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.9 Released",
-		"description": "Roo Code在3.9版本中實現了國際化！",
+		"title": "🎉 Magic Code 3.9 Released",
+		"description": "Magic Code在3.9版本中實現了國際化！",
 		"whatsNew": "新功能",
 		"feature1": "14種語言的翻譯",
 		"feature2": "透過SSE的MCP",

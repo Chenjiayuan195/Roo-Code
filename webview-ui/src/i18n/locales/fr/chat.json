@@ -1,5 +1,5 @@
 {
-	"greeting": "Que peut faire Roo pour vous ?",
+	"greeting": "Que peut faire Magic pour vous ?",
 	"task": {
 		"title": "Tâche",
 		"seeMore": "Voir plus",
@@ -81,7 +81,7 @@
 	"edit": "Éditer...",
 	"forNextMode": "pour le prochain mode",
 	"error": "Erreur",
-	"troubleMessage": "Roo rencontre des difficultés...",
+	"troubleMessage": "Magic rencontre des difficultés...",
 	"apiRequest": {
 		"title": "Requête API",
 		"failed": "Échec de la requête API",
@@ -106,40 +106,40 @@
 		"current": "Actuel"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo veut lire ce fichier :",
-		"didRead": "Roo a lu ce fichier :",
-		"wantsToEdit": "Roo veut éditer ce fichier :",
-		"wantsToCreate": "Roo veut créer un nouveau fichier :"
+		"wantsToRead": "Magic veut lire ce fichier :",
+		"didRead": "Magic a lu ce fichier :",
+		"wantsToEdit": "Magic veut éditer ce fichier :",
+		"wantsToCreate": "Magic veut créer un nouveau fichier :"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo veut voir les fichiers de premier niveau dans ce répertoire :",
-		"didViewTopLevel": "Roo a vu les fichiers de premier niveau dans ce répertoire :",
-		"wantsToViewRecursive": "Roo veut voir récursivement tous les fichiers dans ce répertoire :",
-		"didViewRecursive": "Roo a vu récursivement tous les fichiers dans ce répertoire :",
-		"wantsToViewDefinitions": "Roo veut voir les noms de définitions de code source utilisés dans ce répertoire :",
-		"didViewDefinitions": "Roo a vu les noms de définitions de code source utilisés dans ce répertoire :",
-		"wantsToSearch": "Roo veut rechercher dans ce répertoire <code>{{regex}}</code> :",
-		"didSearch": "Roo a recherché dans ce répertoire <code>{{regex}}</code> :"
+		"wantsToViewTopLevel": "Magic veut voir les fichiers de premier niveau dans ce répertoire :",
+		"didViewTopLevel": "Magic a vu les fichiers de premier niveau dans ce répertoire :",
+		"wantsToViewRecursive": "Magic veut voir récursivement tous les fichiers dans ce répertoire :",
+		"didViewRecursive": "Magic a vu récursivement tous les fichiers dans ce répertoire :",
+		"wantsToViewDefinitions": "Magic veut voir les noms de définitions de code source utilisés dans ce répertoire :",
+		"didViewDefinitions": "Magic a vu les noms de définitions de code source utilisés dans ce répertoire :",
+		"wantsToSearch": "Magic veut rechercher dans ce répertoire <code>{{regex}}</code> :",
+		"didSearch": "Magic a recherché dans ce répertoire <code>{{regex}}</code> :"
 	},
 	"commandOutput": "Sortie de commande",
 	"response": "Réponse",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Roo veut utiliser un outil sur le serveur MCP {{serverName}} :",
-		"wantsToAccessResource": "Roo veut accéder à une ressource sur le serveur MCP {{serverName}} :"
+		"wantsToUseTool": "Magic veut utiliser un outil sur le serveur MCP {{serverName}} :",
+		"wantsToAccessResource": "Magic veut accéder à une ressource sur le serveur MCP {{serverName}} :"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo veut passer au mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo veut passer au mode <code>{{mode}}</code> car : {{reason}}",
-		"didSwitch": "Roo est passé au mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo est passé au mode <code>{{mode}}</code> car : {{reason}}"
+		"wantsToSwitch": "Magic veut passer au mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Magic veut passer au mode <code>{{mode}}</code> car : {{reason}}",
+		"didSwitch": "Magic est passé au mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "Magic est passé au mode <code>{{mode}}</code> car : {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo veut créer une nouvelle sous-tâche en mode <code>{{mode}}</code> :",
-		"wantsToFinish": "Roo veut terminer cette sous-tâche"
+		"wantsToCreate": "Magic veut créer une nouvelle sous-tâche en mode <code>{{mode}}</code> :",
+		"wantsToFinish": "Magic veut terminer cette sous-tâche"
 	},
 	"questions": {
-		"hasQuestion": "Roo a une question :"
+		"hasQuestion": "Magic a une question :"
 	},
 	"taskCompleted": "Tâche terminée",
 	"shellIntegration": {
@@ -152,7 +152,7 @@
 	"autoApprove": {
 		"title": "Auto-approbation :",
 		"none": "Aucune",
-		"description": "L'auto-approbation permet à Roo Code d'effectuer des actions sans demander d'autorisation. Activez-la uniquement pour les actions auxquelles vous faites entièrement confiance.",
+		"description": "L'auto-approbation permet à Magic Code d'effectuer des actions sans demander d'autorisation. Activez-la uniquement pour les actions auxquelles vous faites entièrement confiance.",
 		"actions": {
 			"readFiles": {
 				"label": "Lire fichiers et répertoires",
@@ -201,8 +201,8 @@
 		"seconds": "{{count}}s"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.9 Released",
-		"description": "Roo Code est devenu international avec la version 3.9 !",
+		"title": "🎉 Magic Code 3.9 Released",
+		"description": "Magic Code est devenu international avec la version 3.9 !",
 		"whatsNew": "Quoi de neuf",
 		"feature1": "Traductions pour 14 langues",
 		"feature2": "MCP via SSE",
@@ -213,7 +213,7 @@
 		"detailsDiscussLinks": "Obtenez plus de détails et participez aux discussions sur <discordLink>Discord</discordLink> et <redditLink>Reddit</redditLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo veut utiliser le navigateur :",
+		"rooWantsToUse": "Magic veut utiliser le navigateur :",
 		"consoleLogs": "Journaux de console",
 		"noNewLogs": "(Pas de nouveaux journaux)",
 		"screenshot": "Capture d'écran du navigateur",

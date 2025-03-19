@@ -12,7 +12,7 @@
 </div>
 <br>
 <div align="center">
-  <h2>Únete a la comunidad de Roo Code</h2>
+  <h2>Únete a la comunidad de Magic Code</h2>
   <p>Conéctate con desarrolladores, contribuye con ideas y mantente al día con las últimas herramientas de programación impulsadas por IA.</p>
   
   <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Unirse%20a%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Unirse a Discord"></a>
@@ -23,16 +23,16 @@
 <br>
 
 <div align="center">
-<h1>Roo Code (antes Roo Cline)</h1>
+<h1>Magic Code (antes Magic Cline)</h1>
 
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/Descargar%20en%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Descargar en VS Marketplace"></a>
-<a href="https://github.com/RooVetGit/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Solicitudes%20de%20Funciones-yellow?style=for-the-badge" alt="Solicitudes de Funciones"></a>
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Valorar%20%26%20Opinar-green?style=for-the-badge" alt="Valorar & Opinar"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.magic-code" target="_blank"><img src="https://img.shields.io/badge/Descargar%20en%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Descargar en VS Marketplace"></a>
+<a href="https://github.com/RooVetGit/Magic-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Solicitudes%20de%20Funciones-yellow?style=for-the-badge" alt="Solicitudes de Funciones"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.magic-code&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Valorar%20%26%20Opinar-green?style=for-the-badge" alt="Valorar & Opinar"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Documentaci%C3%B3n-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentación"></a>
 
 </div>
 
-**Roo Code** es un **agente de programación autónomo** impulsado por IA que vive en tu editor. Puede:
+**Magic Code** es un **agente de programación autónomo** impulsado por IA que vive en tu editor. Puede:
 
 - Comunicarse en lenguaje natural
 - Leer y escribir archivos directamente en tu espacio de trabajo
@@ -41,25 +41,25 @@
 - Integrarse con cualquier API/modelo compatible con OpenAI o personalizado
 - Adaptar su "personalidad" y capacidades a través de **Modos Personalizados**
 
-Ya sea que busques un socio de programación flexible, un arquitecto de sistemas o roles especializados como ingeniero de control de calidad o gestor de productos, Roo Code puede ayudarte a construir software de manera más eficiente.
+Ya sea que busques un socio de programación flexible, un arquitecto de sistemas o roles especializados como ingeniero de control de calidad o gestor de productos, Magic Code puede ayudarte a construir software de manera más eficiente.
 
 Consulta el [CHANGELOG](../CHANGELOG.md) para ver actualizaciones detalladas y correcciones.
 
 ---
 
-## 🎉 Roo Code 3.9 Lanzado
+## 🎉 Magic Code 3.9 Lanzado
 
-¡Roo Code 3.9 se vuelve internacional!
+¡Magic Code 3.9 se vuelve internacional!
 
-- ¡Roo Code ha sido traducido a 14 idiomas diferentes! Ve a Configuración → Idioma para ver todos los idiomas y cambiar tu configuración.
+- ¡Magic Code ha sido traducido a 14 idiomas diferentes! Ve a Configuración → Idioma para ver todos los idiomas y cambiar tu configuración.
 - Ahora admitimos tanto stdio como SSE como transportes para MCP
 - Por demanda popular, ahora puedes eliminar elementos del historial en lote
-- Activa la conversión de texto a voz en tu configuración para escuchar todo lo que Roo tiene que decir
+- Activa la conversión de texto a voz en tu configuración para escuchar todo lo que Magic tiene que decir
 - ¿Quieres más control sobre tu OpenRouter? Ahora puedes elegir un proveedor específico para tu modelo.
 
 ---
 
-## ¿Qué puede hacer Roo Code?
+## ¿Qué puede hacer Magic Code?
 
 - 🚀 **Generar código** a partir de descripciones en lenguaje natural
 - 🔧 **Refactorizar y depurar** código existente
@@ -70,7 +70,7 @@ Consulta el [CHANGELOG](../CHANGELOG.md) para ver actualizaciones detalladas y c
 
 ## Inicio rápido
 
-1. [Instalar Roo Code](https://docs.roocode.com/getting-started/installing)
+1. [Instalar Magic Code](https://docs.roocode.com/getting-started/installing)
 2. [Conectar tu proveedor de IA](https://docs.roocode.com/getting-started/connecting-api-provider)
 3. [Probar tu primera tarea](https://docs.roocode.com/getting-started/your-first-task)
 
@@ -78,7 +78,7 @@ Consulta el [CHANGELOG](../CHANGELOG.md) para ver actualizaciones detalladas y c
 
 ### Múltiples modos
 
-Roo Code se adapta a tus necesidades con [modos](https://docs.roocode.com/basic-usage/modes) especializados:
+Magic Code se adapta a tus necesidades con [modos](https://docs.roocode.com/basic-usage/modes) especializados:
 
 - **Modo Código:** Para tareas generales de programación
 - **Modo Arquitecto:** Para planificación y liderazgo técnico
@@ -88,18 +88,18 @@ Roo Code se adapta a tus necesidades con [modos](https://docs.roocode.com/basic-
 
 ### Herramientas inteligentes
 
-Roo Code viene con potentes [herramientas](https://docs.roocode.com/basic-usage/using-tools) que pueden:
+Magic Code viene con potentes [herramientas](https://docs.roocode.com/basic-usage/using-tools) que pueden:
 
 - Leer y escribir archivos en tu proyecto
 - Ejecutar comandos en tu terminal de VS Code
 - Controlar un navegador web
 - Usar herramientas externas a través de [MCP (Model Context Protocol)](https://docs.roocode.com/advanced-usage/mcp)
 
-MCP amplía las capacidades de Roo Code al permitirte añadir herramientas personalizadas ilimitadas. Integra con APIs externas, conéctate a bases de datos o crea herramientas de desarrollo especializadas - MCP proporciona el marco para expandir la funcionalidad de Roo Code para satisfacer tus necesidades específicas.
+MCP amplía las capacidades de Magic Code al permitirte añadir herramientas personalizadas ilimitadas. Integra con APIs externas, conéctate a bases de datos o crea herramientas de desarrollo especializadas - MCP proporciona el marco para expandir la funcionalidad de Magic Code para satisfacer tus necesidades específicas.
 
 ### Personalización
 
-Haz que Roo Code funcione a tu manera con:
+Haz que Magic Code funcione a tu manera con:
 
 - [Instrucciones personalizadas](https://docs.roocode.com/advanced-usage/custom-instructions) para comportamiento personalizado
 - [Modos personalizados](https://docs.roocode.com/advanced-usage/custom-modes) para tareas especializadas
@@ -118,7 +118,7 @@ Haz que Roo Code funcione a tu manera con:
 
 - **Discord:** [Únete a nuestro servidor de Discord](https://discord.gg/roocode) para ayuda en tiempo real y discusiones
 - **Reddit:** [Visita nuestro subreddit](https://www.reddit.com/r/RooCode) para compartir experiencias y consejos
-- **GitHub:** Reporta [problemas](https://github.com/RooVetGit/Roo-Code/issues) o solicita [funciones](https://github.com/RooVetGit/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **GitHub:** Reporta [problemas](https://github.com/RooVetGit/Magic-Code/issues) o solicita [funciones](https://github.com/RooVetGit/Magic-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -127,7 +127,7 @@ Haz que Roo Code funcione a tu manera con:
 1. **Clona** el repositorio:
 
 ```sh
-git clone https://github.com/RooVetGit/Roo-Code.git
+git clone https://github.com/RooVetGit/Magic-Code.git
 ```
 
 2. **Instala dependencias**:
@@ -143,7 +143,7 @@ npm run dev
 ```
 
 4. **Depuración**:
-   Presiona `F5` (o **Ejecutar** → **Iniciar depuración**) en VSCode para abrir una nueva sesión con Roo Code cargado.
+   Presiona `F5` (o **Ejecutar** → **Iniciar depuración**) en VSCode para abrir una nueva sesión con Magic Code cargado.
 
 Los cambios en la vista web aparecerán inmediatamente. Los cambios en la extensión principal requerirán un reinicio del host de extensión.
 
@@ -156,7 +156,7 @@ npm run build
 Aparecerá un archivo `.vsix` en el directorio `bin/` que se puede instalar con:
 
 ```sh
-code --install-extension bin/roo-cline-<version>.vsix
+code --install-extension bin/magic-code-<version>.vsix
 ```
 
 Usamos [changesets](https://github.com/changesets/changesets) para versionar y publicar. Consulta nuestro `CHANGELOG.md` para ver las notas de lanzamiento.
@@ -165,7 +165,7 @@ Usamos [changesets](https://github.com/changesets/changesets) para versionar y p
 
 ## Aviso legal
 
-**Ten en cuenta** que Roo Veterinary, Inc **no** hace ninguna representación o garantía con respecto a cualquier código, modelo u otras herramientas proporcionadas o puestas a disposición en relación con Roo Code, cualquier herramienta de terceros asociada, o cualquier resultado. Asumes **todos los riesgos** asociados con el uso de dichas herramientas o resultados; tales herramientas se proporcionan "**TAL CUAL**" y "**SEGÚN DISPONIBILIDAD**". Dichos riesgos pueden incluir, sin limitación, infracciones de propiedad intelectual, vulnerabilidades o ataques cibernéticos, sesgo, imprecisiones, errores, defectos, virus, tiempo de inactividad, pérdida o daño de propiedad y/o lesiones personales. Eres el único responsable de tu uso de dichas herramientas o resultados (incluidas, entre otras, la legalidad, idoneidad y resultados de los mismos).
+**Ten en cuenta** que Magic Veterinary, Inc **no** hace ninguna representación o garantía con respecto a cualquier código, modelo u otras herramientas proporcionadas o puestas a disposición en relación con Magic Code, cualquier herramienta de terceros asociada, o cualquier resultado. Asumes **todos los riesgos** asociados con el uso de dichas herramientas o resultados; tales herramientas se proporcionan "**TAL CUAL**" y "**SEGÚN DISPONIBILIDAD**". Dichos riesgos pueden incluir, sin limitación, infracciones de propiedad intelectual, vulnerabilidades o ataques cibernéticos, sesgo, imprecisiones, errores, defectos, virus, tiempo de inactividad, pérdida o daño de propiedad y/o lesiones personales. Eres el único responsable de tu uso de dichas herramientas o resultados (incluidas, entre otras, la legalidad, idoneidad y resultados de los mismos).
 
 ---
 
@@ -177,7 +177,7 @@ Usamos [changesets](https://github.com/changesets/changesets) para versionar y p
 
 ## Colaboradores
 
-¡Gracias a todos nuestros colaboradores que han ayudado a mejorar Roo Code!
+¡Gracias a todos nuestros colaboradores que han ayudado a mejorar Magic Code!
 
 <!-- START CONTRIBUTORS SECTION - AUTO-GENERATED, DO NOT EDIT MANUALLY -->
 
@@ -203,8 +203,8 @@ Usamos [changesets](https://github.com/changesets/changesets) para versionar y p
 
 ## Licencia
 
-[Apache 2.0 © 2025 Roo Veterinary, Inc.](../LICENSE)
+[Apache 2.0 © 2025 Magic Veterinary, Inc.](../LICENSE)
 
 ---
 
-**¡Disfruta Roo Code!** Ya sea que lo mantengas con correa corta o lo dejes vagar de forma autónoma, estamos ansiosos por ver lo que construyes. Si tienes preguntas o ideas para nuevas funciones, visita nuestra [comunidad de Reddit](https://www.reddit.com/r/RooCode/) o [Discord](https://discord.gg/roocode). ¡Feliz programación!
+**¡Disfruta Magic Code!** Ya sea que lo mantengas con correa corta o lo dejes vagar de forma autónoma, estamos ansiosos por ver lo que construyes. Si tienes preguntas o ideas para nuevas funciones, visita nuestra [comunidad de Reddit](https://www.reddit.com/r/RooCode/) o [Discord](https://discord.gg/roocode). ¡Feliz programación!

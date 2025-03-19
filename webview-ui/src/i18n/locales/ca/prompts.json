@@ -7,7 +7,7 @@
 		"editModesConfig": "Editar configuració de modes",
 		"editGlobalModes": "Editar modes globals",
 		"editProjectModes": "Editar modes de projecte (.roomodes)",
-		"createModeHelpText": "Feu clic a + per crear un nou mode personalitzat, o simplement demaneu a Roo al xat que en creï un per a vostè!"
+		"createModeHelpText": "Feu clic a + per crear un nou mode personalitzat, o simplement demaneu a Magic al xat que en creï un per a vostè!"
 	},
 	"apiConfiguration": {
 		"title": "Configuració d'API",
@@ -30,7 +30,7 @@
 	"roleDefinition": {
 		"title": "Definició de rol",
 		"resetToDefault": "Restablir a valors predeterminats",
-		"description": "Definiu l'experiència i personalitat de Roo per a aquest mode. Aquesta descripció determina com Roo es presenta i aborda les tasques."
+		"description": "Definiu l'experiència i personalitat de Magic per a aquest mode. Aquesta descripció determina com Magic es presenta i aborda les tasques."
 	},
 	"customInstructions": {
 		"title": "Instruccions personalitzades específiques del mode (opcional)",
@@ -40,7 +40,7 @@
 	},
 	"globalCustomInstructions": {
 		"title": "Instruccions personalitzades per a tots els modes",
-		"description": "Aquestes instruccions s'apliquen a tots els modes. Proporcionen un conjunt bàsic de comportaments que es poden millorar amb instruccions específiques de cada mode a continuació.\nSi voleu que Roo pensi i parli en un idioma diferent al de la visualització del vostre editor ({{language}}), podeu especificar-ho aquí.",
+		"description": "Aquestes instruccions s'apliquen a tots els modes. Proporcionen un conjunt bàsic de comportaments que es poden millorar amb instruccions específiques de cada mode a continuació.\nSi voleu que Magic pensi i parli en un idioma diferent al de la visualització del vostre editor ({{language}}), podeu especificar-ho aquí.",
 		"loadFromFile": "Les instruccions també es poden carregar des de <span>.clinerules</span> al vostre espai de treball."
 	},
 	"systemPrompt": {
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Millorar prompt",
-				"description": "Utilitzeu la millora de prompts per obtenir suggeriments o millores personalitzades per a les vostres entrades. Això assegura que Roo entengui la vostra intenció i proporcioni les millors respostes possibles. Disponible a través de la icona ✨ al xat."
+				"description": "Utilitzeu la millora de prompts per obtenir suggeriments o millores personalitzades per a les vostres entrades. Això assegura que Magic entengui la vostra intenció i proporcioni les millors respostes possibles. Disponible a través de la icona ✨ al xat."
 			},
 			"EXPLAIN": {
 				"label": "Explicar codi",
@@ -96,7 +96,7 @@
 	},
 	"customModeCreation": {
 		"enableTitle": "Habilitar la creació de modes personalitzats a través de prompts",
-		"description": "Quan està habilitat, Roo us permet crear modes personalitzats utilitzant prompts com 'Crea'm un mode personalitzat que...'. Desactivar-ho redueix el vostre prompt del sistema en aproximadament 700 tokens quan aquesta funcionalitat no és necessària. Quan està desactivat, encara podeu crear modes personalitzats manualment utilitzant el botó + de dalt o editant el JSON de configuració relacionat."
+		"description": "Quan està habilitat, Magic us permet crear modes personalitzats utilitzant prompts com 'Crea'm un mode personalitzat que...'. Desactivar-ho redueix el vostre prompt del sistema en aproximadament 700 tokens quan aquesta funcionalitat no és necessària. Quan està desactivat, encara podeu crear modes personalitzats manualment utilitzant el botó + de dalt o editant el JSON de configuració relacionat."
 	},
 	"advancedSystemPrompt": {
 		"title": "Avançat: Sobreescriure prompt del sistema",
@@ -127,7 +127,7 @@
 		},
 		"roleDefinition": {
 			"label": "Definició de rol",
-			"description": "Definiu l'experiència i personalitat de Roo per a aquest mode."
+			"description": "Definiu l'experiència i personalitat de Magic per a aquest mode."
 		},
 		"tools": {
 			"label": "Eines disponibles",

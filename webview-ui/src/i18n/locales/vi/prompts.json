@@ -7,7 +7,7 @@
 		"editModesConfig": "Chỉnh sửa cấu hình chế độ",
 		"editGlobalModes": "Chỉnh sửa chế độ toàn cục",
 		"editProjectModes": "Chỉnh sửa chế độ dự án (.roomodes)",
-		"createModeHelpText": "Nhấn + để tạo chế độ tùy chỉnh mới, hoặc chỉ cần yêu cầu Roo trong chat tạo một chế độ cho bạn!"
+		"createModeHelpText": "Nhấn + để tạo chế độ tùy chỉnh mới, hoặc chỉ cần yêu cầu Magic trong chat tạo một chế độ cho bạn!"
 	},
 	"apiConfiguration": {
 		"title": "Cấu hình API",
@@ -30,7 +30,7 @@
 	"roleDefinition": {
 		"title": "Định nghĩa vai trò",
 		"resetToDefault": "Đặt lại về mặc định",
-		"description": "Xác định chuyên môn và tính cách của Roo cho chế độ này. Mô tả này định hình cách Roo giới thiệu bản thân và tiếp cận nhiệm vụ."
+		"description": "Xác định chuyên môn và tính cách của Magic cho chế độ này. Mô tả này định hình cách Magic giới thiệu bản thân và tiếp cận nhiệm vụ."
 	},
 	"customInstructions": {
 		"title": "Hướng dẫn tùy chỉnh dành riêng cho chế độ (tùy chọn)",
@@ -40,7 +40,7 @@
 	},
 	"globalCustomInstructions": {
 		"title": "Hướng dẫn tùy chỉnh cho tất cả các chế độ",
-		"description": "Những hướng dẫn này áp dụng cho tất cả các chế độ. Chúng cung cấp một bộ hành vi cơ bản có thể được nâng cao bởi hướng dẫn dành riêng cho chế độ bên dưới.\nNếu bạn muốn Roo suy nghĩ và nói bằng ngôn ngữ khác với ngôn ngữ hiển thị trình soạn thảo của bạn ({{language}}), bạn có thể chỉ định ở đây.",
+		"description": "Những hướng dẫn này áp dụng cho tất cả các chế độ. Chúng cung cấp một bộ hành vi cơ bản có thể được nâng cao bởi hướng dẫn dành riêng cho chế độ bên dưới.\nNếu bạn muốn Magic suy nghĩ và nói bằng ngôn ngữ khác với ngôn ngữ hiển thị trình soạn thảo của bạn ({{language}}), bạn có thể chỉ định ở đây.",
 		"loadFromFile": "Hướng dẫn cũng có thể được tải từ .clinerules trong không gian làm việc của bạn."
 	},
 	"systemPrompt": {
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Nâng cao lời nhắc",
-				"description": "Sử dụng nâng cao lời nhắc để nhận đề xuất hoặc cải tiến phù hợp cho đầu vào của bạn. Điều này đảm bảo Roo hiểu ý định của bạn và cung cấp phản hồi tốt nhất có thể. Có sẵn thông qua biểu tượng ✨ trong chat."
+				"description": "Sử dụng nâng cao lời nhắc để nhận đề xuất hoặc cải tiến phù hợp cho đầu vào của bạn. Điều này đảm bảo Magic hiểu ý định của bạn và cung cấp phản hồi tốt nhất có thể. Có sẵn thông qua biểu tượng ✨ trong chat."
 			},
 			"EXPLAIN": {
 				"label": "Giải thích mã",
@@ -96,7 +96,7 @@
 	},
 	"customModeCreation": {
 		"enableTitle": "Bật tạo chế độ tùy chỉnh thông qua lời nhắc",
-		"description": "Khi được bật, Roo cho phép bạn tạo chế độ tùy chỉnh bằng cách sử dụng lời nhắc như 'Tạo cho tôi một chế độ tùy chỉnh mà…'. Việc tắt tính năng này giảm lời nhắc hệ thống của bạn khoảng 700 token khi tính năng này không cần thiết. Khi tắt, bạn vẫn có thể tạo chế độ tùy chỉnh bằng cách sử dụng nút + ở trên hoặc bằng cách chỉnh sửa tệp JSON cấu hình liên quan."
+		"description": "Khi được bật, Magic cho phép bạn tạo chế độ tùy chỉnh bằng cách sử dụng lời nhắc như 'Tạo cho tôi một chế độ tùy chỉnh mà…'. Việc tắt tính năng này giảm lời nhắc hệ thống của bạn khoảng 700 token khi tính năng này không cần thiết. Khi tắt, bạn vẫn có thể tạo chế độ tùy chỉnh bằng cách sử dụng nút + ở trên hoặc bằng cách chỉnh sửa tệp JSON cấu hình liên quan."
 	},
 	"advancedSystemPrompt": {
 		"title": "Nâng cao: Ghi đè lời nhắc hệ thống",
@@ -127,7 +127,7 @@
 		},
 		"roleDefinition": {
 			"label": "Định nghĩa vai trò",
-			"description": "Xác định chuyên môn và tính cách của Roo cho chế độ này."
+			"description": "Xác định chuyên môn và tính cách của Magic cho chế độ này."
 		},
 		"tools": {
 			"label": "Công cụ có sẵn",

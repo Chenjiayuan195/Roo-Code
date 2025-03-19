@@ -36,7 +36,7 @@ export class TerminalRegistry {
 						terminalInfo.setActiveStream(stream)
 					} else {
 						console.error(
-							"[TerminalRegistry] Shell execution started, but not from a Roo-registered terminal:",
+							"[TerminalRegistry] Shell execution started, but not from a Magic-registered terminal:",
 							e,
 						)
 					}
@@ -60,7 +60,7 @@ export class TerminalRegistry {
 
 					if (!terminalInfo) {
 						console.error(
-							"[TerminalRegistry] Shell execution ended, but not from a Roo-registered terminal:",
+							"[TerminalRegistry] Shell execution ended, but not from a Magic-registered terminal:",
 							e,
 						)
 						return
@@ -111,7 +111,7 @@ export class TerminalRegistry {
 	static createTerminal(cwd: string | vscode.Uri): Terminal {
 		const terminal = vscode.window.createTerminal({
 			cwd,
-			name: "Roo Code",
+			name: "Magic Code",
 			iconPath: new vscode.ThemeIcon("rocket"),
 			env: {
 				PAGER: "cat",

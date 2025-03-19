@@ -1,6 +1,6 @@
-# Beitrag zu Roo Code
+# Beitrag zu Magic Code
 
-Wir freuen uns, dass Sie Interesse haben, zu Roo Code beizutragen. Ob Sie einen Fehler beheben, eine Funktion hinzufügen oder unsere Dokumentation verbessern, jeder Beitrag macht Roo Code intelligenter! Um unsere Community lebendig und einladend zu halten, müssen sich alle Mitglieder an unseren [Verhaltenskodex](CODE_OF_CONDUCT.md) halten.
+Wir freuen uns, dass Sie Interesse haben, zu Magic Code beizutragen. Ob Sie einen Fehler beheben, eine Funktion hinzufügen oder unsere Dokumentation verbessern, jeder Beitrag macht Magic Code intelligenter! Um unsere Community lebendig und einladend zu halten, müssen sich alle Mitglieder an unseren [Verhaltenskodex](CODE_OF_CONDUCT.md) halten.
 
 ## Treten Sie unserer Community bei
 
@@ -9,31 +9,31 @@ Wir ermutigen alle Mitwirkenden nachdrücklich, unserer [Discord-Community](http
 - Echtzeit-Hilfe und Anleitung für Ihre Beiträge zu erhalten
 - Mit anderen Mitwirkenden und Kernteammitgliedern in Kontakt zu treten
 - Über Projektentwicklungen und Prioritäten auf dem Laufenden zu bleiben
-- An Diskussionen teilzunehmen, die die Zukunft von Roo Code gestalten
+- An Diskussionen teilzunehmen, die die Zukunft von Magic Code gestalten
 - Kooperationsmöglichkeiten mit anderen Entwicklern zu finden
 
 ## Fehler oder Probleme melden
 
-Fehlerberichte helfen, Roo Code für alle besser zu machen! Bevor Sie ein neues Issue erstellen, bitte [suchen Sie in bestehenden Issues](https://github.com/RooVetGit/Roo-Code/issues), um Duplikate zu vermeiden. Wenn Sie bereit sind, einen Fehler zu melden, gehen Sie zu unserer [Issues-Seite](https://github.com/RooVetGit/Roo-Code/issues/new/choose), wo Sie eine Vorlage finden, die Ihnen beim Ausfüllen der relevanten Informationen hilft.
+Fehlerberichte helfen, Magic Code für alle besser zu machen! Bevor Sie ein neues Issue erstellen, bitte [suchen Sie in bestehenden Issues](https://github.com/RooVetGit/Magic-Code/issues), um Duplikate zu vermeiden. Wenn Sie bereit sind, einen Fehler zu melden, gehen Sie zu unserer [Issues-Seite](https://github.com/RooVetGit/Magic-Code/issues/new/choose), wo Sie eine Vorlage finden, die Ihnen beim Ausfüllen der relevanten Informationen hilft.
 
 <blockquote class='warning-note'>
-     🔐 <b>Wichtig:</b> Wenn Sie eine Sicherheitslücke entdecken, nutzen Sie bitte das <a href="https://github.com/RooVetGit/Roo-Code/security/advisories/new">Github-Sicherheitstool, um sie privat zu melden</a>.
+     🔐 <b>Wichtig:</b> Wenn Sie eine Sicherheitslücke entdecken, nutzen Sie bitte das <a href="https://github.com/RooVetGit/Magic-Code/security/advisories/new">Github-Sicherheitstool, um sie privat zu melden</a>.
 </blockquote>
 
 ## Entscheiden, woran Sie arbeiten möchten
 
-Suchen Sie nach einem guten ersten Beitrag? Schauen Sie sich Issues im Abschnitt "Issue [Unassigned]" unseres [Roo Code Issues](https://github.com/orgs/RooVetGit/projects/1) Github-Projekts an. Diese sind speziell für neue Mitwirkende und Bereiche ausgewählt, in denen wir Hilfe gebrauchen könnten!
+Suchen Sie nach einem guten ersten Beitrag? Schauen Sie sich Issues im Abschnitt "Issue [Unassigned]" unseres [Magic Code Issues](https://github.com/orgs/RooVetGit/projects/1) Github-Projekts an. Diese sind speziell für neue Mitwirkende und Bereiche ausgewählt, in denen wir Hilfe gebrauchen könnten!
 
-Wir begrüßen auch Beiträge zu unserer [Dokumentation](https://docs.roocode.com/)! Ob Sie Tippfehler korrigieren, bestehende Anleitungen verbessern oder neue Bildungsinhalte erstellen - wir würden gerne ein Community-geführtes Repository von Ressourcen aufbauen, das jedem hilft, das Beste aus Roo Code herauszuholen. Sie können auf jeder Seite auf "Edit this page" klicken, um schnell zur richtigen Stelle in Github zu gelangen, um die Datei zu bearbeiten, oder Sie können direkt zu https://github.com/RooVetGit/Roo-Code-Docs gehen.
+Wir begrüßen auch Beiträge zu unserer [Dokumentation](https://docs.roocode.com/)! Ob Sie Tippfehler korrigieren, bestehende Anleitungen verbessern oder neue Bildungsinhalte erstellen - wir würden gerne ein Community-geführtes Repository von Ressourcen aufbauen, das jedem hilft, das Beste aus Magic Code herauszuholen. Sie können auf jeder Seite auf "Edit this page" klicken, um schnell zur richtigen Stelle in Github zu gelangen, um die Datei zu bearbeiten, oder Sie können direkt zu https://github.com/RooVetGit/Magic-Code-Docs gehen.
 
-Wenn Sie an einer größeren Funktion arbeiten möchten, erstellen Sie bitte zuerst eine [Funktionsanfrage](https://github.com/RooVetGit/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop), damit wir diskutieren können, ob sie mit der Vision von Roo Code übereinstimmt.
+Wenn Sie an einer größeren Funktion arbeiten möchten, erstellen Sie bitte zuerst eine [Funktionsanfrage](https://github.com/RooVetGit/Magic-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop), damit wir diskutieren können, ob sie mit der Vision von Magic Code übereinstimmt.
 
 ## Entwicklungs-Setup
 
 1. **Klonen** Sie das Repository:
 
 ```sh
-git clone https://github.com/RooVetGit/Roo-Code.git
+git clone https://github.com/RooVetGit/Magic-Code.git
 ```
 
 2. **Installieren Sie Abhängigkeiten**:
@@ -49,7 +49,7 @@ npm run dev
 ```
 
 4. **Debugging**:
-   Drücken Sie `F5` (oder **Ausführen** → **Debugging starten**) in VSCode, um eine neue Sitzung mit geladenem Roo Code zu öffnen.
+   Drücken Sie `F5` (oder **Ausführen** → **Debugging starten**) in VSCode, um eine neue Sitzung mit geladenem Magic Code zu öffnen.
 
 Änderungen an der Webansicht erscheinen sofort. Änderungen an der Kern-Erweiterung erfordern einen Neustart des Erweiterungs-Hosts.
 
@@ -62,12 +62,12 @@ npm run build
 Eine `.vsix`-Datei erscheint im `bin/`-Verzeichnis, die mit folgendem Befehl installiert werden kann:
 
 ```sh
-code --install-extension bin/roo-cline-<version>.vsix
+code --install-extension bin/magic-code-<version>.vsix
 ```
 
 ## Code schreiben und einreichen
 
-Jeder kann Code zu Roo Code beitragen, aber wir bitten Sie, diese Richtlinien zu befolgen, um sicherzustellen, dass Ihre Beiträge reibungslos integriert werden können:
+Jeder kann Code zu Magic Code beitragen, aber wir bitten Sie, diese Richtlinien zu befolgen, um sicherzustellen, dass Ihre Beiträge reibungslos integriert werden können:
 
 1. **Halten Sie Pull Requests fokussiert**
 

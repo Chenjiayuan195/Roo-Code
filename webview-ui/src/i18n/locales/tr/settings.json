@@ -29,13 +29,13 @@
 		"advanced": "Gelişmiş",
 		"experimental": "Deneysel Özellikler",
 		"language": "Dil",
-		"about": "Roo Code Hakkında"
+		"about": "Magic Code Hakkında"
 	},
 	"autoApprove": {
-		"description": "Roo'nun onay gerektirmeden otomatik olarak işlemler gerçekleştirmesine izin verin. Bu ayarları yalnızca yapay zekaya tamamen güveniyorsanız ve ilgili güvenlik risklerini anlıyorsanız etkinleştirin.",
+		"description": "Magic'nun onay gerektirmeden otomatik olarak işlemler gerçekleştirmesine izin verin. Bu ayarları yalnızca yapay zekaya tamamen güveniyorsanız ve ilgili güvenlik risklerini anlıyorsanız etkinleştirin.",
 		"readOnly": {
 			"label": "Salt okunur işlemleri her zaman onayla",
-			"description": "Etkinleştirildiğinde, Roo otomatik olarak dizin içeriğini görüntüleyecek ve Onayla düğmesine tıklamanıza gerek kalmadan dosyaları okuyacaktır."
+			"description": "Etkinleştirildiğinde, Magic otomatik olarak dizin içeriğini görüntüleyecek ve Onayla düğmesine tıklamanıza gerek kalmadan dosyaları okuyacaktır."
 		},
 		"write": {
 			"label": "Yazma işlemlerini her zaman onayla",
@@ -142,13 +142,13 @@
 			"draftModelDesc": "Spekülatif kod çözmenin doğru çalışması için taslak model aynı model ailesinden olmalıdır.",
 			"selectDraftModel": "Taslak Model Seç",
 			"noModelsFound": "Taslak model bulunamadı. Lütfen LM Studio'nun Sunucu Modu etkinken çalıştığından emin olun.",
-			"description": "LM Studio, modelleri bilgisayarınızda yerel olarak çalıştırmanıza olanak tanır. Başlamak için <a>hızlı başlangıç kılavuzlarına</a> bakın. Bu uzantıyla kullanmak için LM Studio'nun <b>yerel sunucu</b> özelliğini de başlatmanız gerekecektir. <span>Not:</span> Roo Code karmaşık istemler kullanır ve Claude modelleriyle en iyi şekilde çalışır. Daha az yetenekli modeller beklendiği gibi çalışmayabilir."
+			"description": "LM Studio, modelleri bilgisayarınızda yerel olarak çalıştırmanıza olanak tanır. Başlamak için <a>hızlı başlangıç kılavuzlarına</a> bakın. Bu uzantıyla kullanmak için LM Studio'nun <b>yerel sunucu</b> özelliğini de başlatmanız gerekecektir. <span>Not:</span> Magic Code karmaşık istemler kullanır ve Claude modelleriyle en iyi şekilde çalışır. Daha az yetenekli modeller beklendiği gibi çalışmayabilir."
 		},
 		"ollama": {
 			"baseUrl": "Temel URL (İsteğe bağlı)",
 			"modelId": "Model Kimliği",
 			"description": "Ollama, modelleri bilgisayarınızda yerel olarak çalıştırmanıza olanak tanır. Başlamak için hızlı başlangıç kılavuzlarına bakın.",
-			"warning": "Not: Roo Code karmaşık istemler kullanır ve Claude modelleriyle en iyi şekilde çalışır. Daha az yetenekli modeller beklendiği gibi çalışmayabilir."
+			"warning": "Not: Magic Code karmaşık istemler kullanır ve Claude modelleriyle en iyi şekilde çalışır. Daha az yetenekli modeller beklendiği gibi çalışmayabilir."
 		},
 		"unboundApiKey": "Unbound API Anahtarı",
 		"getUnboundApiKey": "Unbound API Anahtarı Al",
@@ -164,7 +164,7 @@
 			}
 		},
 		"customModel": {
-			"capabilities": "Özel OpenAI uyumlu modelinizin yeteneklerini ve fiyatlandırmasını yapılandırın. Model yeteneklerini belirtirken dikkatli olun, çünkü bunlar Roo Code'un performansını etkileyebilir.",
+			"capabilities": "Özel OpenAI uyumlu modelinizin yeteneklerini ve fiyatlandırmasını yapılandırın. Model yeteneklerini belirtirken dikkatli olun, çünkü bunlar Magic Code'un performansını etkileyebilir.",
 			"maxTokens": {
 				"label": "Maksimum Çıktı Token'ları",
 				"description": "Modelin bir yanıtta üretebileceği maksimum token sayısı. (Sunucunun maksimum token'ları ayarlamasına izin vermek için -1 belirtin.)"
@@ -209,7 +209,7 @@
 	"browser": {
 		"enable": {
 			"label": "Tarayıcı aracını etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo bilgisayar kullanımını destekleyen modeller kullanırken web siteleriyle etkileşim kurmak için bir tarayıcı kullanabilir."
+			"description": "Etkinleştirildiğinde, Magic bilgisayar kullanımını destekleyen modeller kullanırken web siteleriyle etkileşim kurmak için bir tarayıcı kullanabilir."
 		},
 		"viewport": {
 			"label": "Görünüm alanı boyutu",
@@ -237,18 +237,18 @@
 	"checkpoints": {
 		"enable": {
 			"label": "Otomatik kontrol noktalarını etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo görev yürütme sırasında otomatik olarak kontrol noktaları oluşturarak değişiklikleri gözden geçirmeyi veya önceki durumlara dönmeyi kolaylaştırır."
+			"description": "Etkinleştirildiğinde, Magic görev yürütme sırasında otomatik olarak kontrol noktaları oluşturarak değişiklikleri gözden geçirmeyi veya önceki durumlara dönmeyi kolaylaştırır."
 		}
 	},
 	"notifications": {
 		"sound": {
 			"label": "Ses efektlerini etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo bildirimler ve olaylar için ses efektleri çalacaktır.",
+			"description": "Etkinleştirildiğinde, Magic bildirimler ve olaylar için ses efektleri çalacaktır.",
 			"volumeLabel": "Ses Düzeyi"
 		},
 		"tts": {
 			"label": "Metinden sese özelliğini etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo yanıtlarını metinden sese teknolojisi kullanarak sesli okuyacaktır.",
+			"description": "Etkinleştirildiğinde, Magic yanıtlarını metinden sese teknolojisi kullanarak sesli okuyacaktır.",
 			"speedLabel": "Hız"
 		}
 	},
@@ -284,7 +284,7 @@
 		},
 		"diff": {
 			"label": "Diff'ler aracılığıyla düzenlemeyi etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo dosyaları daha hızlı düzenleyebilecek ve kesik tam dosya yazımlarını otomatik olarak reddedecektir. En son Claude 3.7 Sonnet modeliyle en iyi şekilde çalışır.",
+			"description": "Etkinleştirildiğinde, Magic dosyaları daha hızlı düzenleyebilecek ve kesik tam dosya yazımlarını otomatik olarak reddedecektir. En son Claude 3.7 Sonnet modeliyle en iyi şekilde çalışır.",
 			"strategy": {
 				"label": "Diff stratejisi",
 				"options": {
@@ -312,19 +312,19 @@
 		},
 		"SEARCH_AND_REPLACE": {
 			"name": "Deneysel arama ve değiştirme aracını kullan",
-			"description": "Deneysel arama ve değiştirme aracını etkinleştir, Roo'nun tek bir istekte bir arama teriminin birden fazla örneğini değiştirmesine olanak tanır."
+			"description": "Deneysel arama ve değiştirme aracını etkinleştir, Magic'nun tek bir istekte bir arama teriminin birden fazla örneğini değiştirmesine olanak tanır."
 		},
 		"INSERT_BLOCK": {
 			"name": "Deneysel içerik ekleme aracını kullan",
-			"description": "Deneysel içerik ekleme aracını etkinleştir, Roo'nun bir diff oluşturma gereği duymadan belirli satır numaralarına içerik eklemesine olanak tanır."
+			"description": "Deneysel içerik ekleme aracını etkinleştir, Magic'nun bir diff oluşturma gereği duymadan belirli satır numaralarına içerik eklemesine olanak tanır."
 		},
 		"POWER_STEERING": {
 			"name": "Deneysel \"güç direksiyon\" modunu kullan",
-			"description": "Etkinleştirildiğinde, Roo modele geçerli mod tanımının ayrıntılarını daha sık hatırlatacaktır. Bu, rol tanımlarına ve özel talimatlara daha güçlü uyum sağlayacak, ancak mesaj başına daha fazla token kullanacaktır."
+			"description": "Etkinleştirildiğinde, Magic modele geçerli mod tanımının ayrıntılarını daha sık hatırlatacaktır. Bu, rol tanımlarına ve özel talimatlara daha güçlü uyum sağlayacak, ancak mesaj başına daha fazla token kullanacaktır."
 		},
 		"MULTI_SEARCH_AND_REPLACE": {
 			"name": "Deneysel çoklu blok diff aracını kullan",
-			"description": "Etkinleştirildiğinde, Roo çoklu blok diff aracını kullanacaktır. Bu, tek bir istekte dosyadaki birden fazla kod bloğunu güncellemeye çalışacaktır."
+			"description": "Etkinleştirildiğinde, Magic çoklu blok diff aracını kullanacaktır. Bu, tek bir istekte dosyadaki birden fazla kod bloğunu güncellemeye çalışacaktır."
 		}
 	},
 	"temperature": {
@@ -353,14 +353,14 @@
 		}
 	},
 	"modelPicker": {
-		"automaticFetch": "Uzantı <serviceLink>{{serviceName}}</serviceLink> üzerinde bulunan mevcut modellerin en güncel listesini otomatik olarak alır. Hangi modeli seçeceğinizden emin değilseniz, Roo Code <defaultModelLink>{{defaultModelId}}</defaultModelLink> ile en iyi şekilde çalışır. Şu anda mevcut olan ücretsiz seçenekleri bulmak için \"free\" araması da yapabilirsiniz."
+		"automaticFetch": "Uzantı <serviceLink>{{serviceName}}</serviceLink> üzerinde bulunan mevcut modellerin en güncel listesini otomatik olarak alır. Hangi modeli seçeceğinizden emin değilseniz, Magic Code <defaultModelLink>{{defaultModelId}}</defaultModelLink> ile en iyi şekilde çalışır. Şu anda mevcut olan ücretsiz seçenekleri bulmak için \"free\" araması da yapabilirsiniz."
 	},
 	"footer": {
-		"feedback": "Herhangi bir sorunuz veya geri bildiriminiz varsa, <githubLink>github.com/RooVetGit/Roo-Code</githubLink> adresinde bir konu açmaktan veya <redditLink>reddit.com/r/RooCode</redditLink> ya da <discordLink>discord.gg/roocode</discordLink>'a katılmaktan çekinmeyin",
-		"version": "Roo Code v{{version}}",
+		"feedback": "Herhangi bir sorunuz veya geri bildiriminiz varsa, <githubLink>github.com/RooVetGit/Magic-Code</githubLink> adresinde bir konu açmaktan veya <redditLink>reddit.com/r/RooCode</redditLink> ya da <discordLink>discord.gg/roocode</discordLink>'a katılmaktan çekinmeyin",
+		"version": "Magic Code v{{version}}",
 		"telemetry": {
 			"label": "Anonim hata ve kullanım raporlamaya izin ver",
-			"description": "Anonim kullanım verileri ve hata raporları göndererek Roo Code'u geliştirmeye yardımcı olun. Hiçbir kod, istem veya kişisel bilgi asla gönderilmez. Daha fazla ayrıntı için gizlilik politikamıza bakın."
+			"description": "Anonim kullanım verileri ve hata raporları göndererek Magic Code'u geliştirmeye yardımcı olun. Hiçbir kod, istem veya kişisel bilgi asla gönderilmez. Daha fazla ayrıntı için gizlilik politikamıza bakın."
 		},
 		"reset": {
 			"description": "Uzantıdaki tüm global durumu ve gizli depolamayı sıfırlayın.",

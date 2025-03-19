@@ -42,47 +42,7 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 	)
 
 	return (
-		<div
-			style={{
-				backgroundColor: "var(--vscode-editor-inactiveSelectionBackground)",
-				borderRadius: "3px",
-				padding: "12px 16px",
-				margin: "5px 15px 5px 15px",
-				position: "relative",
-				flexShrink: 0,
-			}}>
-			<VSCodeButton
-				appearance="icon"
-				onClick={hideAnnouncement}
-				title={t("chat:announcement.hideButton")}
-				style={{ position: "absolute", top: "8px", right: "8px" }}>
-				<span className="codicon codicon-close"></span>
-			</VSCodeButton>
-			<h2 style={{ margin: "0 0 8px" }}>{t("chat:announcement.title")}</h2>
-
-			<p style={{ margin: "5px 0px" }}>{t("chat:announcement.description")}</p>
-
-			<h3 style={{ margin: "12px 0 8px" }}>{t("chat:announcement.whatsNew")}</h3>
-			<div style={{ margin: "5px 0px" }}>
-				<ul style={{ margin: "4px 0 6px 20px", padding: 0 }}>
-					<li>• {t("chat:announcement.feature1")}</li>
-					<li>• {t("chat:announcement.feature2")}</li>
-					<li>• {t("chat:announcement.feature3")}</li>
-					<li>• {t("chat:announcement.feature4")}</li>
-					<li>• {t("chat:announcement.feature5")}</li>
-				</ul>
-			</div>
-
-			<p style={{ margin: "10px 0px 0px" }}>
-				<Trans
-					i18nKey="chat:announcement.detailsDiscussLinks"
-					components={{
-						discordLink: discordLink,
-						redditLink: redditLink,
-					}}
-				/>
-			</p>
-		</div>
+		<></>
 	)
 }
 

@@ -7,7 +7,7 @@
 		"editModesConfig": "Editar configuración de modos",
 		"editGlobalModes": "Editar modos globales",
 		"editProjectModes": "Editar modos del proyecto (.roomodes)",
-		"createModeHelpText": "¡Haz clic en + para crear un nuevo modo personalizado, o simplemente pídele a Roo en el chat que te cree uno!"
+		"createModeHelpText": "¡Haz clic en + para crear un nuevo modo personalizado, o simplemente pídele a Magic en el chat que te cree uno!"
 	},
 	"apiConfiguration": {
 		"title": "Configuración de API",
@@ -30,7 +30,7 @@
 	"roleDefinition": {
 		"title": "Definición de rol",
 		"resetToDefault": "Restablecer a valores predeterminados",
-		"description": "Define la experiencia y personalidad de Roo para este modo. Esta descripción determina cómo Roo se presenta y aborda las tareas."
+		"description": "Define la experiencia y personalidad de Magic para este modo. Esta descripción determina cómo Magic se presenta y aborda las tareas."
 	},
 	"customInstructions": {
 		"title": "Instrucciones personalizadas para el modo (opcional)",
@@ -40,7 +40,7 @@
 	},
 	"globalCustomInstructions": {
 		"title": "Instrucciones personalizadas para todos los modos",
-		"description": "Estas instrucciones se aplican a todos los modos. Proporcionan un conjunto base de comportamientos que pueden ser mejorados por instrucciones específicas de cada modo.\nSi quieres que Roo piense y hable en un idioma diferente al idioma de visualización de tu editor ({{language}}), puedes especificarlo aquí.",
+		"description": "Estas instrucciones se aplican a todos los modos. Proporcionan un conjunto base de comportamientos que pueden ser mejorados por instrucciones específicas de cada modo.\nSi quieres que Magic piense y hable en un idioma diferente al idioma de visualización de tu editor ({{language}}), puedes especificarlo aquí.",
 		"loadFromFile": "Las instrucciones también se pueden cargar desde <span>.clinerules</span> en tu espacio de trabajo."
 	},
 	"systemPrompt": {
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Mejorar solicitud",
-				"description": "Utiliza la mejora de solicitudes para obtener sugerencias o mejoras personalizadas para tus entradas. Esto asegura que Roo entienda tu intención y proporcione las mejores respuestas posibles. Disponible a través del icono ✨ en el chat."
+				"description": "Utiliza la mejora de solicitudes para obtener sugerencias o mejoras personalizadas para tus entradas. Esto asegura que Magic entienda tu intención y proporcione las mejores respuestas posibles. Disponible a través del icono ✨ en el chat."
 			},
 			"EXPLAIN": {
 				"label": "Explicar código",
@@ -96,7 +96,7 @@
 	},
 	"customModeCreation": {
 		"enableTitle": "Habilitar la creación de modos personalizados a través de solicitudes",
-		"description": "Cuando está habilitado, Roo te permite crear modos personalizados usando solicitudes como 'Hazme un modo personalizado que...'. Deshabilitarlo reduce tu solicitud del sistema en aproximadamente 700 tokens cuando esta función no es necesaria. Cuando está deshabilitado, aún puedes crear modos personalizados manualmente usando el botón + de arriba o editando el JSON de configuración relacionado."
+		"description": "Cuando está habilitado, Magic te permite crear modos personalizados usando solicitudes como 'Hazme un modo personalizado que...'. Deshabilitarlo reduce tu solicitud del sistema en aproximadamente 700 tokens cuando esta función no es necesaria. Cuando está deshabilitado, aún puedes crear modos personalizados manualmente usando el botón + de arriba o editando el JSON de configuración relacionado."
 	},
 	"advancedSystemPrompt": {
 		"title": "Avanzado: Anular solicitud del sistema",
@@ -127,7 +127,7 @@
 		},
 		"roleDefinition": {
 			"label": "Definición de rol",
-			"description": "Define la experiencia y personalidad de Roo para este modo."
+			"description": "Define la experiencia y personalidad de Magic para este modo."
 		},
 		"tools": {
 			"label": "Herramientas disponibles",

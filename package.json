@@ -1,10 +1,10 @@
 {
-	"name": "roo-cline",
-	"displayName": "Roo Code (prev. Roo Cline)",
-	"description": "A whole dev team of AI agents in your editor.",
-	"publisher": "RooVeterinaryInc",
-	"version": "3.9.1",
-	"icon": "assets/icons/rocket.png",
+	"name": "magic-code",
+	"displayName": "Magic Code",
+	"description": "一款辅助开发的AI编程助手",
+	"publisher": "Magic-code",
+	"version": "1.1.0",
+	"icon": "assets/icons/icoPng.ico",
 	"galleryBanner": {
 		"color": "#617A91",
 		"theme": "dark"
@@ -13,13 +13,13 @@
 		"vscode": "^1.84.0"
 	},
 	"author": {
-		"name": "Roo Vet"
+		"name": "Magic Vet"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/RooVetGit/Roo-Code"
+		"url": "https://github.com/RooVetGit/Magic-Code"
 	},
-	"homepage": "https://github.com/RooVetGit/Roo-Code",
+	"homepage": "https://github.com/RooVetGit/Magic-Code",
 	"categories": [
 		"AI",
 		"Chat",
@@ -41,7 +41,7 @@
 		"sonnet",
 		"ai",
 		"llama",
-		"roo code",
+		"Magic Code",
 		"roocode"
 	],
 	"activationEvents": [
@@ -53,195 +53,185 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "roo-cline-ActivityBar",
-					"title": "Roo Code",
-					"icon": "$(rocket)"
+					"id": "magic-code-ActivityBar",
+					"title": "Magic Code",
+					"icon": "./assets/icons/icoPng.ico"
 				}
 			]
 		},
 		"views": {
-			"roo-cline-ActivityBar": [
+			"magic-code-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "roo-cline.SidebarProvider",
+					"id": "magic-code.SidebarProvider",
 					"name": ""
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "roo-cline.plusButtonClicked",
+				"command": "magic-code.plusButtonClicked",
 				"title": "New Task",
 				"icon": "$(add)"
 			},
 			{
-				"command": "roo-cline.mcpButtonClicked",
+				"command": "magic-code.mcpButtonClicked",
 				"title": "MCP Servers",
 				"icon": "$(server)"
 			},
 			{
-				"command": "roo-cline.promptsButtonClicked",
+				"command": "magic-code.promptsButtonClicked",
 				"title": "Prompts",
 				"icon": "$(notebook)"
 			},
 			{
-				"command": "roo-cline.historyButtonClicked",
+				"command": "magic-code.historyButtonClicked",
 				"title": "History",
 				"icon": "$(history)"
 			},
 			{
-				"command": "roo-cline.popoutButtonClicked",
+				"command": "magic-code.popoutButtonClicked",
 				"title": "Open in Editor",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "roo-cline.settingsButtonClicked",
+				"command": "magic-code.settingsButtonClicked",
 				"title": "Settings",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "roo-cline.helpButtonClicked",
-				"title": "Documentation",
-				"icon": "$(question)"
-			},
-			{
-				"command": "roo-cline.openInNewTab",
+				"command": "magic-code.openInNewTab",
 				"title": "Open In New Tab",
-				"category": "Roo Code"
+				"category": "Magic Code"
 			},
 			{
-				"command": "roo-cline.explainCode",
-				"title": "Roo Code: Explain Code",
-				"category": "Roo Code"
+				"command": "magic-code.explainCode",
+				"title": "Magic Code: Explain Code",
+				"category": "Magic Code"
 			},
 			{
-				"command": "roo-cline.fixCode",
-				"title": "Roo Code: Fix Code",
-				"category": "Roo Code"
+				"command": "magic-code.fixCode",
+				"title": "Magic Code: Fix Code",
+				"category": "Magic Code"
 			},
 			{
-				"command": "roo-cline.improveCode",
-				"title": "Roo Code: Improve Code",
-				"category": "Roo Code"
+				"command": "magic-code.improveCode",
+				"title": "Magic Code: Improve Code",
+				"category": "Magic Code"
 			},
 			{
-				"command": "roo-cline.addToContext",
-				"title": "Roo Code: Add To Context",
-				"category": "Roo Code"
+				"command": "magic-code.addToContext",
+				"title": "Magic Code: Add To Context",
+				"category": "Magic Code"
 			},
 			{
-				"command": "roo-cline.terminalAddToContext",
-				"title": "Roo Code: Add Terminal Content to Context",
+				"command": "magic-code.terminalAddToContext",
+				"title": "Magic Code: Add Terminal Content to Context",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalFixCommand",
-				"title": "Roo Code: Fix This Command",
+				"command": "magic-code.terminalFixCommand",
+				"title": "Magic Code: Fix This Command",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalExplainCommand",
-				"title": "Roo Code: Explain This Command",
+				"command": "magic-code.terminalExplainCommand",
+				"title": "Magic Code: Explain This Command",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalFixCommandInCurrentTask",
-				"title": "Roo Code: Fix This Command (Current Task)",
+				"command": "magic-code.terminalFixCommandInCurrentTask",
+				"title": "Magic Code: Fix This Command (Current Task)",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalExplainCommandInCurrentTask",
-				"title": "Roo Code: Explain This Command (Current Task)",
+				"command": "magic-code.terminalExplainCommandInCurrentTask",
+				"title": "Magic Code: Explain This Command (Current Task)",
 				"category": "Terminal"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
-					"command": "roo-cline.explainCode",
+					"command": "magic-code.explainCode",
 					"when": "editorHasSelection",
-					"group": "Roo Code@1"
+					"group": "Magic Code@1"
 				},
 				{
-					"command": "roo-cline.fixCode",
+					"command": "magic-code.fixCode",
 					"when": "editorHasSelection",
-					"group": "Roo Code@2"
+					"group": "Magic Code@2"
 				},
 				{
-					"command": "roo-cline.improveCode",
+					"command": "magic-code.improveCode",
 					"when": "editorHasSelection",
-					"group": "Roo Code@3"
+					"group": "Magic Code@3"
 				},
 				{
-					"command": "roo-cline.addToContext",
+					"command": "magic-code.addToContext",
 					"when": "editorHasSelection",
-					"group": "Roo Code@4"
+					"group": "Magic Code@4"
 				}
 			],
 			"terminal/context": [
 				{
-					"command": "roo-cline.terminalAddToContext",
-					"group": "Roo Code@1"
+					"command": "magic-code.terminalAddToContext",
+					"group": "Magic Code@1"
 				},
 				{
-					"command": "roo-cline.terminalFixCommand",
-					"group": "Roo Code@2"
+					"command": "magic-code.terminalFixCommand",
+					"group": "Magic Code@2"
 				},
 				{
-					"command": "roo-cline.terminalExplainCommand",
-					"group": "Roo Code@3"
+					"command": "magic-code.terminalExplainCommand",
+					"group": "Magic Code@3"
 				},
 				{
-					"command": "roo-cline.terminalFixCommandInCurrentTask",
-					"group": "Roo Code@5"
+					"command": "magic-code.terminalFixCommandInCurrentTask",
+					"group": "Magic Code@5"
 				},
 				{
-					"command": "roo-cline.terminalExplainCommandInCurrentTask",
-					"group": "Roo Code@6"
+					"command": "magic-code.terminalExplainCommandInCurrentTask",
+					"group": "Magic Code@6"
 				}
 			],
 			"view/title": [
 				{
-					"command": "roo-cline.plusButtonClicked",
+					"command": "magic-code.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == magic-code.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.promptsButtonClicked",
+					"command": "magic-code.promptsButtonClicked",
 					"group": "navigation@2",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == magic-code.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.mcpButtonClicked",
+					"command": "magic-code.mcpButtonClicked",
 					"group": "navigation@3",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == magic-code.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.historyButtonClicked",
+					"command": "magic-code.historyButtonClicked",
 					"group": "navigation@4",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == magic-code.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.popoutButtonClicked",
+					"command": "magic-code.popoutButtonClicked",
 					"group": "navigation@5",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == magic-code.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.settingsButtonClicked",
+					"command": "magic-code.settingsButtonClicked",
 					"group": "navigation@6",
-					"when": "view == roo-cline.SidebarProvider"
-				},
-				{
-					"command": "roo-cline.helpButtonClicked",
-					"group": "navigation@7",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == magic-code.SidebarProvider"
 				}
 			]
 		},
 		"configuration": {
-			"title": "Roo Code",
+			"title": "Magic Code",
 			"properties": {
-				"roo-cline.allowedCommands": {
+				"magic-code.allowedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -256,7 +246,7 @@
 					],
 					"description": "Commands that can be auto-executed when 'Always approve execute operations' is enabled"
 				},
-				"roo-cline.vsCodeLmModelSelector": {
+				"magic-code.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {

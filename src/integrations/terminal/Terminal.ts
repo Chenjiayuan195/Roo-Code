@@ -63,7 +63,7 @@ export class Terminal {
 			if (!this.process) {
 				this.running = false
 				console.warn(
-					`[Terminal ${this.id}] process is undefined, so cannot set terminal stream (probably user-initiated non-Roo command)`,
+					`[Terminal ${this.id}] process is undefined, so cannot set terminal stream (probably user-initiated non-Magic command)`,
 				)
 				return
 			}
