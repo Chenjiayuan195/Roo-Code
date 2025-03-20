@@ -9,8 +9,15 @@ import * as fs from "fs/promises"
  */
 export async function getStorageBasePath(defaultPath: string): Promise<string> {
 	// 获取用户配置的自定义存储路径
-	const config = vscode.workspace.getConfiguration("magic-code")
-	const customStoragePath = config.get<string>("customStoragePath", "")
+	let customStoragePath = ""
+
+	try {
+		const config = vscode.workspace.getConfiguration("magic-code")
+		customStoragePath = config.get<string>("customStoragePath", "")
+	} catch (error) {
+		console.warn("无法访问VSCode配置 - 使用默认路径")
+		return defaultPath
+	}
 
 	// 如果没有设置自定义路径，使用默认路径
 	if (!customStoragePath) {
@@ -30,7 +37,9 @@ export async function getStorageBasePath(defaultPath: string): Promise<string> {
 	} catch (error) {
 		// 如果路径无法使用，报告错误并回退到默认路径
 		console.error(`自定义存储路径无法使用: ${error instanceof Error ? error.message : String(error)}`)
-		vscode.window.showErrorMessage(`自定义存储路径 "${customStoragePath}" 无法使用，将使用默认路径`)
+		if (vscode.window) {
+			vscode.window.showErrorMessage(`自定义存储路径 "${customStoragePath}" 无法使用，将使用默认路径`)
+		}
 		return defaultPath
 	}
 }
@@ -70,8 +79,19 @@ export async function getCacheDirectoryPath(globalStoragePath: string): Promise<
  * 显示一个输入框，允许用户输入自定义路径
  */
 export async function promptForCustomStoragePath(): Promise<void> {
-	const currentConfig = vscode.workspace.getConfiguration("magic-code")
-	const currentPath = currentConfig.get<string>("customStoragePath", "")
+	if (!vscode.window || !vscode.workspace) {
+		console.error("VS Code API 不可用")
+		return
+	}
+
+	let currentPath = ""
+	try {
+		const currentConfig = vscode.workspace.getConfiguration("magic-code")
+		currentPath = currentConfig.get<string>("customStoragePath", "")
+	} catch (error) {
+		console.error("无法访问配置")
+		return
+	}
 
 	const result = await vscode.window.showInputBox({
 		value: currentPath,
@@ -83,8 +103,14 @@ export async function promptForCustomStoragePath(): Promise<void> {
 			}
 
 			try {
-				// 简单验证路径的有效性
+				// 验证路径格式
 				path.parse(input)
+
+				// 检查是否为绝对路径
+				if (!path.isAbsolute(input)) {
+					return "请输入绝对路径 (例如 D:\\MagicCodeStorage 或 /home/user/storage)"
+				}
+
 				return null // 路径格式有效
 			} catch (e) {
 				return "请输入有效的路径"
@@ -94,20 +120,25 @@ export async function promptForCustomStoragePath(): Promise<void> {
 
 	// 如果用户取消了操作，result会是undefined
 	if (result !== undefined) {
-		await currentConfig.update("customStoragePath", result, vscode.ConfigurationTarget.Global)
+		try {
+			const currentConfig = vscode.workspace.getConfiguration("magic-code")
+			await currentConfig.update("customStoragePath", result, vscode.ConfigurationTarget.Global)
 
-		if (result) {
-			try {
-				// 测试路径是否可访问
-				await fs.mkdir(result, { recursive: true })
-				vscode.window.showInformationMessage(`已设置自定义存储路径: ${result}`)
-			} catch (error) {
-				vscode.window.showErrorMessage(
-					`无法访问路径 ${result}: ${error instanceof Error ? error.message : String(error)}`,
-				)
+			if (result) {
+				try {
+					// 测试路径是否可访问
+					await fs.mkdir(result, { recursive: true })
+					vscode.window.showInformationMessage(`已设置自定义存储路径: ${result}`)
+				} catch (error) {
+					vscode.window.showErrorMessage(
+						`无法访问路径 ${result}: ${error instanceof Error ? error.message : String(error)}`,
+					)
+				}
+			} else {
+				vscode.window.showInformationMessage("已恢复使用默认存储路径")
 			}
-		} else {
-			vscode.window.showInformationMessage("已恢复使用默认存储路径")
+		} catch (error) {
+			console.error("配置更新失败", error)
 		}
 	}
 }
