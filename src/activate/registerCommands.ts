@@ -85,6 +85,10 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 		"magic-code.registerHumanRelayCallback": registerHumanRelayCallback,
 		"magic-code.unregisterHumanRelayCallback": unregisterHumanRelayCallback,
 		"magic-code.handleHumanRelayResponse": handleHumanRelayResponse,
+		"magic-code.setCustomStoragePath": async () => {
+			const { promptForCustomStoragePath } = await import("../shared/storagePathManager")
+			await promptForCustomStoragePath()
+		},
 	}
 }
 

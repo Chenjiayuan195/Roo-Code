@@ -3,6 +3,16 @@
 <h3>一款辅助开发的AI编程助手<h3>
 </div>
 
+## 默认存储路径修改（避免C盘被占满）
+
+`````bash
+    1.按下 Ctrl+Shift+P（Windows/Linux）或 Cmd+Shift+P（macOS）打开命令面板
+    2.输入 "Magic Code: 设置自定义对话存储路径" 并选择该命令
+    3.在弹出的输入框中，输入您想要的自定义路径，例如：D:\MagicCodeStorage
+    4.按下 Enter 确认
+    ```
+
+
 
 ## Terminal配置
 
@@ -29,7 +39,7 @@
     5.删除：,"x-onbehalf-extension-id":`${A}/${c}`并保存
     6.重新启动vscode
     ```
-````
+`````
 
 2.windows用户
 
@@ -42,6 +52,7 @@
     6.重新启动vscode
     ```
 ````
+
 3. 取消github copilot自动更新
 
 4. API供应商选用 VS Code LM API 并将请求速率限制选择3s

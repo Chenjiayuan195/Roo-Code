@@ -286,9 +286,10 @@ export class Cline extends EventEmitter<ClineEvents> {
 		if (!globalStoragePath) {
 			throw new Error("Global storage uri is invalid")
 		}
-		const taskDir = path.join(globalStoragePath, "tasks", this.taskId)
-		await fs.mkdir(taskDir, { recursive: true })
-		return taskDir
+
+		// 使用storagePathManager获取任务存储目录
+		const { getTaskDirectoryPath } = await import("../shared/storagePathManager")
+		return getTaskDirectoryPath(globalStoragePath, this.taskId)
 	}
 
 	private async getSavedApiConversationHistory(): Promise<Anthropic.MessageParam[]> {
