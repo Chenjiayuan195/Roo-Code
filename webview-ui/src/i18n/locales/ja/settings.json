@@ -265,6 +265,10 @@
 		"rooignore": {
 			"label": "リストと検索で.rooignoreファイルを表示",
 			"description": "有効にすると、.rooignoreのパターンに一致するファイルがロックシンボル付きでリストに表示されます。無効にすると、これらのファイルはファイルリストや検索から完全に非表示になります。"
+		},
+		"maxReadFile": {
+			"label": "ファイルから読み込む最大行数",
+			"description": "一度にファイルから読み込む最大行数。低い値はコンテキスト/リソース使用量を減らしますが、大きなファイルではより多くの読み込みが必要になる場合があります。"
 		}
 	},
 	"terminal": {
@@ -353,7 +357,11 @@
 		}
 	},
 	"modelPicker": {
-		"automaticFetch": "拡張機能は<serviceLink>{{serviceName}}</serviceLink>で利用可能な最新のモデルリストを自動的に取得します。どのモデルを選ぶべきか迷っている場合、Magic Codeは<defaultModelLink>{{defaultModelId}}</defaultModelLink>で最適に動作します。また、「free」で検索すると、現在利用可能な無料オプションを見つけることができます。"
+		"automaticFetch": "拡張機能は<serviceLink>{{serviceName}}</serviceLink>で利用可能な最新のモデルリストを自動的に取得します。どのモデルを選ぶべきか迷っている場合、Roo Codeは<defaultModelLink>{{defaultModelId}}</defaultModelLink>で最適に動作します。また、「free」で検索すると、現在利用可能な無料オプションを見つけることができます。",
+		"label": "モデル",
+		"searchPlaceholder": "検索",
+		"noMatchFound": "一致するものが見つかりません",
+		"useCustomModel": "カスタムを使用: {{modelId}}"
 	},
 	"footer": {
 		"feedback": "質問やフィードバックがある場合は、<githubLink>github.com/RooVetGit/Magic-Code</githubLink>で問題を開くか、<redditLink>reddit.com/r/RooCode</redditLink>や<discordLink>discord.gg/roocode</discordLink>に参加してください",

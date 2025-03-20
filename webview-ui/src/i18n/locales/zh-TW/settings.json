@@ -265,6 +265,10 @@
 		"rooignore": {
 			"label": "在列表和搜尋中顯示 .rooignore 檔案",
 			"description": "啟用後，與 .rooignore 中模式匹配的檔案將在列表中顯示鎖定符號。禁用時，這些檔案將從檔案列表和搜尋中完全隱藏。"
+		},
+		"maxReadFile": {
+			"label": "從檔案讀取的最大行數",
+			"description": "一次從檔案讀取的最大行數。較低的值會減少內容/資源使用，但可能需要對大型檔案進行更多次讀取。"
 		}
 	},
 	"terminal": {
@@ -353,7 +357,11 @@
 		}
 	},
 	"modelPicker": {
-		"automaticFetch": "擴充功能會自動獲取 <serviceLink>{{serviceName}}</serviceLink> 上可用的最新模型列表。如果您不確定選擇哪個模型，Magic Code 與 <defaultModelLink>{{defaultModelId}}</defaultModelLink> 配合最佳。您還可以搜尋\"free\"以尋找目前可用的免費選項。"
+		"automaticFetch": "擴充功能會自動獲取 <serviceLink>{{serviceName}}</serviceLink> 上可用的最新模型列表。如果您不確定選擇哪個模型，Roo Code 與 <defaultModelLink>{{defaultModelId}}</defaultModelLink> 配合最佳。您還可以搜尋\"free\"以尋找目前可用的免費選項。",
+		"label": "模型",
+		"searchPlaceholder": "搜尋",
+		"noMatchFound": "未找到相符項目",
+		"useCustomModel": "使用自訂: {{modelId}}"
 	},
 	"footer": {
 		"feedback": "如果您有任何問題或反饋，請隨時在 <githubLink>github.com/RooVetGit/Magic-Code</githubLink> 上提出問題或加入 <redditLink>reddit.com/r/RooCode</redditLink> 或 <discordLink>discord.gg/roocode</discordLink>",

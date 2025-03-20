@@ -1,6 +1,7 @@
 import fs from "fs/promises"
 import path from "path"
 import * as vscode from "vscode"
+import { LANGUAGES } from "../../../shared/language"
 
 async function safeReadFile(filePath: string): Promise<string> {
 	try {
@@ -47,6 +48,7 @@ export async function addCustomInstructions(
 
 	// Add language preference if provided
 	if (options.language) {
+		const languageName = LANGUAGES[options.language] || options.language
 		sections.push(
 			`语言偏好：\n您应该始终用"${options.language}"语言说话和思考，除非用户在下面提供指令要求您用其他语言。`,
 		)

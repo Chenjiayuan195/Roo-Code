@@ -265,6 +265,10 @@
 		"rooignore": {
 			"label": ".rooignore-Dateien in Listen und Suchen anzeigen",
 			"description": "Wenn aktiviert, werden Dateien, die mit Mustern in .rooignore übereinstimmen, in Listen mit einem Schlosssymbol angezeigt. Wenn deaktiviert, werden diese Dateien vollständig aus Dateilisten und Suchen ausgeblendet."
+		},
+		"maxReadFile": {
+			"label": "Maximale Anzahl an Zeilen, die aus einer Datei gelesen werden",
+			"description": "Maximale Anzahl an Zeilen, die auf einmal aus einer Datei gelesen werden. Niedrigere Werte reduzieren den Kontext-/Ressourcenverbrauch, können aber mehr Lesevorgänge für große Dateien erfordern."
 		}
 	},
 	"terminal": {
@@ -353,7 +357,11 @@
 		}
 	},
 	"modelPicker": {
-		"automaticFetch": "Die Erweiterung ruft automatisch die neueste Liste der verfügbaren Modelle von <serviceLink>{{serviceName}}</serviceLink> ab. Wenn Sie sich nicht sicher sind, welches Modell Sie wählen sollen, funktioniert Magic Code am besten mit <defaultModelLink>{{defaultModelId}}</defaultModelLink>. Sie können auch nach \"free\" suchen, um derzeit verfügbare kostenlose Optionen zu finden."
+		"automaticFetch": "Die Erweiterung ruft automatisch die neueste Liste der verfügbaren Modelle von <serviceLink>{{serviceName}}</serviceLink> ab. Wenn Sie sich nicht sicher sind, welches Modell Sie wählen sollen, funktioniert Roo Code am besten mit <defaultModelLink>{{defaultModelId}}</defaultModelLink>. Sie können auch nach \"free\" suchen, um derzeit verfügbare kostenlose Optionen zu finden.",
+		"label": "Modell",
+		"searchPlaceholder": "Suchen",
+		"noMatchFound": "Keine Übereinstimmung gefunden",
+		"useCustomModel": "Benutzerdefiniert verwenden: {{modelId}}"
 	},
 	"footer": {
 		"feedback": "Wenn Sie Fragen oder Feedback haben, können Sie gerne ein Issue auf <githubLink>github.com/RooVetGit/Magic-Code</githubLink> öffnen oder <redditLink>reddit.com/r/RooCode</redditLink> oder <discordLink>discord.gg/roocode</discordLink> beitreten",
