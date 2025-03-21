@@ -3,7 +3,7 @@
 	"displayName": "Magic Code",
 	"description": "一款辅助开发的AI编程助手",
 	"publisher": "Magic-code",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"icon": "assets/icons/icoPng.ico",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -51,6 +51,16 @@
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"submenus": [
+			{
+				"id": "magic-code.contextMenu",
+				"label": "Magic Code"
+			},
+			{
+				"id": "magic-code.terminalMenu",
+				"label": "Magic Code"
+			}
+		],
 		"viewsContainers": {
 			"activitybar": [
 				{
@@ -111,44 +121,49 @@
 				"category": "Magic Code"
 			},
 			{
+				"command": "magic-code.explainCode",
+				"title": "解释代码",
+				"category": "Magic Code"
+			},
+			{
 				"command": "magic-code.fixCode",
-				"title": "Magic Code: 修复代码",
+				"title": "修复代码",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.improveCode",
-				"title": "Magic Code: 改进代码",
+				"title": "改进代码",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.addToContext",
-				"title": "Magic Code: 添加到上下文",
+				"title": "添加到上下文",
 				"category": "Magic Code"
 			},
 			{
 				"command": "magic-code.terminalAddToContext",
-				"title": "Magic Code: 添加终端内容到上下文",
-				"category": "Terminal"
+				"title": "添加终端内容到上下文",
+				"category": "终端"
 			},
 			{
 				"command": "magic-code.terminalFixCommand",
-				"title": "Magic Code: 修复此命令",
-				"category": "Terminal"
+				"title": "修复此命令",
+				"category": "终端"
 			},
 			{
 				"command": "magic-code.terminalExplainCommand",
-				"title": "Magic Code: 解释此命令",
-				"category": "Terminal"
+				"title": "解释此命令",
+				"category": "终端"
 			},
 			{
 				"command": "magic-code.terminalFixCommandInCurrentTask",
-				"title": "Magic Code: 修复此命令 (当前任务)",
-				"category": "Terminal"
+				"title": "修复此命令（当前任务）",
+				"category": "终端"
 			},
 			{
 				"command": "magic-code.terminalExplainCommandInCurrentTask",
-				"title": "Magic Code: 解释此命令 (当前任务)",
-				"category": "Terminal"
+				"title": "解释此命令（当前任务）",
+				"category": "终端"
 			},
 			{
 				"command": "magic-code.setCustomStoragePath",
@@ -159,46 +174,54 @@
 		"menus": {
 			"editor/context": [
 				{
+					"submenu": "magic-code.contextMenu",
+					"group": "navigation"
+				}
+			],
+			"magic-code.contextMenu": [
+				{
 					"command": "magic-code.explainCode",
-					"when": "editorHasSelection",
-					"group": "Magic Code@1"
+					"group": "1_actions@1"
 				},
 				{
 					"command": "magic-code.fixCode",
-					"when": "editorHasSelection",
-					"group": "Magic Code@2"
+					"group": "1_actions@2"
 				},
 				{
 					"command": "magic-code.improveCode",
-					"when": "editorHasSelection",
-					"group": "Magic Code@3"
+					"group": "1_actions@3"
 				},
 				{
 					"command": "magic-code.addToContext",
-					"when": "editorHasSelection",
-					"group": "Magic Code@4"
+					"group": "1_actions@4"
 				}
 			],
 			"terminal/context": [
 				{
+					"submenu": "magic-code.terminalMenu",
+					"group": "navigation"
+				}
+			],
+			"magic-code.terminalMenu": [
+				{
 					"command": "magic-code.terminalAddToContext",
-					"group": "Magic Code@1"
+					"group": "1_actions@1"
 				},
 				{
 					"command": "magic-code.terminalFixCommand",
-					"group": "Magic Code@2"
+					"group": "1_actions@2"
 				},
 				{
 					"command": "magic-code.terminalExplainCommand",
-					"group": "Magic Code@3"
+					"group": "1_actions@3"
 				},
 				{
 					"command": "magic-code.terminalFixCommandInCurrentTask",
-					"group": "Magic Code@5"
+					"group": "1_actions@5"
 				},
 				{
 					"command": "magic-code.terminalExplainCommandInCurrentTask",
-					"group": "Magic Code@6"
+					"group": "1_actions@6"
 				}
 			],
 			"view/title": [
@@ -250,21 +273,21 @@
 						"git diff",
 						"git show"
 					],
-					"description": "Commands that can be auto-executed when 'Always approve execute operations' is enabled"
+					"description": "启用'始终批准执行操作'时可以自动执行的命令"
 				},
 				"magic-code.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {
 							"type": "string",
-							"description": "The vendor of the language model (e.g. copilot)"
+							"description": "语言模型的供应商（例如 copilot）"
 						},
 						"family": {
 							"type": "string",
-							"description": "The family of the language model (e.g. gpt-4)"
+							"description": "语言模型的系列（例如 gpt-4）"
 						}
 					},
-					"description": "Settings for VSCode Language Model API"
+					"description": "VSCode 语言模型 API 的设置"
 				},
 				"magic-code.customStoragePath": {
 					"type": "string",
@@ -344,6 +367,7 @@
 		"diff": "^5.2.0",
 		"diff-match-patch": "^1.0.5",
 		"fast-deep-equal": "^3.1.3",
+		"fast-xml-parser": "^4.5.1",
 		"fastest-levenshtein": "^1.0.16",
 		"fzf": "^0.5.2",
 		"get-folder-size": "^5.0.0",
