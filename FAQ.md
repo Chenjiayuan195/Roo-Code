@@ -259,3 +259,135 @@ A: 这种设计采用了**适配器模式**，具有以下优势：
 3. **格式隔离** - 外部API格式变化只需要修改相应的转换器，不影响系统其他部分
 4. **一致的用户体验** - 无论使用哪种后端模型，用户看到的界面和交互体验保持一致
 5. **简化调试** - 内部统一格式使开发人员更容易理解和调试系统行为
+
+## 模型兼容性
+
+### Q: 不支持function call的模型是否也能通过MagicCode系统调用工具？
+
+A: 是的，MagicCode设计了一个巧妙的系统，即使模型不原生支持function call功能，也能调用工具。这是通过以下机制实现的：
+
+1. **统一的XML格式指令**：
+
+    - 系统提示(system prompt)中明确指导所有模型使用特定的XML格式来表示工具调用
+    - 这种格式对所有模型都是一致的，无关模型是否原生支持function call
+
+2. **提示工程**：
+    - 在系统提示中详细说明每个工具的用法、参数和格式
+    - 提供清晰的XML格式示例，帮助模型理解如何正确构造工具调用
+3. **接收端统一处理**：
+
+    - 无论模型如何生成响应，系统都使用相同的XML解析机制处理
+    - `src/utils/xml.ts`和`src/core/assistant-message/parse-assistant-message.ts`负责解析所有模型生成的XML格式工具调用
+
+4. **发送端格式转换**：
+    - 只有在与特定API通信时，系统才需要对历史记录中的工具调用进行格式转换
+    - 这对模型生成新的工具调用没有影响
+
+系统提示中有一段专门的工具使用格式说明：
+
+```
+# Tool Use Formatting
+
+Tool use is formatted using XML-style tags. The tool name is enclosed in opening and closing tags, and each parameter is similarly enclosed within its own set of tags. Here's the structure:
+
+<tool_name>
+<parameter1_name>value1</parameter1_name>
+<parameter2_name>value2</parameter2_name>
+...
+</tool_name>
+
+For example:
+
+<read_file>
+<path>src/main.js</path>
+</read_file>
+
+Always adhere to this format for the tool use to ensure proper parsing and execution.
+```
+
+这种设计的关键优势是，使MagicCode能够支持广泛的模型，而不仅限于那些原生支持function call的模型（如OpenAI的模型）。无论模型是Claude、本地部署的开源LLM、或通过VLLM提供的服务，只要它能够遵循系统提示中指定的XML格式，就能与工具系统无缝集成。
+
+### Q: 为什么有些模型需要格式转换而其他模型不需要？
+
+A: 这涉及到两个不同的数据流方向：
+
+#### 1. 模型输出工具调用（接收方向）
+
+- **所有模型**都能通过系统提示的指导，**生成XML格式的工具调用**
+- 这是通过提示工程实现的，与模型是否原生支持function call无关
+- MagicCode总是期望接收XML格式的工具调用并解析执行
+
+#### 2. 发送历史记录给模型（发送方向）
+
+- 问题出在这里：当系统需要将**包含历史工具调用的完整对话**发送给模型时
+- 不同的API有不同的限制和要求：
+    - **OpenAI API** 不接受XML格式的工具调用历史记录，它要求使用function_call格式
+    - **Claude API** 可以接受XML格式的历史记录
+
+因此，格式转换是因为：
+
+- 不是所有模型API都能**接收**XML格式的工具调用历史
+- 但所有模型都能**生成**XML格式的工具调用（通过指导）
+
+举个例子：
+
+1. 您使用一个不支持function call的模型，它可以按照系统提示生成XML格式的工具调用
+2. 系统解析并执行这个工具调用
+3. 当您继续对话时，系统需要将整个历史（包括之前的工具调用）发送给模型
+4. 如果您使用的是OpenAI API，那么系统必须将历史中的XML工具调用转换为function_call格式，因为OpenAI API不接受XML格式
+
+简单说：格式转换是为了满足不同API对**输入格式**的要求，不是因为模型不能**生成**正确格式的工具调用。
+
+### Q: OpenAI为什么不接受XML格式的工具调用历史？
+
+A: 这涉及到多方面的考虑：
+
+#### API设计哲学和技术限制
+
+1. **结构化控制**：
+
+    - OpenAI选择使用JSON格式的function_call是为了确保工具调用有严格的结构化表示
+    - 避免依赖模型解析自由格式的XML
+
+2. **参数验证**：
+
+    - function_call格式允许OpenAI在API层面进行参数验证
+    - 确保每个工具调用都有有效的参数格式
+
+3. **安全性考虑**：
+
+    - 通过强制使用其内部function_call格式，OpenAI可以更好地监控和控制工具调用
+    - 有助于防止潜在的安全问题
+
+4. **一致性保证**：
+    - function_call格式确保了模型不会生成格式错误或不完整的工具调用
+    - 这在处理关键任务时特别重要
+
+#### 架构决策
+
+OpenAI的架构决策倾向于使用严格定义的JSON接口，而不是让模型自己解析XML：
+
+1. **清晰的接口边界**：
+
+    - API级别明确分离"模型理解"和"工具执行"
+    - 使系统更加健壮
+
+2. **减少歧义**：
+
+    - XML解析可能存在歧义(例如嵌套标签、未闭合标签等)
+    - JSON格式的function_call更容易无歧义地解析
+
+3. **专业化设计**：
+    - OpenAI的API专门为工具调用设计了function_call机制
+    - 不依赖模型通用的文本理解能力
+
+#### 模型处理方式差异
+
+这反映了不同公司对AI系统设计理念的差异：
+
+- **OpenAI方式**：更偏向于结构化、严格定义的接口，使工具调用成为API的一级公民
+- **Claude方式**：更偏向于统一文本理解，将工具调用视为特殊格式的文本
+
+这两种方法各有优缺点 - OpenAI的方法可能更严格、更可控，但也更不灵活；而允许直接处理XML的方法更灵活，但可能更依赖模型的文本理解能力。
+
+MagicCode系统的巧妙之处在于通过适配器模式桥接了这两种不同的工具调用哲学，使其能够与各种模型无缝协作。
